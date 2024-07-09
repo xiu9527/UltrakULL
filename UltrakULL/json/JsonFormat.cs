@@ -2012,6 +2012,7 @@ namespace UltrakULL.json
         public string controls_punchFeedbacker;
         public string controls_punchKnuckleblaster;
         public string controls_whiplash;
+        public string controls_boundMultiple;
 
         public string graphics_resolution;
         public string graphics_fullscreen;

@@ -1318,6 +1318,7 @@
         "controls_punchFeedbacker": "PUNCH (FEEDBACKER)",
         "controls_punchKnuckleblaster": "PUNCH (KNUCKLEBLASTER)",
         "controls_whiplash": "HOOK",
+        "controls_boundMultiple": "IS BOUND MULTIPLE TIMES",
 
         "graphics_resolution": "RESOLUTION",
         "graphics_fullscreen": "FULLSCREEN",

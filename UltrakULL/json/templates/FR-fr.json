@@ -1262,6 +1262,7 @@
 		"controls_punchFeedbacker": "",
 		"controls_punchKnuckleblaster": "",
 		"controls_whiplash": "GRAPPIN",
+		"controls_boundMultiple": "",
 		"controls_changeArm": "CHANGER DE BRAS",
 		"controls_movementTitle": "MOUVEMENT",
 		"controls_resetDefault": "RÉINITIALISER",

@@ -4,7 +4,7 @@ using HarmonyLib;
 using TMPro;
 using UltrakULL.json;
 using UnityEngine;
-
+using UnityEngine.InputSystem;
 using static UltrakULL.CommonFunctions;
 
 namespace UltrakULL.Harmony_Patches
@@ -53,7 +53,7 @@ namespace UltrakULL.Harmony_Patches
     [HarmonyPatch(typeof(ControlsOptionsKey),"OnEnable")]
     public class ControlBindNames
     {
-        static string getActionName(string originalText)
+        public static string getActionName(string originalText)
         {
             switch (originalText)
             {
@@ -91,6 +91,29 @@ namespace UltrakULL.Harmony_Patches
         public static void controlBindNamesPatch_Postfix(ControlsOptionsKey __instance)
         {
             __instance.actionText.text = getActionName(__instance.actionText.text);
+        }
+    }
+    [HarmonyPatch(typeof(ControlsOptionsKey), "GenerateTooltip")]
+    public static class BoundMultipleTimes
+    {
+        [HarmonyPostfix]
+        public static string GenerateTooltip_Postfix(string __result, InputAction action, InputBinding binding, InputBinding[] conflicts)
+        {
+            string str = action.GetBindingDisplayStringWithoutOverride(binding, InputBinding.DisplayStringOptions.DontIncludeInteractions).ToUpper();
+            string str2 = "<color=red>" + str + " " + LanguageManager.CurrentLanguage.options.controls_boundMultiple + ":";
+            HashSet<string> hashSet = new HashSet<string>();
+            foreach (InputBinding inputBinding in conflicts)
+            {
+                if (!hashSet.Contains(inputBinding.action))
+                {
+                    str2 += "<br>";
+                    string actiontranslated = ControlBindNames.getActionName(inputBinding.action.ToUpper());
+                    str2 = str2 + "- " + actiontranslated;
+                    hashSet.Add(inputBinding.action);
+                }
+            }
+            return str2 + "</color>";
+
         }
     }
 }
