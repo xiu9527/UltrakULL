@@ -40,6 +40,11 @@ namespace UltrakULL
                 TextMeshProUGUI cratesName = GetTextMeshProUGUI(GetGameObjectChild(levelStatsWindow, "Crates Counter"));
                 cratesName.text = LanguageManager.CurrentLanguage.misc.levelstats_boxes;
             }
+            if (GetCurrentSceneName() == "Endless")
+            {
+                killsName.text = LanguageManager.CurrentLanguage.cyberGrind.cybergrind_currentWave;
+                styleName.text = LanguageManager.CurrentLanguage.cyberGrind.cybergrind_enemiesRemaining;
+            }
         }
     }
 }

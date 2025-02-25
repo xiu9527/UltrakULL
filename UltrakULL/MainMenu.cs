@@ -16,23 +16,24 @@ namespace UltrakULL
 		{
 			try
 			{
-				GameObject titleObject = GetGameObjectChild(mainMenu, "Main Menu (1)");
+				GameObject titleObject = GetGameObjectChild(GetGameObjectChild(mainMenu, "Main Menu (1)"), "LeftSide");
 
 				//Early access tag
-				TextMeshProUGUI earlyAccessText = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(titleObject, "Title"), "Text"));
-				earlyAccessText.text = "--" + LanguageManager.CurrentLanguage.frontend.mainmenu_earlyAccess + "--";
+				TextMeshProUGUI earlyAccessText = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(titleObject, "Text (3)"), "Text"));
+				earlyAccessText.text = LanguageManager.CurrentLanguage.frontend.mainmenu_earlyAccess;
 
+				GameObject holidayObject = GetGameObjectChild(titleObject, "Holiday Greetings"); 
                 //Halloween
-                TextMeshProUGUI halloweenText = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(titleObject, "Title"), "Text (Halloween)"));
-				halloweenText.text = "<color=orange>--" + LanguageManager.CurrentLanguage.frontend.mainmenu_halloween + "--</color>";
+                TextMeshProUGUI halloweenText = GetTextMeshProUGUI(GetGameObjectChild(holidayObject, "Text (Halloween)"));
+				halloweenText.text = "<color=orange>" + LanguageManager.CurrentLanguage.frontend.mainmenu_halloween + "</color>";
 
                 //Easter
-                TextMeshProUGUI easterText = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(titleObject, "Title"), "Text (Easter)"));
-				easterText.text = "<color=magenta>--" + LanguageManager.CurrentLanguage.frontend.mainmenu_easter + "--</color>";
+                TextMeshProUGUI easterText = GetTextMeshProUGUI(GetGameObjectChild(holidayObject, "Text (Easter)"));
+				easterText.text = "<color=magenta>" + LanguageManager.CurrentLanguage.frontend.mainmenu_easter + "</color>";
 
                 //Christmas
-                TextMeshProUGUI christmasText = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(titleObject, "Title"), "Text (Christmas)"));
-				christmasText.text = "<color=red>--" + LanguageManager.CurrentLanguage.frontend.mainmenu_christmas + "--</color>";
+                TextMeshProUGUI christmasText = GetTextMeshProUGUI(GetGameObjectChild(holidayObject, "Text (Christmas)"));
+				christmasText.text = "<color=red>" + LanguageManager.CurrentLanguage.frontend.mainmenu_christmas + "</color>";
 
 				//Play button
 				TextMeshProUGUI playButtonText = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(titleObject, "Continue"), "Text"));
@@ -49,22 +50,6 @@ namespace UltrakULL
 				//Quit button
 				TextMeshProUGUI quitButtontext = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(titleObject, "Quit"), "Text"));
 				quitButtontext.text = LanguageManager.CurrentLanguage.frontend.mainmenu_quit;
-
-				//UMM buttons
-
-				foreach (Transform a in titleObject.GetComponentsInChildren<Transform>())
-				{
-					if(a.name == "ModsButton")
-					{
-						Text modsButtonText = GetTextfromGameObject(GetGameObjectChild(a.gameObject,"Text"));
-						modsButtonText.text = LanguageManager.CurrentLanguage.frontend.mainmenu_mods;
-					}
-					if(a.name == "RestartButton")
-					{
-						Text restartButtonText = GetTextfromGameObject(GetGameObjectChild(a.gameObject,"Text"));
-						restartButtonText.text = LanguageManager.CurrentLanguage.frontend.mainmenu_restart;
-					}
-				}
 			}
 			catch (Exception e)
 			{
@@ -113,7 +98,7 @@ namespace UltrakULL
 		{
 			try
 			{
-				GameObject difficultyObject = GetGameObjectChild(frontEnd, "Difficulty Select (1)");
+				GameObject difficultyObject = GetGameObjectChild(GetGameObjectChild(frontEnd, "Difficulty Select (1)"),"Interactables");
 
 				//Difficulty header text (note: this can't fit much without reducing the default font size.)
 				TextMeshProUGUI difficultyText = GetTextMeshProUGUI(difficultyObject.transform.Find("Title").gameObject);
@@ -162,9 +147,14 @@ namespace UltrakULL
 						TextMeshProUGUI umdText = GetTextMeshProUGUI(umdTextObject.transform.Find("Name").gameObject);
                 		umdText.text = LanguageManager.CurrentLanguage.frontend.difficulty_umd;
 
-				//No need for UMD header yet as it's not in-game
 
-				if (LanguageManager.IsRightToLeft)
+                TextMeshProUGUI underConstructionText = GetTextMeshProUGUI(GetGameObjectChild(umdTextObject, "Under Construction"));
+                underConstructionText.text = LanguageManager.CurrentLanguage.frontend.difficulty_underConstruction;
+
+
+                //No need for UMD header yet as it's not in-game
+
+                if (LanguageManager.IsRightToLeft)
 				{
 					RtlFixDifficultyButton(brutalTextObject, brutalText);
 					RtlFixDifficultyButton(violentTextObject, violentText);
@@ -190,7 +180,7 @@ namespace UltrakULL
 		{
 			try
 			{
-				GameObject difficultyObject = GetGameObjectChild(frontEnd, "Difficulty Select (1)");
+				GameObject difficultyObject = GetGameObjectChild(GetGameObjectChild(frontEnd, "Difficulty Select (1)"), "Interactables");
 
 				//Harmless title
 				GameObject harmlessObject = GetGameObjectChild(difficultyObject, "Harmless Info");
@@ -261,10 +251,6 @@ namespace UltrakULL
                     + LanguageManager.CurrentLanguage.frontend.difficulty_brutalDescription2 + "</color>"
                     + "\n\n"
                     + "<b>" + LanguageManager.CurrentLanguage.frontend.difficulty_brutalDescription3 + "<b>";
-
-                TextMeshProUGUI underConstructionText = GetTextMeshProUGUI(GetGameObjectChild(difficultyObject, "Under Construction"));
-				underConstructionText.text = LanguageManager.CurrentLanguage.frontend.difficulty_underConstruction;
-
 				// RTL
 				if (LanguageManager.IsRightToLeft)
 				{
@@ -377,8 +363,8 @@ namespace UltrakULL
 
 		private static void PatchChapterSelect(GameObject frontEnd)
 		{
-			GameObject chapterObject = GetGameObjectChild(frontEnd, "Chapter Select");
-            TextMeshProUGUI chapterText = GetTextMeshProUGUI(chapterObject.transform.Find("Title (1)").gameObject);
+			GameObject chapterObject = GetGameObjectChild(GetGameObjectChild(frontEnd, "Chapter Select"), "Chapters");
+            TextMeshProUGUI chapterText = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(frontEnd, "Chapter Select"), "Title (1)"));
 			chapterText.text = "--" + LanguageManager.CurrentLanguage.frontend.chapter_title + "--";
 
 			GameObject preludeObject = GetGameObjectChild(chapterObject, "Prelude");

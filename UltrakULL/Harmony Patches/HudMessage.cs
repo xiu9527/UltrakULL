@@ -24,7 +24,7 @@ namespace UltrakULL.Harmony_Patches
         }
     }
 
-    [HarmonyPatch(typeof(HudMessage), "Update")]
+    /*[HarmonyPatch(typeof(HudMessage), "Update")]
     public static class HudMessageUpdatePatch
     {
         [HarmonyPrefix]
@@ -41,7 +41,7 @@ namespace UltrakULL.Harmony_Patches
             }
             return false;
         }
-    }
+    }*/
 
     [HarmonyPatch(typeof(HudMessageReceiver),"SendHudMessage")]
     public static class SendHudMessagePatch
@@ -64,7 +64,7 @@ namespace UltrakULL.Harmony_Patches
     public static class LocalizeHudMessage
     {
         [HarmonyPostfix]
-        public static void PlayMessage_MyPatch(HudMessage __instance, bool ___activated, HudMessageReceiver ___messageHud, TMP_Text ___text, Image ___img)
+        public static void PlayMessage_MyPatch(HudMessage __instance)
         {
             if(isUsingEnglish())
             {
@@ -73,13 +73,13 @@ namespace UltrakULL.Harmony_Patches
             //The HUD display uses 2 kinds of messages.
             //One for messages that displays KeyCode inputs (for controls), and one that doesn't.
             //Get the string table based on the area of the game we're currently in.
-            
-            ___messageHud = MonoSingleton<HudMessageReceiver>.Instance;
-            ___text = ___messageHud.text;
+
+            HudMessageReceiver ___messageHud = MonoSingleton<HudMessageReceiver>.Instance;
+            //___text = ___messageHud.text;
             if(__instance.actionReference == null)
             {
                 string newMessage = StringsParent.GetMessage(__instance.message, __instance.message2, "");
-                ___text.text = newMessage;
+                //___text.text = newMessage;
             }
             
             else
@@ -90,9 +90,9 @@ namespace UltrakULL.Harmony_Patches
                 //Compare the start of the first message with the string table.
                 __instance.message = StringsParent.GetMessage(__instance.message, __instance.message2, bindingString);
                 
-                ___text.text = __instance.message;
+                //___text.text = __instance.message;
             }
-            ___text.text = ___text.text.Replace('$', '\n');
+            //___text.text = ___text.text.Replace('$', '\n');
         }
     }
 }

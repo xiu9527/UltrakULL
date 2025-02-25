@@ -6,10 +6,10 @@ using UltrakULL.json;
 
 namespace UltrakULL.Harmony_Patches
 {
-    [HarmonyPatch(typeof(HUDOptions))]
+    [HarmonyPatch(typeof(SettingsMenu.Components.SettingsMenu))]
     public static class HUDOptionsPatch
     {
-        [HarmonyPatch("Start"), HarmonyPostfix]
+        /*[HarmonyPatch("Start"), HarmonyPostfix]
         public static void HUDOptionsStartPostfix(TMP_Dropdown ___iconPackDropdown)
         {
             List<TMP_Dropdown.OptionData> iconsDropdownListText = ___iconPackDropdown.options;
@@ -22,6 +22,6 @@ namespace UltrakULL.Harmony_Patches
             { Logging.Warn("Failed to patch icons text in HUD options.");
                 Logging.Warn(e.ToString());
             }
-        }
+        }*/
     }
 }

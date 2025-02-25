@@ -14,7 +14,7 @@ namespace UltrakULL
     {
         private GameObject optionsMenu;
 
-        private void PatchGeneralOptions(GameObject generalOptions)
+        /*private void PatchGeneralOptions(GameObject generalOptions)
         {
             //General options
             GameObject generalContent = GetGameObjectChild(GetGameObjectChild(generalOptions, "Scroll Rect (1)"), "Contents");
@@ -199,7 +199,7 @@ namespace UltrakULL
             bindChangeFist.text = LanguageManager.CurrentLanguage.options.controls_changeArm;
             bindPunch.text = LanguageManager.CurrentLanguage.options.controls_punch;
             bindHook.text = LanguageManager.CurrentLanguage.options.controls_whiplash;*/
-        }
+        /*}
         private void PatchGraphicsOptions(GameObject optionsMenu)
         {
             //Graphics options
@@ -612,7 +612,7 @@ namespace UltrakULL
         }
         //general end
         //customization starts here
-        private void PatchHUDOptions(GameObject optionsMenu)
+        private void PatchSettingsMenu(GameObject optionsMenu)
         {
             //HUD options
             GameObject hudContent = GetGameObjectChild(GetGameObjectChild(optionsMenu, "Scroll Rect (1)"), "Contents");
@@ -964,7 +964,7 @@ namespace UltrakULL
             TextMeshProUGUI advanced7SHard = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(advancedOptionsSub, "7-S Options"), "Local High Scores"), "Text"));
             advanced7SHard.text = LanguageManager.CurrentLanguage.options.advanced_7SHard;
         }
-
+        */
         private void PatchOptions(GameObject optionsMenu)
         {
             if (optionsMenu != null)
@@ -987,12 +987,12 @@ namespace UltrakULL
                     optionsText.text = "--" + LanguageManager.CurrentLanguage.options.options_title + "--";
                 }
 
-                GameObject leftColumn = GetGameObjectChild(optionsMenu, "Panel");
+                GameObject leftColumn = GetGameObjectChild(optionsMenu, "Navigation Rail");
 
                 TextMeshProUGUI generalText = GetTextMeshProUGUI(GetGameObjectChild(leftColumn, "Text (7)"));
                 generalText.text = "-- " + LanguageManager.CurrentLanguage.options.category_general + " --";
 
-                TextMeshProUGUI generalButton = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(leftColumn, "Gameplay"), "Text"));
+                TextMeshProUGUI generalButton = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(leftColumn, "General"), "Text"));
                 generalButton.text = LanguageManager.CurrentLanguage.options.category_general;
 
                 TextMeshProUGUI controlButton = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(leftColumn, "Controls"), "Text"));
@@ -1024,17 +1024,17 @@ namespace UltrakULL
 
                 try
                 {
-                    try { this.PatchGeneralOptions(generalOptions); } catch (Exception e) { Logging.Error("Failed to patch general options."); Logging.Error(e.ToString()); }
+                    /*try { this.PatchGeneralOptions(generalOptions); } catch (Exception e) { Logging.Error("Failed to patch general options."); Logging.Error(e.ToString()); }
                     try { this.PatchControlOptions(controlOptions); } catch (Exception e) { Logging.Error("Failed to patch control options."); Logging.Error(e.ToString()); }
                     try { this.PatchGraphicsOptions(graphicsOptions); } catch (Exception e) { Logging.Error("Failed to patch graphics options."); Logging.Error(e.ToString()); }
                     try { this.PatchAudioOptions(audioOptions); } catch (Exception e) { Logging.Error("Failed to patch audio options."); Logging.Error(e.ToString()); }
-                    try { this.PatchHUDOptions(hudOptions); } catch (Exception e) { Logging.Error("Failed to patch HUD options."); Logging.Error(e.ToString()); }
+                    try { this.PatchSettingsMenu(hudOptions); } catch (Exception e) { Logging.Error("Failed to patch HUD options."); Logging.Error(e.ToString()); }
                     try { this.PatchAssistOptions(assistOptions); } catch (Exception e) { Logging.Error("Failed to patch assist options."); Logging.Error(e.ToString()); }
                     try { this.PatchColorsOptions(colorsOptions); } catch (Exception e) { Logging.Error("Failed to patch colors options."); Logging.Error(e.ToString()); }
                     try { this.PatchSavesOptions(savesOptions); } catch (Exception e) { Logging.Error("Failed to patch save options."); Logging.Error(e.ToString()); }
                     try { this.PatchRumbleOptions(rumbleOptions); } catch (Exception e) { Logging.Error("Failed to patch rumble options."); Logging.Error(e.ToString()); }
                     try { this.PatchAdvancedOptions(advancedOptions); } catch (Exception e) { Logging.Error("Failed to patch advanced options."); Logging.Error(e.ToString()); }
-                }
+                */}
                 catch (Exception e)
                 {
                     Logging.Error("Something went wrong while patching options.");
@@ -1042,8 +1042,12 @@ namespace UltrakULL
                 }
 
             }
+            else
+            {
+                Logging.Error("oh no");
+            }
         }
-
+        
         public Options(ref GameObject game)
         {
             //Options are in two different locations.

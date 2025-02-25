@@ -10,7 +10,17 @@ namespace UltrakULL
         public static string GetMessage(string message, string message2, string input)
         {
             string level = GetCurrentSceneName();
-            
+
+            if (message.Contains("versions"))
+            {
+                return LanguageManager.CurrentLanguage.misc.hud_alternateVersion;
+            }
+
+            if (message.Contains("ALTERNATE NAILGUN"))
+            {
+                return LanguageManager.CurrentLanguage.act2.act2_greedFourth_alternateNailgun;
+            }
+
             if (level.Contains("Tutorial"))
             {
                 GameObject canvasObj = GetInactiveRootObject("Canvas");

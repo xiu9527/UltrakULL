@@ -77,10 +77,10 @@ namespace UltrakULL
 
 		public static string GetLevelName(int missionNum)
 		{
-			if (SceneHelper.IsPlayingCustom)
-			{
-				return MapInfoBase.InstanceAnyType.levelName;
-			}
+			//if (SceneHelper.IsPlayingCustom)
+			//{
+			//	return MapInfoBase.InstanceAnyType.levelName;
+			//}
 			if (!LanguageManager.UsingHinduNumbers)
 			{
 				switch (missionNum)

@@ -10,7 +10,7 @@ namespace UltrakULL
         public static string GetName(string originalName)
         {
             Logging.Warn(originalName);
-            switch (originalName)
+            switch (originalName.ToUpper())
             {
                 case "SWORDSMACHINE":
                     {
@@ -92,7 +92,7 @@ namespace UltrakULL
 
         public static string GetType(string originaltype)
         {
-            switch (originaltype)
+            switch (originaltype.ToUpper())
             {
                 case "LESSER HUSK": { return LanguageManager.CurrentLanguage.enemyNames.enemyname_type_lesserHusk; }
                 case "GREATER HUSK": { return LanguageManager.CurrentLanguage.enemyNames.enemyname_type_greaterHusk; }
@@ -118,7 +118,7 @@ namespace UltrakULL
 
         public static string GetDescription(string originalenemy)
         { 
-            switch(originalenemy)
+            switch(originalenemy.ToUpper())
             {
                 case "FILTH":
                     {
@@ -408,7 +408,7 @@ namespace UltrakULL
 
         public static string GetStrategy(string originalenemy)
         {
-            switch (originalenemy)
+            switch (originalenemy.ToUpper())
             {
                 case "FILTH":
                     {

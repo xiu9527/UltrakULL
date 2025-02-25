@@ -1741,7 +1741,7 @@
         "leveltips_violenceSecond": "<color=orange>Mannequins</color> can be hard to hit due to their speed, but they lose air control when <color=orange>launched</color> or <color=orange>shot down</color> from a surface, making them <color=orange>unable to move</color> for a short moment.",
         "leveltips_violenceThird": "The <color=red>Knuckleblaster</color>'s <color=orange>blast wave</color> is also capable of breaking a <color=orange>Gutterman's shield</color>, and is much easier to land in a chaotic scenario.",
         "leveltips_violenceFourth": "A <color=orange>direct hit</color> from the Knuckleblaster has extremely powerful <color=orange>knockback</color>, making it extremely powerful for launching enemies into <color=orange>pits</color> and other <color=orange>environmental hazards</color>.",
-        "leveltips_violenceSecret": "Didn't except me, huh?'",
+        "leveltips_violenceSecret": "Didn't expect me, huh?'",
 
         "leveltips_fraudFirst": "LEVEL TIP FRAUD FIRST",
         "leveltips_fraudSecond": "LEVEL TIP FRAUD SECOND",
@@ -2163,7 +2163,7 @@
         "enemyBios_soldier_strategy3": "Thanks to their augmentations, Soldiers are able to withstand normal explosions with little to no damage. The more powerful red explosions will go through their guard however, and they are unable to block if not on the ground.",
 
         "enemyBios_ferryman_1": "Ferrymen are rare husks whose powerful bodies, trained skills and blind faith have granted them the chance of becoming the transporters of souls between the layers of Hell.",
-        "enemyBios_ferryman_2": "They have each been given a holy cloth by Heaven as a symbol of their devotion to God's order, which they wear over their bodies to hide the human form that they've grown to despise as a reminder of their sins in life stopping them from becoming angels.",
+        "enemyBios_ferryman_2": "They have each been given a holy cloth by Heaven as a symbol of their devotion to God's order, which they wear over their bodies to hide the human form that they've grown to despise as a reminder of their sins in life stopping them from becoming angels, to the extent that they have torn off their own skin and flesh, leaving behind only bones.",
         "enemyBios_ferryman_3": "Due to the holy power emanating from the cloth, Ferrymen's skeletal bodies have slowly been colored bright and radiant, and their skulls have enough latent energy to open gates that otherwise stop Husks from exiting their places of torment.",
         "enemyBios_ferryman_4": "Each ferry can only have one Ferryman at a time, so when a new Ferryman is formed, it will fight another to the death in order to take their place and inherit their cloth. The loser's skull is taken as a trophy and used to grant the winner passage across the layers in order to transport the souls of the damned to their destinations.",
         "enemyBios_ferryman_5": "Ferrymen will often use the knowledge from their past life to improve their ferries, growing past the need for oars, which are now used by Ferrymen only as weapons.",
