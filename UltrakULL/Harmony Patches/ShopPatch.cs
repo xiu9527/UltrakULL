@@ -47,11 +47,11 @@ namespace UltrakULL.Harmony_Patches
                 }
 
                 //Prime testaments
-                if (__instance.gameObject.name == "Testament Shop" && GetCurrentSceneName().Contains("P-"))
+                if (__instance.gameObject.name == "Shop Prime")
                 {
                     Logging.Warn("Prime end testament, getting text");
-                    TextMeshProUGUI primeEndText = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(___shopCanvas.gameObject,"Border"),"TipBox"),
-                        "Panel"),"Scroll View"),"Viewport"),"Content"),"Text (1)"));
+                    TextMeshProUGUI primeEndText = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(___shopCanvas.gameObject,"Background"),"Main Window"),
+                        "Scroll View"),"Viewport"),"Text"));
                     PrimeSanctumStrings pss = new PrimeSanctumStrings();
                     primeEndText.text = pss.GetSecretText();
                     return;
