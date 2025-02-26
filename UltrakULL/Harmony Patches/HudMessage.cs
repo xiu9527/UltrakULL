@@ -47,13 +47,21 @@ namespace UltrakULL.Harmony_Patches
     public static class SendHudMessagePatch
     {
         [HarmonyPrefix]
-        public static bool SendHudMessage_Prefix(ref string newmessage, string newinput = "", string newmessage2 = "", int delay = 0, bool silent = false)
+        public static bool SendHudMessage_Prefix(ref string newmessage,ref string newinput,ref string newmessage2, int delay = 0, bool silent = false)
         {
-            if(!isUsingEnglish())
+            if (!isUsingEnglish())
             {
-                newmessage = HUDMessages.GetHUDToolTip(newmessage);
+                if ((newmessage != null) && (newmessage2 != null) && (newinput != null))
+                {
+                    newmessage = StringsParent.GetMessage(newmessage, newmessage2, newinput);
+                    newmessage2 = "";
+                    newinput = "";
+                }
+                else
+                {
+                    newmessage = HUDMessages.GetHUDToolTip(newmessage);
+                }
             }
-            
             return true;
         }
     }
@@ -81,7 +89,7 @@ namespace UltrakULL.Harmony_Patches
                 string newMessage = StringsParent.GetMessage(__instance.message, __instance.message2, "");
                 //___text.text = newMessage;
             }
-            
+
             else
             {
                 string bindingString = MonoSingleton<InputManager>.Instance.GetBindingString(__instance.actionReference.action.id);
