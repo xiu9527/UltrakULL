@@ -11,13 +11,13 @@ namespace UltrakULL
     {
         public static void PatchCheatConsentPanel(ref GameObject canvasObj)
         {
-
-            GameObject cheatsConsentObject = GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(canvasObj, "Cheat Menu"), "Cheats Consent"), "Panel");
+            GameObject cheatsMenu = GetGameObjectChild(canvasObj, "Cheat Menu");
+            GameObject cheatsConsentObject = GetGameObjectChild(cheatsMenu, "Cheats Consent");
 
             GameObject cheatsConsentTextObject = GetGameObjectChild(cheatsConsentObject, "Text");
 
             //Consent window
-            TextMeshProUGUI cheatsConsentText = GetTextMeshProUGUI(GetGameObjectChild(cheatsConsentObject, "Text"));
+            TextMeshProUGUI cheatsConsentText = GetTextMeshProUGUI(cheatsConsentTextObject);
             cheatsConsentText.text =
                 LanguageManager.CurrentLanguage.cheats.cheats_disclaimer1 + "\n\n"
                 + LanguageManager.CurrentLanguage.cheats.cheats_disclaimer2;
@@ -29,7 +29,7 @@ namespace UltrakULL
             TextMeshProUGUI cheatsConsentNoText = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(cheatsConsentObject, "No"), "Text"));
             cheatsConsentNoText.text = LanguageManager.CurrentLanguage.cheats.cheats_disclaimerNo;
 
-            GameObject cheatsPanelObject = GetGameObjectChild(GetGameObjectChild(canvasObj, "Cheat Menu"), "Cheats Manager");
+            GameObject cheatsPanelObject = GetGameObjectChild(cheatsMenu, "Cheats Manager");
 
             TextMeshProUGUI cheatsPanelObjectTitle = GetTextMeshProUGUI(GetGameObjectChild(cheatsPanelObject, "Title"));
             cheatsPanelObjectTitle.text = LanguageManager.CurrentLanguage.cheats.cheats_panelTitle;
