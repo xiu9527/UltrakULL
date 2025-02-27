@@ -315,10 +315,10 @@ namespace UltrakULL
                             
                         //(Re)render the UltrakULL status on screen when a language has been (re)loaded.
                         if (ultrakullLogo != null) {GameObject.Destroy(ultrakullLogo);}
-                        ultrakullLogo = GameObject.Instantiate(GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(canvasObj, "Main Menu (1)"), "Title"), "Text"), canvasObj.transform);
-                        ultrakullLogo.transform.localPosition = new Vector3(1075, 210, 0);
+                        ultrakullLogo = GameObject.Instantiate(GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(canvasObj, "Main Menu (1)"), "LeftSide"), "Text (3)"), "Text"), canvasObj.transform);
+                        ultrakullLogo.transform.localPosition = new Vector3(460, 350, 0);
                         TextMeshProUGUI ultrakullLogoText = GetTextMeshProUGUI(ultrakullLogo);
-                        ultrakullLogoText.text = "UltrakULL loaded.\nVersion: " + MainPatch.GetVersion() + "\nCurrent locale: " + LanguageManager.CurrentLanguage.metadata.langName;
+                        ultrakullLogoText.text = "<color=white>UltrakULL loaded.\nVersion: " + MainPatch.GetVersion() + "\nCurrent locale: " + LanguageManager.CurrentLanguage.metadata.langName;
                         ultrakullLogoText.alignment = TextAlignmentOptions.TopLeft;
                         ultrakullLogoText.fontSize = 16;
                         
