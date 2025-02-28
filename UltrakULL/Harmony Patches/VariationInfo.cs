@@ -39,7 +39,7 @@ namespace UltrakULL.Harmony_Patches
                 {
                     __instance.costText.text = LanguageManager.CurrentLanguage.misc.weapons_alreadyBought;
                 }
-            ___buttonText.text = (___buttonText.text == "ALREADY OWNED" ? LanguageManager.CurrentLanguage.misc.weapons_alreadyBought : ___buttonText.text);
+            ___buttonText.text = (___buttonText.text.ToUpper() == "ALREADY OWNED" ? LanguageManager.CurrentLanguage.misc.weapons_alreadyBought : ___buttonText.text);
         }
     }
 }
