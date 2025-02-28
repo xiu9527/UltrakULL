@@ -11,6 +11,7 @@ using Newtonsoft.Json;
 using TMPro;
 using UltrakULL.json;
 using static UltrakULL.CommonFunctions;
+using System.Linq;
 
 namespace UltrakULL.Harmony_Patches
 {
@@ -92,191 +93,79 @@ namespace UltrakULL.Harmony_Patches
             redownloadConfirmPanel.SetActive(true);
         }
 
-        public async static Task getOnlineLanguages(GameObject canvasToCopy, Transform optionsParent)
+        public async static Task getOnlineLanguages(Transform parent, Button templateButton)
         {
             string masterLanguageUrl = "https://clearwateruk.github.io/mods/ultrakULL/languagesMaster.json";
-            
-            //Hide the local page, get the list of available languages from the remote repo. Make buttons for each entry found and color code them.
-            //Blue - Installed locally. Green - Not installed, available. Yellow - Installed, update available.
 
-            //Set up the browser page here.
-            
-            langBrowserPage.name = "Language Browser";
-            langBrowserPage.SetActive(true);
-            GameObject langBrowserPageContent = GetGameObjectChild(GetGameObjectChild(langBrowserPage, "Scroll Rect (1)"), "Contents");
-            TextMeshProUGUI langBrowserTitle = GetTextMeshProUGUI(GetGameObjectChild(langBrowserPageContent,"Text (4)"));
+            // Создаем страницу с нуля
+            GameObject langBrowserPage = new GameObject("LanguageBrowserPage", typeof(RectTransform), typeof(CanvasRenderer), typeof(Image));
+            langBrowserPage.transform.SetParent(parent, false);
+            langBrowserPage.GetComponent<RectTransform>().sizeDelta = new Vector2(600, 800);
+            langBrowserPage.GetComponent<Image>().color = new Color(0, 0, 0, 0.8f);
+
+            // Заголовок
+            GameObject titleObject = new GameObject("Title", typeof(TextMeshProUGUI));
+            titleObject.transform.SetParent(langBrowserPage.transform, false);
+            TextMeshProUGUI langBrowserTitle = titleObject.GetComponent<TextMeshProUGUI>();
             langBrowserTitle.text = "--LANGUAGE BROWSER--";
-            
-            Transform contentParent = langBrowserPage.transform.Find("Scroll Rect (1)").Find("Contents");
-            int amountOfLangs = 0;
-            foreach (Transform child in contentParent.GetComponentInChildren<Transform>(true))
-            {
-                child.gameObject.SetActive(false);
-                amountOfLangs++;
-            }
-            VerticalLayoutGroup vGroup = contentParent.GetComponent<VerticalLayoutGroup>();
-            contentParent.GetComponentInChildren<RectTransform>().offsetMax += new Vector2(0, (amountOfLangs/2)*70);
-                
-            vGroup.spacing = 5f;
-            
+            langBrowserTitle.alignment = TextAlignmentOptions.Center;
+            langBrowserTitle.fontSize = 24;
+            langBrowserTitle.rectTransform.anchoredPosition = new Vector2(0, 350);
+            langBrowserTitle.font = Core.GlobalFontTMP;
+
+            // Создаем Scroll View
+            GameObject scrollView = new GameObject("ScrollView", typeof(RectTransform), typeof(ScrollRect), typeof(Image), typeof(Mask));
+            scrollView.transform.SetParent(langBrowserPage.transform, false);
+            scrollView.GetComponent<RectTransform>().sizeDelta = new Vector2(550, 600);
+            scrollView.GetComponent<Image>().color = new Color(0, 0, 0, 0.5f);
+            scrollView.GetComponent<Mask>().showMaskGraphic = false;
+
+            // Создаем Content
+            GameObject content = new GameObject("Content", typeof(RectTransform), typeof(VerticalLayoutGroup));
+            content.transform.SetParent(scrollView.transform, false);
+            VerticalLayoutGroup vGroup = content.GetComponent<VerticalLayoutGroup>();
+            vGroup.spacing = 10;
             vGroup.childAlignment = TextAnchor.UpperCenter;
+            vGroup.childControlWidth = true;
+            vGroup.childControlHeight = true;
+            vGroup.childForceExpandWidth = true;
+            vGroup.childForceExpandHeight = false;
+            scrollView.GetComponent<ScrollRect>().content = content.GetComponent<RectTransform>();
 
-            GameObject languageButtonPrefab = optionsParent.Find("Save Slots").Find("Grid").Find("Slot Row").gameObject;
-            
-            //Fetch the language master file from the remote repo
-            if(hasAlreadyFetchedLanguages)
+            // Получаем список языков
+            try
             {
-                //If languages were already fetched once, redisplay them
-                foreach(GameObject button in languageButtons)
+                Logging.Warn("Obtaining online languages from UltrakULL repo...");
+                string responseJsonRaw = await Client.GetStringAsync(masterLanguageUrl);
+                MasterLanguages responseJson = JsonConvert.DeserializeObject<MasterLanguages>(responseJsonRaw);
+
+                foreach (LanguageInfo langInfo in responseJson.availableLanguages)
                 {
-                    button.SetActive(true);
+                    GameObject langButtonObj = GameObject.Instantiate(templateButton.gameObject, content.transform);
+                    langButtonObj.name = "LangBrowser";
+                    Button langButton = langButtonObj.GetComponent<Button>();
+                    langButton.name = langInfo.languageFullName;
+                    langButton.onClick.AddListener(() => downloadLanguageFile(langInfo.languageTag, langInfo.languageFullName));
+                    langButton.GetComponentInChildren<TextMeshProUGUI>().text = langInfo.languageFullName;
                 }
             }
-            else
-            { 
-                try
-                {
-                    Logging.Warn("Obtaining online languages from UltrakULL repo...");
-                    string responseJsonRaw = await Client.GetStringAsync(masterLanguageUrl);
-                    MasterLanguages responseJson = JsonConvert.DeserializeObject<MasterLanguages>(responseJsonRaw);
-                    
-                    //Enumerate across all of the langs obtained from the master lang file online, and create download buttons for them.
-                    foreach(LanguageInfo langInfo in responseJson.availableLanguages)
-                    {
-                        bool fileLocallyExists = langFileLocallyExists(langInfo.languageTag);
-                        
-                        GameObject languageBrowserButtonInstance = GameObject.Instantiate(languageButtonPrefab, contentParent);
-                        languageBrowserButtonInstance.transform.localScale = new Vector3(0.2188482f, 1.123569f, 0.5088629f);
-                        languageBrowserButtonInstance.transform.Find("Select Wrapper").gameObject.SetActive(false);
-                        languageBrowserButtonInstance.transform.Find("Delete Wrapper").gameObject.SetActive(false);
-                        languageBrowserButtonInstance.transform.Find("State Text").gameObject.SetActive(false);
-                        GameObject.Destroy(languageBrowserButtonInstance.GetComponent<SlotRowPanel>());
-
-                        Transform slotTextTf = languageBrowserButtonInstance.transform.Find("Slot Text");
-                        slotTextTf.localScale = new Vector3(4.983107f, 0.970607f, 2.1431f);
-                        slotTextTf.localPosition = new Vector3(0f, 0f, 0f);
-                        TextMeshProUGUI slotText = slotTextTf.GetComponent<TextMeshProUGUI>();
-                        slotText.text = langInfo.languageFullName;
-                        slotText.alignment = TextAlignmentOptions.Center;
-                        slotText.fontSize = 16;
-                        
-                        if(langFileLocallyExists(langInfo.languageTag))
-                        {
-                            //If the language file already exists, compare its version with the version found online.
-                            //If the online version has a newer version, display that an update is available.
-                            //Otherwise just display that the language has already been downloaded.
-                            
-                            string langFilePath = Path.Combine(BepInEx.Paths.ConfigPath,"ultrakull", langInfo.languageTag + ".json");
-
-                            string jsonFile = File.ReadAllText(langFilePath);
-                            JsonFormat json = JsonConvert.DeserializeObject<JsonFormat>(jsonFile);
-                            
-                            Version localCurrentVersion = new Version(json.metadata.langVersion);
-                            Version onlineCurrentVersion = new Version(langInfo.versionNumber);
-                            
-                            switch(localCurrentVersion.CompareTo(onlineCurrentVersion))
-                            {
-                                case -1: {Logging.Warn("Update available for this language"); slotText.text += "\n(<color=green>Update available</color>)";break;}
-                                default: { slotText.text += "\n(<color=green>Downloaded</color>)";break;}
-                            }
-                        }
-
-                        Button langButton = languageBrowserButtonInstance.AddComponent<Button>();
-                        langButton.transition = Selectable.Transition.ColorTint;
-                        langButton.colors = new ColorBlock()
-                        {
-                            normalColor = new Color32(255, 255, 255, 255),
-                            highlightedColor = new Color32(255, 0, 0, 255),
-                            pressedColor = new Color32(255, 255, 0, 255),
-                            disabledColor = new Color32(255, 255, 0, 255),
-                            colorMultiplier = 1f,
-                            fadeDuration = 0.1f
-                        };
-                        langButton.targetGraphic = languageBrowserButtonInstance.transform.Find("Panel").GetComponent<Graphic>();
-                        
-                        languageBrowserButtonInstance.SetActive(true);
-                        
-                        //Add click listener to download the file when clicked on.
-                        langButton.onClick.AddListener(delegate
-                        {
-                            if(GetCurrentSceneName() != "Main Menu")
-                            {
-                                MonoSingleton<HudMessageReceiver>.Instance.SendHudMessage("<color=orange>Languages can not be downloaded while in-game. Please return to the main menu first.</color>");
-                            }
-                            else
-                            {
-                                if(langFileLocallyExists(langInfo.languageTag))
-                                {
-                                    Logging.Warn("File already exists, warning before download");
-                                    warnBeforeDownload(langInfo);
-                                }
-                                else
-                                {
-                                    Logging.Warn("Downloading language file - " + langInfo.languageTag + ".json...");
-                                    Task.Run(() =>
-                                    {
-                                        downloadLanguageFile(langInfo.languageTag,langInfo.languageFullName);
-                                    });
-                                    
-                                }
-                            }
-                        });
-                        
-                        //Pop the button into a list, so when the page is exited and reopened, obtained lang buttons will reappear.
-                        languageButtons.Add(languageBrowserButtonInstance);
-                    }
-                }
-                catch (Exception e)
-                {
-                    Logging.Error("Oops");
-                    Logging.Error(e.ToString());
-                }
-                hasAlreadyFetchedLanguages = true;
+            catch (Exception e)
+            {
+                Logging.Error("Error loading languages: " + e);
             }
 
-            Client.DefaultRequestHeaders.Accept.Add( new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
-            Client.DefaultRequestHeaders.UserAgent.TryParseAdd("request");
-            Client.Timeout = TimeSpan.FromSeconds(5);
-            
-            //Back button to return to the local language list.
-            GameObject returnToLocalList = GameObject.Instantiate(languageButtonPrefab, contentParent);
-            returnToLocalList.transform.localScale = new Vector3(0.2188482f, 1.123569f, 0.5088629f);
-            returnToLocalList.transform.Find("Select Wrapper").gameObject.SetActive(false);
-            returnToLocalList.transform.Find("Delete Wrapper").gameObject.SetActive(false);
-            returnToLocalList.transform.Find("State Text").gameObject.SetActive(false);
-            GameObject.Destroy(returnToLocalList.GetComponent<SlotRowPanel>());
-
-            Transform returnToList = returnToLocalList.transform.Find("Slot Text");
-            returnToList.localScale = new Vector3(4.983107f, 0.970607f, 2.1431f);
-            returnToList.localPosition = new Vector3(0f, 0f, 0f);
-            TextMeshProUGUI returnToListText = returnToList.GetComponent<TextMeshProUGUI>();
-            returnToListText.text = "<color=green>Return</color>";
-            returnToListText.alignment = TextAlignmentOptions.Center;
-            returnToListText.fontSize = 16;
-
-            Button returnToListButton = returnToLocalList.AddComponent<Button>();
-            returnToListButton.transition = Selectable.Transition.ColorTint;
-            returnToListButton.colors = new ColorBlock()
-            {
-                normalColor = new Color32(255, 255, 255, 255),
-                highlightedColor = new Color32(255, 0, 0, 255),
-                pressedColor = new Color32(255, 255, 0, 255),
-                disabledColor = new Color32(255, 255, 0, 255),
-                colorMultiplier = 1f,
-                fadeDuration = 0.1f
-            };
-            returnToListButton.targetGraphic = returnToLocalList.transform.Find("Panel").GetComponent<Graphic>();
-                    
-            returnToLocalList.SetActive(true);
-            
-            returnToListButton.onClick.AddListener(delegate
-            {
-                langBrowserPage.SetActive(false);
-                langLocalPage.SetActive(true);
-                
-            });
+            // Кнопка "Назад"
+            Button backButton = GameObject.Instantiate(templateButton, langBrowserPage.transform);
+            backButton.name = "BackButton";
+            backButton.onClick.AddListener(() => langBrowserPage.SetActive(false));
+            backButton.GetComponentInChildren<TextMeshProUGUI>().text = "Return";
+            backButton.GetComponent<Image>().color = Color.red;
+            backButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 20);
         }
-        
+
+
+
+
         public static void downloadLanguageFile(string languageTag, string languageName)
         {
             MonoSingleton<HudMessageReceiver>.Instance.SendHudMessage("<color=orange>DOWNLOADING...</color>");
@@ -395,206 +284,151 @@ namespace UltrakULL.Harmony_Patches
 
             languageButtonInstance.SetActive(true);
         }
-        
+
         public static bool Prefix(OptionsMenuToManager __instance)
         {
             hasAlreadyFetchedLanguages = false;
             languageButtons.Clear();
-            
+
             if (GetCurrentSceneName() == "Main Menu")
             {
-                //Logging.Warn("In main menu");
-                /*Transform panel = __instance.pauseMenu.transform.Find("Panel");
-                GameObject discordButton = panel.Find("Discord").gameObject;
-
-                GameObject ultrakullDiscordButton = GameObject.Instantiate(discordButton, discordButton.transform.parent);
-                ultrakullDiscordButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(492f, -295f);
-                ultrakullDiscordButton.GetComponentInChildren<Text>().text = "UltrakULL DISCORD";
-                ultrakullDiscordButton.GetComponentInChildren<Image>().color = discordButton.GetComponentInChildren<Image>().color;
-                ultrakullDiscordButton.GetComponentInChildren<WebButton>().url = "https://discord.gg/ZB7jk6Djv5";*/
+                Logging.Message("In main menu");
             }
 
             Logging.Message("Adding language option to options menu...");
 
             Transform optionsParent = __instance.optionsMenu.transform;
-            GameObject optionsParentObject = optionsParent.gameObject;
-            GameObject languageButton = GameObject.Instantiate(GetGameObjectChild(GetGameObjectChild(optionsParentObject, "Panel"),"Gameplay"), optionsParent);
-            languageButton.transform.SetAsFirstSibling(); //Prevents lang button from appearing over the save menu
+            Transform navigationRail = optionsParent.Find("Navigation Rail");
+            Transform pagesParent = optionsParent.Find("Pages");
+
+            Logging.Message("Creating language settings page...");
+            GameObject languagePage = new GameObject("Language Page", typeof(RectTransform));
+            languagePage.transform.SetParent(pagesParent, false);
+            languagePage.SetActive(false);
+
+            VerticalLayoutGroup layoutGroup = languagePage.AddComponent<VerticalLayoutGroup>();
+            layoutGroup.spacing = 10f;
+            layoutGroup.childAlignment = TextAnchor.UpperCenter;
+
+            ContentSizeFitter fitter = languagePage.AddComponent<ContentSizeFitter>();
+            fitter.horizontalFit = ContentSizeFitter.FitMode.PreferredSize;
+            fitter.verticalFit = ContentSizeFitter.FitMode.PreferredSize;
+
+            Logging.Message("Finding reference button for cloning...");
+            Button referenceButton = navigationRail.GetComponentsInChildren<Button>().FirstOrDefault();
+            if (referenceButton == null)
+            {
+                Logging.Warn("No reference button found in navigation rail! Aborting instantiation.");
+                return true;
+            }
+
+            Logging.Message("Creating language menu button...");
+            GameObject languageButton = GameObject.Instantiate(referenceButton.gameObject, navigationRail);
             languageButton.name = "Language";
-            languageButton.transform.localPosition = new Vector3(475f, -300f, 0f);
-            //languageButton.transform.localPosition += new Vector3(0f, 60f, 0f);
-            languageButtonText = GetTextMeshProUGUI(GetGameObjectChild(languageButton, "Text"));
-            Color deactivatedColor = new Color(1,1,1,1);
-            languageButtonText.color = deactivatedColor;
-            Color activatedColor = new Color(0, 0, 0, 1);
+            languageButton.transform.SetSiblingIndex(7);
+            Button languageButtonComp = languageButton.GetComponent<Button>();
+            languageButtonComp.onClick = new Button.ButtonClickedEvent();
+            languageButtonComp.onClick.AddListener(() => ShowLanguagePage());
+            languageButton.GetComponentInChildren<TextMeshProUGUI>().text = "Language";
 
-            Button button = languageButton.GetComponent<Button>();
-            Image buttonimage = languageButton.GetComponent<Image>();
-            buttonimage.fillCenter = false;
-            GameObject pageToDisable = GetGameObjectChild(optionsParentObject, "Gameplay Options");
-            button.onClick.AddListener(delegate
-            {
-                pageToDisable.SetActive(false);
-                buttonimage.fillCenter = true;
-                languageButtonText.color = activatedColor;
-            });
-            Logging.Info("trying to create page");
-            if(langLocalPage == null)
-            {
-                langLocalPage = GameObject.Instantiate(pageToDisable, optionsParent);
-            }
-            if (langBrowserPage == null)
-            {
-                langBrowserPage = GameObject.Instantiate(pageToDisable, optionsParent);
-            }
-
-            langLocalPage.name = "Language Page";
-            langLocalPage.SetActive(false);
-            langBrowserPage.SetActive(false);
-            languageButtonTitleText = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(langLocalPage, "Scroll Rect (1)"), "Contents"), "Text (4)"));
-            Transform contentParent = langLocalPage.transform.Find("Scroll Rect (1)").Find("Contents");
-            foreach (Transform child in contentParent.GetComponentInChildren<Transform>(true))
-                child.gameObject.SetActive(false);
-            VerticalLayoutGroup vGroup = contentParent.GetComponent<VerticalLayoutGroup>();
-            vGroup.spacing = 7.5f;
-            vGroup.childAlignment = TextAnchor.UpperCenter;
-
-            GameObject languageButtonPrefab = optionsParent.Find("Save Slots").Find("Grid").Find("Slot Row").gameObject;
-            
-            //Iterate through each local file and load it.
+            Logging.Message("Adding language selection buttons...");
             foreach (string language in LanguageManager.allLanguages.Keys)
             {
-                addLocalLanguageToLocalList(ref languageButtonPrefab, language);
-            }
-            button.onClick.AddListener(delegate { langLocalPage.SetActive(true); });
+                GameObject langButton = new GameObject(language, typeof(RectTransform), typeof(Button));
+                langButton.transform.SetParent(languagePage.transform, false);
+                Button langButtonComp = langButton.GetComponent<Button>();
+                langButtonComp.onClick = new Button.ButtonClickedEvent();
+                langButtonComp.onClick.AddListener(() => SelectLanguage(language));
 
-            // "Open language folder" button
-            GameObject openLangFolder = GameObject.Instantiate(languageButtonPrefab, contentParent);
-            openLangFolder.name = "OpenLangFolder";
-            openLangFolder.transform.localScale = new Vector3(0.2188482f, 1.123569f, 0.5088629f);
-            openLangFolder.transform.Find("Select Wrapper").gameObject.SetActive(false);
-            openLangFolder.transform.Find("Delete Wrapper").gameObject.SetActive(false);
-            openLangFolder.transform.Find("State Text").gameObject.SetActive(false);
-            GameObject.Destroy(openLangFolder.GetComponent<SlotRowPanel>());
-            
-            Transform slotTextLangButton = openLangFolder.transform.Find("Slot Text");
-            slotTextLangButton.localScale = new Vector3(4.983107f, 0.970607f, 2.1431f);
-            slotTextLangButton.localPosition = new Vector3(0f, 0f, 0f);
-            TextMeshProUGUI openLangFolderText = slotTextLangButton.GetComponent<TextMeshProUGUI>();
-            openLangFolderText.text = "<color=#03fc07>Open language folder</color>";
-            openLangFolderText.fontSize = 16;
-            Button openLangFolderButton = openLangFolder.AddComponent<Button>();
-            openLangFolderButton.colors = new ColorBlock()
-            {
-                normalColor = new Color32(255, 255, 255, 255),
-                highlightedColor = new Color32(255, 0, 0, 255),
-                pressedColor = new Color32(255, 255, 0, 255),
-                disabledColor = new Color32(255, 255, 0, 255),
-                colorMultiplier = 1f,
-                fadeDuration = 0.1f
-            };
-            openLangFolderButton.onClick.AddListener(delegate { Application.OpenURL(Path.Combine(BepInEx.Paths.ConfigPath, "ultrakull")); });
-            RectTransform cRect = langLocalPage.transform.Find("Scroll Rect (1)").Find("Contents").GetComponent<RectTransform>();
-            cRect.sizeDelta = new Vector2(600f, (LanguageManager.allLanguages.Keys.Count) * 100);
-            
-            optionsParent.Find("Panel/Gameplay").GetComponent<Button>().onClick.AddListener(delegate { langLocalPage.SetActive(false); langBrowserPage.SetActive(false); buttonimage.fillCenter = false; languageButtonText.color = deactivatedColor; });
-            optionsParent.Find("Panel/Controls").GetComponent<Button>().onClick.AddListener(delegate { langLocalPage.SetActive(false); langBrowserPage.SetActive(false); buttonimage.fillCenter = false; languageButtonText.color = deactivatedColor; });
-            optionsParent.Find("Panel/Video").GetComponent<Button>().onClick.AddListener(delegate { langLocalPage.SetActive(false); langBrowserPage.SetActive(false); buttonimage.fillCenter = false; languageButtonText.color = deactivatedColor; });
-            optionsParent.Find("Panel/Audio").GetComponent<Button>().onClick.AddListener(delegate { langLocalPage.SetActive(false); langBrowserPage.SetActive(false); buttonimage.fillCenter = false; languageButtonText.color = deactivatedColor; });
-            optionsParent.Find("Panel/HUD").GetComponent<Button>().onClick.AddListener(delegate { langLocalPage.SetActive(false); langBrowserPage.SetActive(false); buttonimage.fillCenter = false; languageButtonText.color = deactivatedColor; });
-            optionsParent.Find("Panel/Assist").GetComponent<Button>().onClick.AddListener(delegate { langLocalPage.SetActive(false); langBrowserPage.SetActive(false); buttonimage.fillCenter = false; languageButtonText.color = deactivatedColor; });
-            optionsParent.Find("Panel/Colors").GetComponent<Button>().onClick.AddListener(delegate { langLocalPage.SetActive(false); langBrowserPage.SetActive(false); buttonimage.fillCenter = false; languageButtonText.color = deactivatedColor; });
-            optionsParent.Find("Panel/Saves").GetComponent<Button>().onClick.AddListener(delegate { langLocalPage.SetActive(false); langBrowserPage.SetActive(false); buttonimage.fillCenter = false; languageButtonText.color = Color.white; });
-            optionsParent.Find("Language").GetComponent<Button>().onClick.AddListener(delegate { langBrowserPage.SetActive(false); });
-            try
-            {
-                languageButton.transform.SetParent(GetGameObjectChild(optionsParentObject, "Panel").transform);
-                languageButton.transform.SetSiblingIndex(languageButton.transform.parent.childCount - 3);
-                RectTransform panelRectTransform = GetGameObjectChild(optionsParentObject, "Panel").GetComponent<RectTransform>();
-                RectTransform categoryOffset = GetGameObjectChild(GetGameObjectChild(optionsParentObject, "Panel"), "Text (9)").GetComponent<RectTransform>();
-                categoryOffset.offsetMin = new Vector2(categoryOffset.offsetMin.x, categoryOffset.offsetMin.y + 40);
-                panelRectTransform.offsetMin = new Vector2(panelRectTransform.offsetMin.x, 287.5f);
-                panelRectTransform.offsetMax = new Vector2(panelRectTransform.offsetMax.x, -287.5f);
-                languageButtonText.text = LanguageManager.CurrentLanguage.options.language_languages;
-                languageButtonTitleText.text = "--" + LanguageManager.CurrentLanguage.options.language_title + "--";
-                languageButtonTitleText.gameObject.SetActive(true);
-            }
-            #pragma warning disable 0168
-            catch (Exception e)
-            {
-                Logging.Warn("LanguageButton text is null");
-                languageButtonText.text = "LANGUAGES";
-                languageButtonTitleText.text = "--" + "LANGUAGES" + "--";
-            }
-            Logging.Info("languagebutton complete");
-            //Language browser button
-            GameObject langBrowseFolder = GameObject.Instantiate(languageButtonPrefab, contentParent);
-            langBrowseFolder.name = "LangBrowser";
-            langBrowseFolder.transform.localScale = new Vector3(0.2188482f, 1.123569f, 0.5088629f);
-            langBrowseFolder.transform.Find("Select Wrapper").gameObject.SetActive(false);
-            langBrowseFolder.transform.Find("Delete Wrapper").gameObject.SetActive(false);
-            langBrowseFolder.transform.Find("State Text").gameObject.SetActive(false);
-            GameObject.Destroy(langBrowseFolder.GetComponent<SlotRowPanel>());
-            Logging.Info("langbrowser created");
-            Transform slotTextLangBrowseButton = langBrowseFolder.transform.Find("Slot Text");
-            slotTextLangBrowseButton.localScale = new Vector3(4.983107f, 0.970607f, 2.1431f);
-            slotTextLangBrowseButton.localPosition = new Vector3(0f, 0f, 0f);
-            TextMeshProUGUI langBrowseText = slotTextLangBrowseButton.GetComponent<TextMeshProUGUI>();
-            langBrowseText.text = "<color=#03fc07>→Browse langs online←</color>";
-            langBrowseText.fontSize = 16;
-            Button browseLangButton = langBrowseFolder.AddComponent<Button>();
-            browseLangButton.colors = new ColorBlock()
-            {
-                normalColor = new Color32(255, 255, 255, 255),
-                highlightedColor = new Color32(255, 0, 0, 255),
-                pressedColor = new Color32(255, 255, 0, 255),
-                disabledColor = new Color32(255, 255, 0, 255),
-                colorMultiplier = 1f,
-                fadeDuration = 0.1f
-            };
-            browseLangButton.targetGraphic = langBrowseFolder.transform.Find("Panel").GetComponent<Graphic>();
-            browseLangButton.onClick.AddListener(delegate{ langLocalPage.SetActive(false); getOnlineLanguages(pageToDisable,__instance.optionsMenu.transform); });
-            Logging.Info("browseLangbutton done");
-            //Add toggle to the audio tab that allows for enabling/disabling of swapping for spoken dialogue.
-            //Instantiate from the original subtitles panel, but the toggle will need to be swapped for a new one, otherwise it will also toggle subtitles.
-            
-            GameObject originalSlider = optionsParent.Find("Audio Options/Image/Subtitles Checkbox").gameObject;
+                TextMeshProUGUI textComponent = langButton.AddComponent<TextMeshProUGUI>();
+                textComponent.text = language;
+                textComponent.alignment = TextAlignmentOptions.Center;
+                textComponent.enableAutoSizing = true;
+                textComponent.fontSizeMin = 10f;
+                textComponent.fontSizeMax = 36f;
 
-            GameObject dubSlider = GameObject.Instantiate(originalSlider, optionsParent.Find("Audio Options/Image"));
-            dubSlider.GetComponent<RectTransform>().anchoredPosition = new Vector2(300f, -225f);
-            dubSlider.name = "Dialogue Dub";
-            
-            Toggle oldToggle = GetGameObjectChild(dubSlider,"Toggle").GetComponentInChildren<Toggle>();
-            oldToggle.enabled = false;
-            
-            Toggle dubToggle = dubSlider.AddComponent<Toggle>();
-            dubToggle.enabled = true;
-            dubToggle.transform.localPosition = oldToggle.transform.localPosition;
+                RectTransform buttonRect = langButton.GetComponent<RectTransform>();
+                buttonRect.sizeDelta = new Vector2(250f, 60f);
+            }
 
-            dubToggle.isOn = Convert.ToBoolean(LanguageManager.configFile.Bind("General", "activeDubbing", "False").Value);
-            GameObject toggleCheckmark = GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(dubSlider,"Toggle"),"Background"), "Checkmark");
-            
-            if(dubToggle.isOn) { toggleCheckmark.SetActive(true); }
-            else { toggleCheckmark.SetActive(false); }
-            
-            dubToggle.onValueChanged.AddListener(delegate
+            Logging.Message("Creating Open Language Folder button...");
+            GameObject openLangFolder = new GameObject("OpenLangFolder", typeof(RectTransform), typeof(Button));
+            openLangFolder.transform.SetParent(languagePage.transform, false);
+            Button openLangFolderComp = openLangFolder.GetComponent<Button>();
+            openLangFolderComp.onClick = new Button.ButtonClickedEvent();
+            openLangFolderComp.onClick.AddListener(() => Application.OpenURL(Path.Combine(BepInEx.Paths.ConfigPath, "ultrakull")));
+
+            TextMeshProUGUI folderText = openLangFolder.AddComponent<TextMeshProUGUI>();
+            folderText.text = "<color=#03fc07>Open language folder</color>";
+            folderText.alignment = TextAlignmentOptions.Center;
+            folderText.enableAutoSizing = true;
+
+            void ShowLanguagePage()
             {
-                LanguageManager.configFile.Bind("General", "activeDubbing", "False").Value = dubToggle.isOn.ToString();
-                if(dubToggle.isOn) { toggleCheckmark.SetActive(true); }
-                else { toggleCheckmark.SetActive(false); }
+                Logging.Message("Opening Language Settings Page...");
+                foreach (Transform page in pagesParent)
+                {
+                    page.gameObject.SetActive(false);
+                }
+                languagePage.SetActive(true);
+            }
+
+            void SelectLanguage(string language)
+            {
+                Logging.Message("Selected language: " + language);
+                LanguageManager.SetCurrentLanguage(language);
+            }
+
+            Logging.Message("Setting up navigation buttons to hide language page...");
+            foreach (Transform child in navigationRail)
+            {
+                if (child.name != "Language" && child.name != "Saves")
+                {
+                    Button navButton = child.GetComponent<Button>();
+                    if (navButton != null)
+                    {
+                        navButton.onClick.AddListener(() =>
+                        {
+                            if (languagePage.activeSelf)
+                            {
+                                Logging.Message("Hiding Language Page as another button was clicked: " + child.name);
+                                languagePage.SetActive(false);
+                            }
+                        });
+                    }
+                }
+            }
+
+            Logging.Message("Creating language browser page...");
+            langBrowserPage = new GameObject("Language Browser", typeof(RectTransform));
+            langBrowserPage.transform.SetParent(pagesParent, false);
+            langBrowserPage.SetActive(false);
+
+            VerticalLayoutGroup browserLayout = langBrowserPage.AddComponent<VerticalLayoutGroup>();
+            browserLayout.spacing = 10f;
+            browserLayout.childAlignment = TextAnchor.UpperCenter;
+
+            Logging.Message("Creating Browse Online Languages button...");
+            GameObject browseLangButtonObj = new GameObject("LangBrowser", typeof(RectTransform), typeof(Button));
+            browseLangButtonObj.transform.SetParent(languagePage.transform, false);
+            Button browseLangButton = browseLangButtonObj.GetComponent<Button>();
+
+            browseLangButton.onClick = new Button.ButtonClickedEvent();
+            browseLangButton.onClick.AddListener(() =>
+            {
+                languagePage.SetActive(false);
+                langBrowserPage.SetActive(true);
+                getOnlineLanguages(pagesParent, referenceButton);
             });
 
-            try
-            {
-                GetTextMeshProUGUI(GetGameObjectChild(dubSlider,"Text")).text = LanguageManager.CurrentLanguage.options.audio_dubbing;
-            }
-            #pragma warning disable 0168
-            catch (Exception e)
-            {
-                GetTextMeshProUGUI(GetGameObjectChild(dubSlider,"Text")).text = "DUBBED AUDIO";
-            }
-            
+            TextMeshProUGUI browseText = browseLangButtonObj.AddComponent<TextMeshProUGUI>();
+            browseText.text = "<color=#03fc07>→Browse langs online←</color>";
+            browseText.alignment = TextAlignmentOptions.Center;
+            browseText.enableAutoSizing = true;
+
+            Logging.Info("Browse Language button added successfully.");
             return true;
         }
+
     }
 }
