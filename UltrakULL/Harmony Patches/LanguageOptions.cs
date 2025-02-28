@@ -93,11 +93,12 @@ namespace UltrakULL.Harmony_Patches
             redownloadConfirmPanel.SetActive(true);
         }
 
-        public async static Task getOnlineLanguages(Transform parent)
+        public async static Task getOnlineLanguages(Transform parent, GameObject languagePage)
         {
             string masterLanguageUrl = "https://clearwateruk.github.io/mods/ultrakULL/languagesMaster.json";
             Transform navigationRail = GameObject.Find("Navigation Rail").transform;
             Button referenceButton = navigationRail.GetComponentsInChildren<Button>().FirstOrDefault();
+            Transform pagesParent = GameObject.Find("Pages").transform;
 
             // Создание главной страницы
             GameObject langBrowserPage = new GameObject("LanguageBrowserPage", typeof(RectTransform), typeof(CanvasRenderer), typeof(Image));
@@ -147,14 +148,14 @@ namespace UltrakULL.Harmony_Patches
             VerticalLayoutGroup vGroup = content.GetComponent<VerticalLayoutGroup>();
             vGroup.spacing = 10;
             vGroup.childAlignment = TextAnchor.UpperCenter;
-            vGroup.childForceExpandWidth = false;
+            vGroup.childForceExpandWidth = true;
             vGroup.childForceExpandHeight = false;
             vGroup.childControlWidth = true;
             vGroup.childControlHeight = true;
 
             ContentSizeFitter fitter = content.GetComponent<ContentSizeFitter>();
             fitter.verticalFit = ContentSizeFitter.FitMode.PreferredSize;
-            fitter.horizontalFit = ContentSizeFitter.FitMode.Unconstrained;
+            fitter.verticalFit = ContentSizeFitter.FitMode.PreferredSize;
 
             scrollView.GetComponent<ScrollRect>().content = contentRect;
 
@@ -176,15 +177,10 @@ namespace UltrakULL.Harmony_Patches
 
                     // Настройка RectTransform кнопки
                     RectTransform buttonRect = langButtonObj.GetComponent<RectTransform>();
-                    //buttonRect.anchorMin = new Vector2(0.5f, 1);
-                    //buttonRect.anchorMax = new Vector2(0.5f, 1);
-                    //buttonRect.pivot = new Vector2(0.5f, 1);
-                    //buttonRect.anchoredPosition = Vector2.zero;
-                    //buttonRect.sizeDelta = new Vector2(250f, 60f);
                     buttonRect.sizeDelta = new Vector2(250f, 60f);
 
+                    // Настройка текста кнопки
                     TextMeshProUGUI textComponent = langButtonObj.GetComponentInChildren<TextMeshProUGUI>();
-
                     textComponent.text = langInfo.languageFullName;
                     textComponent.alignment = TextAlignmentOptions.Center;
                     textComponent.enableAutoSizing = true;
@@ -198,37 +194,54 @@ namespace UltrakULL.Harmony_Patches
             }
 
             // Кнопка "Назад"
-            GameObject backButtonObj = new GameObject("BackButton", typeof(RectTransform), typeof(Button), typeof(Image));
-            backButtonObj.transform.SetParent(langBrowserPage.transform, false);
+            GameObject backButtonObj = GameObject.Instantiate(referenceButton.gameObject, content.transform);
+            backButtonObj.name = "Return from LanguageBrowserPage";
+            backButtonObj.transform.SetParent(content.transform, false);
             backButtonObj.GetComponent<Image>().color = Color.red;
 
             Button backButton = backButtonObj.GetComponent<Button>();
-            backButton.onClick.AddListener(() => langBrowserPage.SetActive(false));
+            backButton.onClick.AddListener(() =>
+            {
+                foreach (Transform page in pagesParent)
+                {
+                    page.gameObject.SetActive(false);
+                }
+                langBrowserPage.SetActive(false);
+                languagePage.SetActive(true);
+            });
 
             // Настройка RectTransform кнопки "Назад"
             RectTransform backButtonRect = backButtonObj.GetComponent<RectTransform>();
-            backButtonRect.anchorMin = new Vector2(0.5f, 0);
-            backButtonRect.anchorMax = new Vector2(0.5f, 0);
-            backButtonRect.pivot = new Vector2(0.5f, 0);
-            backButtonRect.anchoredPosition = new Vector2(0, 20);
-            backButtonRect.sizeDelta = new Vector2(200, 50);
+            backButtonRect.sizeDelta = new Vector2(250f, 60f);
 
             // Текст на кнопке "Назад"
-            GameObject backButtonTextObj = new GameObject("Text", typeof(TextMeshProUGUI));
-            backButtonTextObj.transform.SetParent(backButtonObj.transform, false);
-            TextMeshProUGUI backButtonText = backButtonTextObj.GetComponent<TextMeshProUGUI>();
-            backButtonText.text = "Return";
-            backButtonText.alignment = TextAlignmentOptions.Center;
-            backButtonText.fontSize = 18;
-            backButtonText.font = Core.GlobalFontTMP;
+            TextMeshProUGUI backButtonTextComponent = backButtonObj.GetComponentInChildren<TextMeshProUGUI>();
+            backButtonTextComponent.text = "Return";
+            backButtonTextComponent.alignment = TextAlignmentOptions.Center;
+            backButtonTextComponent.enableAutoSizing = true;
+            backButtonTextComponent.fontSizeMin = 10f;
+            backButtonTextComponent.fontSizeMax = 36f;
 
-            // Настройка RectTransform текста кнопки "Назад"
-            RectTransform backTextRect = backButtonText.rectTransform;
-            backTextRect.anchorMin = new Vector2(0, 0);
-            backTextRect.anchorMax = new Vector2(1, 1);
-            backTextRect.pivot = new Vector2(0.5f, 0.5f);
-            backTextRect.anchoredPosition = Vector2.zero;
-            backTextRect.sizeDelta = new Vector2(0, 0);
+
+            Logging.Message("Setting up navigation buttons to hide language page...");
+            foreach (Transform child in navigationRail)
+            {
+                if (child.name != "Saves")
+                {
+                    Button navButton = child.GetComponent<Button>();
+                    if (navButton != null)
+                    {
+                        navButton.onClick.AddListener(() =>
+                        {
+                            if (langBrowserPage.activeSelf)
+                            {
+                                Logging.Message("Hiding Language Page as another button was clicked: " + child.name);
+                                langBrowserPage.SetActive(false);
+                            }
+                        });
+                    }
+                }
+            }
         }
 
 
@@ -490,7 +503,7 @@ namespace UltrakULL.Harmony_Patches
             {
                 languagePage.SetActive(false);
                 langBrowserPage.SetActive(true);
-                getOnlineLanguages(pagesParent);
+                getOnlineLanguages(pagesParent, languagePage);
             });
 
             TextMeshProUGUI browseText = browseLangButtonObj.AddComponent<TextMeshProUGUI>();
