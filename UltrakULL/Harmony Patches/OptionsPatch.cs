@@ -1,13 +1,12 @@
 ﻿using HarmonyLib;
-using System.Collections.Generic;
 using System;
-using TMPro;
-using UltrakULL.json;
+using static UltrakULL.CommonFunctions;
 using SettingsMenu.Components;
 using UnityEngine;
 
 namespace UltrakULL.Harmony_Patches
 {
+
     [HarmonyPatch(typeof(SettingsMenu.Components.SettingsMenu))]
     public static class HUDOptionsPatch
     {
@@ -26,43 +25,51 @@ namespace UltrakULL.Harmony_Patches
             }
         }*/
     }
-    [HarmonyPatch(typeof(SettingsMenu.Components.SettingsMenu))]
+    [HarmonyPatch(typeof(SettingsMenu.Components.SettingsPageBuilder))]
     public static class OptionsPatch
     {
-        [HarmonyPatch("SetActivePage"), HarmonyPostfix]
-        public static void OptionsSetSelectedPostfix(GameObject targetPage) {
+        [HarmonyPatch("BuildPage"), HarmonyPostfix]
+        public static void OptionsSetSelectedPostfix(SettingsPageBuilder __instance) {
             try
             {
-                switch (targetPage.name.ToUpper())
+                Logging.Info("Patching Option menu...");
+                GameObject optionsObject = __instance.gameObject;
+                switch (__instance.name.ToUpper())
                 {
                     case "GENERAL":
                         {
-                            Logging.Info("General");
+                            Logging.Info("GENERAL");
+                            Options.PatchGeneralOptions(optionsObject);
                             break;
                         }
                     case "CONTROLS":
                         {
                             Logging.Info("CONTROLS");
+                            Options.PatchControlOptions(optionsObject);
                             break;
                         }
                     case "GRAPHICS":
                         {
                             Logging.Info("GRAPHICS");
+                            Options.PatchGraphicsOptions(optionsObject);
                             break;
                         }
                     case "AUDIO":
                         {
                             Logging.Info("AUDIO");
+                            Options.PatchAudioOptions(optionsObject);
                             break;
                         }
                     case "ASSIST":
                         {
                             Logging.Info("ASSIST");
+                            Options.PatchAssistOptions(optionsObject);
                             break;
                         }
                     case "HUD":
                         {
                             Logging.Info("HUD");
+                            Options.PatchHUDOptions(optionsObject);
                             break;
                         }
                     case "COLORBLINDNESS OPTIONS":
@@ -72,22 +79,11 @@ namespace UltrakULL.Harmony_Patches
                         }
                     default:
                         {
-                            Logging.Warn("Unknown Option page name: " +  targetPage.name);
+                            Logging.Warn("Unknown Option page name: " + __instance.name);
                             break;
                         }
 
                 }
-                /*try { this.PatchGeneralOptions(generalOptions); } catch (Exception e) { Logging.Error("Failed to patch general options."); Logging.Error(e.ToString()); }
-                try { this.PatchControlOptions(controlOptions); } catch (Exception e) { Logging.Error("Failed to patch control options."); Logging.Error(e.ToString()); }
-                try { this.PatchGraphicsOptions(graphicsOptions); } catch (Exception e) { Logging.Error("Failed to patch graphics options."); Logging.Error(e.ToString()); }
-                try { this.PatchAudioOptions(audioOptions); } catch (Exception e) { Logging.Error("Failed to patch audio options."); Logging.Error(e.ToString()); }
-                try { this.PatchSettingsMenu(hudOptions); } catch (Exception e) { Logging.Error("Failed to patch HUD options."); Logging.Error(e.ToString()); }
-                try { this.PatchAssistOptions(assistOptions); } catch (Exception e) { Logging.Error("Failed to patch assist options."); Logging.Error(e.ToString()); }
-                try { this.PatchColorsOptions(colorsOptions); } catch (Exception e) { Logging.Error("Failed to patch colors options."); Logging.Error(e.ToString()); }
-                try { this.PatchSavesOptions(savesOptions); } catch (Exception e) { Logging.Error("Failed to patch save options."); Logging.Error(e.ToString()); }
-                try { this.PatchRumbleOptions(rumbleOptions); } catch (Exception e) { Logging.Error("Failed to patch rumble options."); Logging.Error(e.ToString()); }
-                try { this.PatchAdvancedOptions(advancedOptions); } catch (Exception e) { Logging.Error("Failed to patch advanced options."); Logging.Error(e.ToString()); }
-            */
             }
             catch (Exception e)
             {

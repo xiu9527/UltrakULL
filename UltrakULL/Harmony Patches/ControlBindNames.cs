@@ -17,7 +17,7 @@ namespace UltrakULL.Harmony_Patches
         {
             foreach(GameObject section in ___rebindUIObjects)
             {
-                if (section.name == "SectionTemplate(Clone)")
+                if (section.name == "Control Section Template(Clone)")
                 {
                     TextMeshProUGUI sectionText = GetTextMeshProUGUI(section);
                     switch (sectionText.text)
