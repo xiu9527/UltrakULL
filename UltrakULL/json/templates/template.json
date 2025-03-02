@@ -991,6 +991,7 @@
 		"layer_fraud": "",
 		"layer_treachery": "",
 		"layer_prime": "",
+		"layer_encore": "",
 
 		"level_challenge": "",
 		"level_challengeCompleted": "",
@@ -1641,7 +1642,18 @@
 
 		"levelName_primeFirst": "",
 		"levelName_primeSecond": "",
-		"levelName_primeThird": ""
+		"levelName_primeThird": "",
+
+		"levelName_encorePrelude": "",
+		"levelName_encoreLimbo": "",
+		"levelName_encoreLust": "",
+		"levelName_encoreGluttony": "",
+		"levelName_encoreGreed": "",
+		"levelName_encoreWrath": "",
+		"levelName_encoreHeresy": "",
+		"levelName_encoreViolence": "",
+		"levelName_encoreFraud": "",
+		"levelName_encoreTreachery": ""
 
 	},
 	"levelChallenges": {
@@ -2616,6 +2628,7 @@
 		"act3_violenceThird_starOfTheShow": "",
 
 		"act3_violenceFourth_floodingWarning": "",
+		"act3_violenceFourth_magentaAttack": "",
 		"act3_violenceFourth_countdownTitle": "",
 
 		"act3_secretNotReady": ""

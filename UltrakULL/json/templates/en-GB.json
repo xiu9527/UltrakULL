@@ -708,7 +708,7 @@
         "cybergrind_themesCustomGlowIntensity": "GLOW INTENSITY",
 
         "cybergrind_musicTitle": "PLAYLIST",
-        "cybergrind_musicType": "Select the type of track to add",
+        "cybergrind_musicType": "Select Music Type",
         "cybergrind_musicCompleteChallengeRequirement": "COMPLETE CHALLENGE FOR",
         "cybergrind_musicSeeEnemyRequirement": "ENCOUNTER AN UNKNOWN FOE",
         "cybergrind_musicUnlockLevelRequirement": "REACH",
@@ -991,6 +991,7 @@
         "layer_fraud": "LAYER 8: FRAUD",
         "layer_treachery": "LAYER 9: TREACHERY",
         "layer_prime": "PRIME SANCTUMS",
+        "layer_encore": "ENCORES",
 
         "level_challenge": "CHALLENGE",
         "level_challengeCompleted": "COMPLETE",
@@ -1626,9 +1627,9 @@
 
         "levelName_violenceFirst": "GARDEN OF FORKING PATHS",
         "levelName_violenceSecond": "LIGHT UP THE NIGHT",
-        "levelName_violenceThird": "VIOLENCE THIRD",
-        "levelName_violenceFourth": "VIOLENCE CLIMAX",
-        "levelName_violenceSecret": "VIOLENCE SECRET",
+        "levelName_violenceThird": "NO SOUND, NO MEMORY",
+        "levelName_violenceFourth": "...LIKE AMTEMMAS TO HEAVEN",
+        "levelName_violenceSecret": "",
 
         "levelName_fraudFirst": "FRAUD FIRST",
         "levelName_fraudSecond": "FRAUD SECOND",
@@ -1641,7 +1642,18 @@
 
         "levelName_primeFirst": "SOUL SURVIVOR",
         "levelName_primeSecond": "WAIT OF THE WORLD",
-        "levelName_primeThird": ""
+        "levelName_primeThird": "",
+
+        "levelName_encorePrelude": "",
+        "levelName_encoreLimbo": "",
+        "levelName_encoreLust": "",
+        "levelName_encoreGluttony": "",
+        "levelName_encoreGreed": "",
+        "levelName_encoreWrath": "",
+        "levelName_encoreHeresy": "",
+        "levelName_encoreViolence": "",
+        "levelName_encoreFraud": "",
+        "levelName_encoreTreachery": ""
 
     },
     "levelChallenges": {
@@ -1717,8 +1729,8 @@
         "leveltips_gluttonyFirst": "Environmental hazards such as harmful liquids will hurt enemies as well.",
         "leveltips_gluttonySecond1": "If you're having trouble keeping up with a tough enemy, stand back and observe. ",
         "leveltips_gluttonySecond2": "Every enemy has its tells and patterns and learning those can be your key to victory.",
-      
-      
+
+
         "leveltips_greedFirst": "HITSCAN weapons can be used to hit the shotgun's CORE EJECT in mid-air to increase its damage and blast radius.",
         "leveltips_greedSecond": "POWER-UPS can be stacked.",
         "leveltips_greedThird": "Hitting an enemy with only the edge of an explosion will launch them without dealing much damage, making it a risky but effective tool against Stalkers.",
@@ -2616,6 +2628,7 @@
         "act3_violenceThird_starOfTheShow": "YOU'RE THE STAR OF THE SHOW NOW, BABY!",
 
         "act3_violenceFourth_floodingWarning": "WARNING: INTRUDER DETECTED\n-- FLUSHING INTERIOR --",
+        "act3_violenceFourth_magentaAttack": "<color=#FF007F>MAGENTA</color> attacks <color=#FF007F>CANNOT</color> be dashed through <color=#FF007F>WITHOUT TAKING DAMAGE</color>.",
         "act3_violenceFourth_countdownTitle": "CRITICAL FAILURE",
 
         "act3_secretNotReady": "YOU'RE NOT SUPPOSED TO BE HERE."
@@ -3043,16 +3056,16 @@
         "earlyAccessEnd3": "For news on its progress, follow us on"
     },
 
-	"weapon":{
-		"weapon_nailgunZapperReady": "READY",
-		"weapon_nailgunZapperAlternateTooFar": "TOO FAR",
-		"weapon_nailgunZapperOutOfRange": "OUT OF RANGE",
-		"weapon_nailgunZapperAlternateNull": "NULL",
-		"weapon_nailgunZapperNoTarget": "NO TARGET",
-		"weapon_nailgunZapperBlocked": "BLOCKED",
-		"weapon_nailgunZapperDistance": "DISTANCE:",
-		"weapon_nailgunZapperRecharging": "RECHARGING..."
-	},
+    "weapon": {
+        "weapon_nailgunZapperReady": "READY",
+        "weapon_nailgunZapperAlternateTooFar": "TOO FAR",
+        "weapon_nailgunZapperOutOfRange": "OUT OF RANGE",
+        "weapon_nailgunZapperAlternateNull": "NULL",
+        "weapon_nailgunZapperNoTarget": "NO TARGET",
+        "weapon_nailgunZapperBlocked": "BLOCKED",
+        "weapon_nailgunZapperDistance": "DISTANCE:",
+        "weapon_nailgunZapperRecharging": "RECHARGING..."
+    },
     "ranks": {
         "rank_letter_d": "D",
         "rank_letter_c": "C",

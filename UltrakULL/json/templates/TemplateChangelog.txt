@@ -3,12 +3,24 @@
 ADDED:
 New category: encore
 
+frontend: layer_encore
 act3: act3_violenceSecond_guttermanTutorialNoKB
+act3: act3_violenceFourth_magentaAttack
 encore: encorePrelude_heatResistanceWarn
 encore: encorePrelude_heatResistanceText
 encore: encorePrelude_heatResistanceTitle
 encore: encorePrelude_heatResistanceRepaired
 encore: encorePrelude_heatResistanceRepairedText
+levelNames: levelName_encorePrelude
+levelNames: levelName_encoreLimbo
+levelNames: levelName_encoreLust
+levelNames: levelName_encoreGluttony
+levelNames: levelName_encoreGreed
+levelNames: levelName_encoreWrath
+levelNames: levelName_encoreHeresy
+levelNames: levelName_encoreViolence
+levelNames: levelName_encoreFraud
+levelNames: levelName_encoreTreachery
 style: style_lightningbolt
 cyberGrind: cybergrind_musicType
 tutorial: tutorial_introStatusUpdate

@@ -966,6 +966,7 @@
 		"layer_fraud": "CERCLE 8 - [FRAUD]",
 		"layer_treachery": "CERCLE 9 - [TREACHERY]",
 		"layer_prime": "LES SANCTUAIRES PRIMES",
+		"layer_encore": "",
 		"level_challenge": "DÉFI",
 		"level_challengeCompleted": "COMPLÉTÉ",
 		"level_fullIntroPrompt": "INTRO ENTIÈRE?",
@@ -1606,7 +1607,18 @@
 
 		"levelName_primeFirst": "L'ÂME SURVIVANTE",
 		"levelName_primeSecond": "LA DOULEUR DU MONDE",
-		"levelName_primeThird": "???"
+		"levelName_primeThird": "???",
+
+		"levelName_encorePrelude": "",
+		"levelName_encoreLimbo": "",
+		"levelName_encoreLust": "",
+		"levelName_encoreGluttony": "",
+		"levelName_encoreGreed": "",
+		"levelName_encoreWrath": "",
+		"levelName_encoreHeresy": "",
+		"levelName_encoreViolence": "",
+		"levelName_encoreFraud": "",
+		"levelName_encoreTreachery": ""
 	},
 
 	"levelChallenges": {
@@ -2585,6 +2597,7 @@
 		"act3_violenceThird_starOfTheShow": "C'EST TOI LA STAR DE LA SCÈNE MAINTENANT!",
 
 		"act3_violenceFourth_floodingWarning": "ATTENTION: INTRUS DÉTECTÉ\n-- RINÇAGE DE L'INTÉRIEUR --",
+		"act3_violenceFourth_magentaAttack": "",
 		"act3_violenceFourth_countdownTitle": "ERREUR CRITIQUE",
 
 		"act3_secretNotReady": "VOUS NE DEVRIEZ PAS ÊTRE ICI."
@@ -3010,7 +3023,7 @@
 		"earlyAccessEnd2": "Le 8e cercle : [Fraud] est encore en développement.",
 		"earlyAccessEnd3": "Pour avoir des nouvelles sur le développement, suivez-nous sur : "
 	},
-	"weapon":{
+	"weapon": {
 		"weapon_nailgunZapperReady": "",
 		"weapon_nailgunZapperAlternateTooFar": "",
 		"weapon_nailgunZapperOutOfRange": "",
