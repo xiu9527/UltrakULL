@@ -548,7 +548,7 @@ namespace UltrakULL
             TextMeshProUGUI hudTypeText = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(hudContent, "HUD Type"), "Text"));
             hudTypeText.text = LanguageManager.CurrentLanguage.options.hud_type;
 
-            GameObject hudType = GetGameObjectChild(GetGameObjectChild(hudContent, "HUD Type"), "Dropdown");
+            GameObject hudType = GetGameObjectChild(GetGameObjectChild(hudContent, "HUD Type"), "Dropdown(Clone)");
             TMP_Dropdown hudTypeDropdown = hudType.GetComponent<TMP_Dropdown>();
             List<TMP_Dropdown.OptionData> hudTypeDropdownListText = hudTypeDropdown.options;
 
@@ -557,11 +557,10 @@ namespace UltrakULL
             hudTypeDropdownListText[2].text = LanguageManager.CurrentLanguage.options.hud_typeClassicColor;
             hudTypeDropdownListText[3].text = LanguageManager.CurrentLanguage.options.hud_typeClassicWhite;
 
-
             TextMeshProUGUI backgroundOpacityText = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(hudContent, "Background Opacity"), "Text"));
             backgroundOpacityText.text = LanguageManager.CurrentLanguage.options.hud_backgroundOpacity;
 
-            SliderValueToText backgroundOpacitySlider = GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(hudContent, "Background Opacity"), "Button"), "Slider (1)").GetComponentInChildren<SliderValueToText>();
+            SliderValueToText backgroundOpacitySlider = GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(hudContent, "Background Opacity"), "Slider Button(Clone)"), "Slider").GetComponentInChildren<SliderValueToText>();
 
             backgroundOpacitySlider.ifMin = LanguageManager.CurrentLanguage.options.hud_backgroundOpacityMinimum;
             backgroundOpacitySlider.ifMax = LanguageManager.CurrentLanguage.options.hud_backgroundOpacityMaximum;
@@ -569,7 +568,7 @@ namespace UltrakULL
             TextMeshProUGUI alwaysOnTopText = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(hudContent, "Always On Top"), "Text"));
             alwaysOnTopText.text = LanguageManager.CurrentLanguage.options.hud_alwaysOnTop;
 
-            GameObject iconsObject = GetGameObjectChild(hudContent, "Icons");
+            GameObject iconsObject = GetGameObjectChild(hudContent, "Cheat & Sandbox Icons");
             TextMeshProUGUI iconsText = GetTextMeshProUGUI(GetGameObjectChild(iconsObject, "Text"));
             iconsText.text = LanguageManager.CurrentLanguage.options.hud_icons;
 
@@ -591,7 +590,7 @@ namespace UltrakULL
             TextMeshProUGUI styleInfoText = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(hudContent, "Style Info"), "Text"));
             styleInfoText.text = LanguageManager.CurrentLanguage.options.hud_styleInfo;
 
-            GameObject speedoMeterDD = GetGameObjectChild(hudContent, "Speedometer (Dropdown)");
+            GameObject speedoMeterDD = GetGameObjectChild(hudContent, "Speedometer");
             TextMeshProUGUI speedoMeterText = GetTextMeshProUGUI(GetGameObjectChild(speedoMeterDD, "Text"));
             speedoMeterText.text = LanguageManager.CurrentLanguage.options.hud_speedoMeterText;
 
@@ -604,13 +603,13 @@ namespace UltrakULL
             
             //Crosshair settings
 
-            TextMeshProUGUI crosshairTitle = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(hudContent, "-- Crosshair Settings --"),"Text"));
+            TextMeshProUGUI crosshairTitle = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(hudContent, "-- Crosshair --"),"Text"));
             crosshairTitle.text = "--" + LanguageManager.CurrentLanguage.options.crosshair_title + "--";
 
-            TextMeshProUGUI crosshairTypeText = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(hudContent, "Crosshair Type"), "Text"));
+            TextMeshProUGUI crosshairTypeText = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(hudContent, "Type"), "Text"));
             crosshairTypeText.text = LanguageManager.CurrentLanguage.options.crosshair_type;
 
-            GameObject crosshairType = GetGameObjectChild(GetGameObjectChild(hudContent, "Crosshair Type"), "Dropdown");
+            GameObject crosshairType = GetGameObjectChild(GetGameObjectChild(hudContent, "Type"), "Dropdown(Clone)");
             TMP_Dropdown crosshairTypeDropdown = crosshairType.GetComponent<TMP_Dropdown>();
             List<TMP_Dropdown.OptionData> crosshairTypeDropdownListText = crosshairTypeDropdown.options;
 
@@ -618,10 +617,10 @@ namespace UltrakULL
             crosshairTypeDropdownListText[1].text = LanguageManager.CurrentLanguage.options.crosshair_typeSmall;
             crosshairTypeDropdownListText[2].text = LanguageManager.CurrentLanguage.options.crosshair_typeLarge;
 
-            TextMeshProUGUI crosshairColorText = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(hudContent, "Crosshair Color"), "Text"));
+            TextMeshProUGUI crosshairColorText = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(hudContent, "Color"), "Text"));
             crosshairColorText.text = LanguageManager.CurrentLanguage.options.crosshair_color;
 
-            GameObject crosshairColor = GetGameObjectChild(GetGameObjectChild(hudContent, "Crosshair Color"), "Dropdown");
+            GameObject crosshairColor = GetGameObjectChild(GetGameObjectChild(hudContent, "Color"), "Dropdown(Clone)");
             TMP_Dropdown crosshairColorDropdown = crosshairColor.GetComponent<TMP_Dropdown>();
             List<TMP_Dropdown.OptionData> crosshairColorDropdownListText = crosshairColorDropdown.options;
 
@@ -636,10 +635,10 @@ namespace UltrakULL
             crosshairColorDropdownListText[8].text = LanguageManager.CurrentLanguage.options.crosshair_colorYellow;
             crosshairColorDropdownListText[9].text = LanguageManager.CurrentLanguage.options.crosshair_colorMagenta;
 
-            TextMeshProUGUI crosshairHudSizeText = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(hudContent, "Crosshair HUD"), "Text"));
+            TextMeshProUGUI crosshairHudSizeText = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(hudContent, "Crosshair HUD Size"), "Text"));
             crosshairHudSizeText.text = LanguageManager.CurrentLanguage.options.crosshair_size;
 
-            GameObject crosshairSize = GetGameObjectChild(GetGameObjectChild(hudContent, "Crosshair HUD"), "Dropdown");
+            GameObject crosshairSize = GetGameObjectChild(GetGameObjectChild(hudContent, "Crosshair HUD Size"), "Dropdown(Clone)");
             TMP_Dropdown crosshairSizeDropdown = crosshairSize.GetComponent<TMP_Dropdown>();
             List<TMP_Dropdown.OptionData> crosshairSizeDropdownListText = crosshairSizeDropdown.options;
 
@@ -649,10 +648,10 @@ namespace UltrakULL
             crosshairSizeDropdownListText[3].text = LanguageManager.CurrentLanguage.options.crosshair_sizeThick;
             crosshairSizeDropdownListText[4].text = LanguageManager.CurrentLanguage.options.crosshair_sizeVeryThick;
 
-            TextMeshProUGUI crosshairHudFadeText = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(hudContent, "Crosshair HUD Fade Out"), "Text"));
+            TextMeshProUGUI crosshairHudFadeText = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(hudContent, "Crosshair HUD Fade"), "Text"));
             crosshairHudFadeText.text = LanguageManager.CurrentLanguage.options.crosshair_hudFade;
 
-            TextMeshProUGUI crosshairPowerupText = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(hudContent, "Crosshair PowerUp Meter"), "Text"));
+            TextMeshProUGUI crosshairPowerupText = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(hudContent, "Powerup Meter"), "Text"));
             crosshairPowerupText.text = LanguageManager.CurrentLanguage.options.crosshair_powerupBar;
 
         }
