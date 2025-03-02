@@ -202,7 +202,22 @@ namespace UltrakULL
                     + LanguageManager.CurrentLanguage.devMuseum.museum_bookHealth5 + "\n\n"
                     + "<color=red>" + LanguageManager.CurrentLanguage.devMuseum.museum_bookHealth6 + "</color>";
             }
-            if(originalText.Contains("QUETZAL TIRADO</color> - GUEST MUSICIAN</b>"))
+            if (originalText.Contains("KING GIZZARD & THE LIZARD WIZARD</color> - GUEST COMPOSER</b>"))
+            {
+                return LanguageManager.CurrentLanguage.devMuseum.museum_bookKingGizzard1 + "\n\n"
+                    + LanguageManager.CurrentLanguage.devMuseum.museum_bookKingGizzard2 + "\n"
+                    + LanguageManager.CurrentLanguage.devMuseum.museum_bookKingGizzard3 + "\n"
+                    + LanguageManager.CurrentLanguage.devMuseum.museum_bookKingGizzard4 + "\n"
+                    + LanguageManager.CurrentLanguage.devMuseum.museum_bookKingGizzard5 + "\n"
+                    + LanguageManager.CurrentLanguage.devMuseum.museum_bookKingGizzard6 + "\n"
+                    + LanguageManager.CurrentLanguage.devMuseum.museum_bookKingGizzard7 + "\n"
+                    + LanguageManager.CurrentLanguage.devMuseum.museum_bookKingGizzard8 + "\n\n"
+                    + LanguageManager.CurrentLanguage.devMuseum.museum_bookKingGizzard9 + "\n\n"
+                    + LanguageManager.CurrentLanguage.devMuseum.museum_bookKingGizzard10 + "\n\n"
+                    + LanguageManager.CurrentLanguage.devMuseum.museum_bookKingGizzard11 + "\n\n"
+                    + LanguageManager.CurrentLanguage.devMuseum.museum_bookKingGizzard12;
+            }
+            if (originalText.Contains("QUETZAL TIRADO</color> - GUEST MUSICIAN</b>"))
             {
                 return LanguageManager.CurrentLanguage.devMuseum.museum_bookQuetzalTirado1 + "\n\n"
                     + LanguageManager.CurrentLanguage.devMuseum.museum_bookQuetzalTirado2 + "\n\n"
@@ -395,7 +410,7 @@ namespace UltrakULL
                     + LanguageManager.CurrentLanguage.devMuseum.museum_weaponsNailgun5 + "\n\n"
                     + LanguageManager.CurrentLanguage.devMuseum.museum_weaponsNailgun6;
             }
-            return "";
+            return originalText + "";
         }
 
 
@@ -403,7 +418,7 @@ namespace UltrakULL
         {
             //Since the dev museum uses unconventional gameObject names compared to the rest of the game, GetChild is primarily used here.
             GameObject museum = GetInactiveRootObject("__Room_Courtyard").transform.GetChild(4).GetChild(0).gameObject;
-            Text museumTitle = GetTextfromGameObject(GetGameObjectChild(GetGameObjectChild(museum,"Canvas (2)"),"Text"));
+            Text museumTitle = GetTextfromGameObject(GetGameObjectChild(GetGameObjectChild(museum, "Canvas (2)"),"Text"));
             museumTitle.text = LanguageManager.CurrentLanguage.devMuseum.museum_plaquesMuseumTitle;
             
             
@@ -565,7 +580,13 @@ namespace UltrakULL
             Text healthPlaque2 = GetTextfromGameObject(GetGameObjectChild(restRoomHealthPlaque,"Text (1)"));
             healthPlaque1.text = LanguageManager.CurrentLanguage.devMuseum.museum_plaquesHealth1;
             healthPlaque2.text = LanguageManager.CurrentLanguage.devMuseum.museum_plaquesHealth2;
-            
+
+            GameObject restRoomKingGizzardPlaque = GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(plaques, "Dev_Space_ (27)"), "Dev Smalll placard"), "Canvas (4)");
+            Text KingGizzardPlaque1 = GetTextfromGameObject(GetGameObjectChild(restRoomKingGizzardPlaque, "Text"));
+            Text KingGizzardPlaque2 = GetTextfromGameObject(GetGameObjectChild(restRoomKingGizzardPlaque, "Text (1)"));
+            KingGizzardPlaque1.text = LanguageManager.CurrentLanguage.devMuseum.museum_plaquesKingGizzard1;
+            KingGizzardPlaque2.text = LanguageManager.CurrentLanguage.devMuseum.museum_plaquesKingGizzard2;
+
             GameObject restRoomQuetzalTiradoPlaque = GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(plaques,"Dev_Space_ (8)"),"Dev Smalll placard"),"Canvas (4)");
             Text quetzalTiradoPlaque1 = GetTextfromGameObject(GetGameObjectChild(restRoomQuetzalTiradoPlaque,"Text"));
             Text quetzalTiradoPlaque2 = GetTextfromGameObject(GetGameObjectChild(restRoomQuetzalTiradoPlaque,"Text (1)"));
@@ -729,8 +750,8 @@ namespace UltrakULL
         }
         public DevMuseum()
         {
-            this.PatchChess();
             this.PatchPlaques();
+            this.PatchChess();
         }
     }
 }
