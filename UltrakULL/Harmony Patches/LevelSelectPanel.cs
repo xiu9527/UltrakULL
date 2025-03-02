@@ -36,7 +36,19 @@ namespace UltrakULL.Harmony_Patches
 				{
 					__instance.transform.Find("Name").GetComponent<TextMeshProUGUI>().text = "P-3: ???";
 				}
-				else
+				//All of the Encore levels share the same level id
+				if (__instance.name.Contains("0-E") || __instance.transform.Find("Name").GetComponent<TextMeshProUGUI>().text.Contains("0-E"))
+                {
+                    __instance.transform.Find("Name").GetComponent<TextMeshProUGUI>().text =
+                        "0-E:" + (LanguageManager.CurrentLanguage.levelNames.levelName_encorePrelude);
+                }
+				else if(__instance.name.Contains("1-E") || __instance.transform.Find("Name").GetComponent<TextMeshProUGUI>().text.Contains("1-E"))
+                {
+                    __instance.transform.Find("Name").GetComponent<TextMeshProUGUI>().text =
+                        "1-E:" + (LanguageManager.CurrentLanguage.levelNames.levelName_encoreLimbo);
+                }
+
+                else
 				{
 					string levelName = LevelNames.GetLevelName(num);
 					if (LanguageManager.IsRightToLeft)

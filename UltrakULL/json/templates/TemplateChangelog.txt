@@ -1,7 +1,14 @@
 1.3.1:
 
 ADDED:
+New category: encore
+
 act3: act3_violenceSecond_guttermanTutorialNoKB
+encore: encorePrelude_heatResistanceWarn
+encore: encorePrelude_heatResistanceText
+encore: encorePrelude_heatResistanceTitle
+encore: encorePrelude_heatResistanceRepaired
+encore: encorePrelude_heatResistanceRepairedText
 style: style_lightningbolt
 cyberGrind: cybergrind_musicType
 tutorial: tutorial_introStatusUpdate

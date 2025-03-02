@@ -2620,6 +2620,13 @@
 
 		"act3_secretNotReady": ""
 	},
+	"encore" {
+		"encorePrelude_heatResistanceWarn": "",
+		"encorePrelude_heatResistanceText": "",
+		"encorePrelude_heatResistanceTitle": "",
+		"encorePrelude_heatResistanceRepaired": "",
+		"encorePrelude_heatResistanceRepairedText": ""
+	},
 	"primeSanctum": {
 		"primeSanctum_first_secretText1": "",
 		"primeSanctum_first_secretText2": "",

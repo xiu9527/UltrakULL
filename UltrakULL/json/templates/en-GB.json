@@ -2620,6 +2620,13 @@
 
         "act3_secretNotReady": "YOU'RE NOT SUPPOSED TO BE HERE."
     },
+    "encore" {
+        "encorePrelude_heatResistanceWarn": "WARNING:",
+        "encorePrelude_heatResistanceText": "SUDDEN EXTREME TEMPERATURE SHIFT.\nHEAT SHIELD INTEGRITY COMPROMISED.",
+        "encorePrelude_heatResistanceTitle": "HEAT RESISTANCE",
+        "encorePrelude_heatResistanceRepaired": "REPAIRED:",
+        "encorePrelude_heatResistanceRepairedText": "TEMPERATURE REGULATION \nFUNCTIONALITY RE-ESTABLISHED.\nHEAT SHIELD REPAIRED."
+    },
     "primeSanctum": {
         "primeSanctum_first_secretText1": "TERMINAL DATA 01 [ENCRYPTED]",
         "primeSanctum_first_secretText2": "INTRODUCTION TO TERMINALS (DRAFT! DO NOT SEND!! // todo: ADD PICTURES SO THOSE FUCKING SUITS DON'T FALL ASLEEP LIKE LAST TIME)",

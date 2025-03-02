@@ -15,6 +15,7 @@ namespace UltrakULL.json
         public a1 act1;
         public a2 act2;
         public a3 act3;
+        public Enc encore;
         public CG cyberGrind;
         public Prime primeSanctum;
         public Secret secretLevels;
@@ -2519,6 +2520,16 @@ namespace UltrakULL.json
         public string act3_violenceFourth_countdownTitle;
 
         public string act3_secretNotReady;
+    }
+
+    public class Enc
+    {
+        public string encorePrelude_heatResistanceWarn;
+        public string encorePrelude_heatResistanceText;
+        public string encorePrelude_heatResistanceTitle;
+        public string encorePrelude_heatResistanceRepaired;
+        public string encorePrelude_heatResistanceRepairedText;
+
     }
 
     public class Prime

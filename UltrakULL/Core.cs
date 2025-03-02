@@ -414,6 +414,15 @@ namespace UltrakULL
                                 Logging.Message("Prime");
                                 PrimeSanctum primeSanctumClass = new PrimeSanctum();
                             }
+                            else if (levelName.Contains("-E"))
+                            {
+                                Logging.Message("Encore");
+                                if (LanguageManager.CurrentLanguage.encore != null)
+                                {
+                                    Encore.PatchEncore(ref canvasObj);
+                                }
+
+                            }
                             else if (levelName == "uk_construct")
                             { 
                                 Logging.Message("Sandbox");

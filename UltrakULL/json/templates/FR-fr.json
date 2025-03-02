@@ -2590,6 +2590,14 @@
 		"act3_secretNotReady": "VOUS NE DEVRIEZ PAS ÊTRE ICI."
 	},
 
+	"encore" {
+		"encorePrelude_heatResistanceWarn": "",
+		"encorePrelude_heatResistanceText": "",
+		"encorePrelude_heatResistanceTitle": "",
+		"encorePrelude_heatResistanceRepaired": "",
+		"encorePrelude_heatResistanceRepairedText": ""
+	},
+
 	"primeSanctum": {
 		"primeSanctum_first_secretText1": "DOCUMENT DU TERMINAL 01 <color=red>[CHIFFRÉ]</color>",
 		"primeSanctum_first_secretText2": "INTRODUCTION AUX TERMINAUX (<color=grey>BROUILLON! À NE PAS ENVOYER ! //todo: AJOUTER DES DESSINS POUR ÉVITER QUE LES PAUVRE CONS CHEZ L'ENTREPRISE DORMENT COMME LA DERNIÈRE FOIS</color>)",
