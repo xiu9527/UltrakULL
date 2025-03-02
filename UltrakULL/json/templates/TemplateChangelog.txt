@@ -25,6 +25,8 @@ style: style_lightningbolt
 cyberGrind: cybergrind_musicType
 tutorial: tutorial_introStatusUpdate
 options: controls_boundMultiple
+misc: DeathSequence
+"devMuseum" : "museum_bookKingGizzard1" - "museum_bookKingGizzard12", "museum_plaquesKingGizzard1", "museum_plaquesKingGizzard1"
 
 MODIFIED:
 style: style_catapaulted -> style_catapulted

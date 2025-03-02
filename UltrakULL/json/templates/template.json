@@ -144,6 +144,20 @@
 		"museum_bookHealth5": "",
 		"museum_bookHealth6": "",
 
+		"museum_bookKingGizzard1": "",
+        "museum_bookKingGizzard2": "",
+        "museum_bookKingGizzard3": "",
+        "museum_bookKingGizzard4": "",
+        "museum_bookKingGizzard5": "",
+        "museum_bookKingGizzard6": "",
+		"museum_bookKingGizzard7": "",
+		"museum_bookKingGizzard8": "",
+		"museum_bookKingGizzard9": "",
+		"museum_bookKingGizzard10": "",
+		"museum_bookKingGizzard11": "",
+		"museum_bookKingGizzard12": "",
+
+
 		"museum_bookQuetzalTirado1": "",
 		"museum_bookQuetzalTirado2": "",
 		"museum_bookQuetzalTirado3": "",
@@ -353,6 +367,9 @@
 
 		"museum_plaquesHealth1": "",
 		"museum_plaquesHealth2": "",
+
+		"museum_plaquesKingGizzard1": "",
+        "museum_plaquesKingGizzard2": "",
 
 		"museum_plaquesQuetzalTirado1": "",
 		"museum_plaquesQuetzalTirado2": "",
@@ -2992,6 +3009,7 @@
 
 		"youDied1": "",
 		"youDied2": "",
+		"DeathSequence": "",
 
 		"classicHud_health": "",
 		"classicHud_stamina": "",

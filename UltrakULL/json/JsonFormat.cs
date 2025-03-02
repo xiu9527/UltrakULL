@@ -2788,7 +2788,20 @@ namespace UltrakULL.json
         public string museum_bookHealth4;
         public string museum_bookHealth5;
         public string museum_bookHealth6;
-        
+
+        public string museum_bookKingGizzard1;
+        public string museum_bookKingGizzard2;
+        public string museum_bookKingGizzard3;
+        public string museum_bookKingGizzard4;
+        public string museum_bookKingGizzard5;
+        public string museum_bookKingGizzard6;
+        public string museum_bookKingGizzard7;
+        public string museum_bookKingGizzard8;
+        public string museum_bookKingGizzard9;
+        public string museum_bookKingGizzard10;
+        public string museum_bookKingGizzard11;
+        public string museum_bookKingGizzard12;
+
         public string museum_bookQuetzalTirado1;
         public string museum_bookQuetzalTirado2;
         public string museum_bookQuetzalTirado3;
@@ -2999,7 +3012,10 @@ namespace UltrakULL.json
         
         public string museum_plaquesHealth1;
         public string museum_plaquesHealth2;
-        
+
+        public string museum_plaquesKingGizzard1;
+        public string museum_plaquesKingGizzard2;
+
         public string museum_plaquesQuetzalTirado1;
         public string museum_plaquesQuetzalTirado2;
         
@@ -3141,7 +3157,7 @@ namespace UltrakULL.json
 
         public string youDied1;
         public string youDied2;
-
+        public string DeathSequence;
         public string classicHud_health;
         public string classicHud_weapon;
         public string classicHud_stamina;

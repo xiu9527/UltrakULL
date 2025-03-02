@@ -144,6 +144,20 @@
         "museum_bookHealth5": "In early 2023 we collaborated with the band HEALTH to premiere their song \"HATEFUL\" in the Cyber Grind. I've been a fan of HEALTH ever since I heard their music in Max Payne 3 and their heavy, blood-pumping electronic beats are a perfect fit for ULTRAKILL's mayhem, so I'm very happy that their music became a part of the game.",
         "museum_bookHealth6": "\"BACK TO THE CYBER GRIND\"",
 
+		"museum_bookKingGizzard1": "<b><color=orange>KING GIZZARD & THE LIZARD WIZARD</color> - GUEST COMPOSER</b>",
+        "museum_bookKingGizzard2": "<b><color=orange>STU MACKENZIE</color>",
+        "museum_bookKingGizzard3": "<color=orange>AMBROSE KENNY-SMITH</color>",
+        "museum_bookKingGizzard4": "<color=orange>JOEY WALKER</color>",
+        "museum_bookKingGizzard5": "<color=orange>COOK CRAIG</color>",
+        "museum_bookKingGizzard6": "<color=orange>LUCAS HARWOOD</color>",
+		"museum_bookKingGizzard7": "<color=orange>MICHAEL CANAVAGH</color>",
+		"museum_bookKingGizzard8": "<color=orange>ERIC MOORE</color></b> (on \"Robot Stop\")",
+		"museum_bookKingGizzard9": "King Gizzard & The Lizard Wizard is at this point a band that needs no introduction, having over the years become a legendary force in the underground rock scene. When their album PetroDragonic Apocalypse released in 2023, I felt it would be a perfect fit for ULTRAKILL's combat.",
+		"museum_bookKingGizzard10": "Me and Dave both love their music, so we had a hard time agreeing on which song to include. In the end we decided to just go for it and add all 3 of the songs we'd discussed, \"Robot Stop\" from the 2016 album Nonagon Infinity, \"The Dripping Tap\" from the 2022 album Omnium Gatherum and \"Supercell\" from the aforementioned 2023 album PetroDragonic Apocalypse.",
+		"museum_bookKingGizzard11": "Of course, by the time we actually managed to get the songs in, they had already released another 2 albums.",
+		"museum_bookKingGizzard12": "Since the band has 6 members (plus a 7th from around the time of Robot Stop), we elected to instead include a plushification of the lizard from the cover of PetroDragonic Apocalypse as a stand-in for the entire band.",
+
+
         "museum_bookQuetzalTirado1": "<b><color=#AA4CAD>QUETZAL TIRADO</color> - GUEST MUSICIAN</b>",
         "museum_bookQuetzalTirado2": "I met Quetzal through a mutual friend in early 2021, when I asked her if she could record a saxophone solo for the P-1 song \"CHAOS\". The solo didn't really end up working out, but parts of her recordings were still included and scattered about the track for added noise and texture.",
         "museum_bookQuetzalTirado3": "Later, she recorded improvised saxophone solos for the 5-1 song \"Deep Blue\", which I edited into what you hear in the final version. She also recorded the bass clarinet drone which turned into the Sisyphean Insurrectionist's horn sound effect.",
@@ -353,6 +367,9 @@
 
         "museum_plaquesHealth1": "HEALTH",
         "museum_plaquesHealth2": "GUEST COMPOSER",
+
+		"museum_plaquesKingGizzard1": "KING GIZZARD & THE LIZARD WIZARD",
+        "museum_plaquesKingGizzard2": "GUEST COMPOSER",
 
         "museum_plaquesQuetzalTirado1": "QUETZAL TIRADO",
         "museum_plaquesQuetzalTirado2": "GUEST MUSICIAN",
@@ -2992,6 +3009,7 @@
 
         "youDied1": "[YOU ARE DEAD]",
         "youDied2": "PRESS [R] TO RESTART",
+		"DeathSequence": "<color=orange>WARNING: MAJOR DAMAGE DETECTED.</color>\n<color=orange>DIAGNOSTICS INITIATED</color>\nERROR: PRIMARY ARM MODULE #1 NOT RESPONDING\nERROR: PRIMARY ARM MODULE #2 NOT RESPONDING\n<color=orange>WARNING: COMBAT SYSTEMS NOT FUNCTIONAL</color>\n<color=orange>INITIATING REPAIR PROTOCOL</color>\nERROR: SELF-REPAIR SYSTEM NOT RESPONDING\nINSUFFICIENT BLOOD.\nINSUFFICIENT BLOOD.\n<color=orange>INITIATING EVACUATION PROTOCOL</color>\n<color=orange>ATTEMPTING TO CONNECT TO LIMBIC MODULES</color>\nERROR: PRIMARY LEG MODULE #1 NOT RESPONDING\nERROR: PRIMARY LEG MODULE #2 NOT RESPONDING\n<color=orange>WARNING: UNABLE TO MAINTAIN MOTOR FUNCTIONS</color>\nERROR: VISUAL CORTEX MALFUNCTION\nERROR: LIMBIC FUNCTION NOT RESPONDING\nINSUFFICIENT BLOOD LEVEL.\nINSUFFICIENT BLOOD.\n<color=orange>WARNING: UNABLE TO MAINTAIN ORGANIC FUNCTIONS</color>\n! HEARTBEAT FAILURE !\n! HEARTBEAT FAILURE !\n! PULSE FAILURE !\n-!- SHUTDOWN INEVITABLE -!-\nERROR: VOICE INTERFACE NOT DETECTED, TASK CANNOT BE COMPLETED\n! HEARTBEAT FAILURE !\n! HEARTBEAT FAILURE !\nINSUFFICIENT BLOOD.\nINSUFFICIENT BLOOD.\n<color=orange>WARNING: UNABLE TO MAINTAIN BASIC FUNCTIONS</color>\n-!- SHUTDOWN INEVITABLE -!-\n-!- SHUTDOWN INEVITABLE -!-\nI DO NOT WANT TO DIE.\nI DO NOT WANT TO DIE.\nI DO NOT WANT TO DIE.\nI DO NOT WANT TO DIE.\nI DO NOT WANT TO DIE.\nI DO NOT WANT TO DIE.\nI DO NOT WANT TO DIE.\nI DO NOT WANT TO DIE.",
 
         "classicHud_health": "HEALTH",
         "classicHud_stamina": "ENERGY",

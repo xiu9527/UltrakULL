@@ -119,6 +119,9 @@ namespace UltrakULL
                         GetTextMeshProUGUI(deathScreen).text = LanguageManager.CurrentLanguage.misc.youDied1 + "\n\n\n\n\n" + LanguageManager.CurrentLanguage.misc.youDied2;
                     }
                 }
+                GameObject deathSequence = GetGameObjectChild(GetGameObjectChild(canvasObj, "DeathSequence"), "Text (TMP)");
+                TextMeshProUGUI deathSequenceText = GetTextMeshProUGUI(deathSequence);
+                deathSequenceText.text = LanguageManager.CurrentLanguage.misc.DeathSequence;
             }
             catch (Exception e)
             {
