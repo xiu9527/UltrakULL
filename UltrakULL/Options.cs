@@ -19,16 +19,6 @@ namespace UltrakULL
             //General options
             GameObject generalContent = GetGameObjectChild(GetGameObjectChild(generalOptions, "Scroll Rect"), "Contents");
             //-- WEAPONS -- 
-            Logging.Info("a");
-            /*Transform[] list = generalContent.GetComponentsInChildren<Transform>();
-            foreach (Transform item in list)
-            {
-                if (item != null)
-                {
-                    Logging.Info("a" +item.name);
-                }
-            }*/
-            Logging.Info("a");
             TextMeshProUGUI generalText = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(generalContent, "-- Weapons --"), "Text"));
             generalText.text = "-- " + LanguageManager.CurrentLanguage.options.controls_weapons + " --";
 
@@ -73,9 +63,7 @@ namespace UltrakULL
             TextMeshProUGUI levelLeaderboardsText = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(generalContent, "Level Leaderboards"), "Text"));
             levelLeaderboardsText.text = LanguageManager.CurrentLanguage.options.general_levelLeaderboards;
 
-            Logging.Info("aadwadas");
             TextMeshProUGUI restartWarningText = GetTextMeshProUGUI(GetGameObjectChild(generalContent.transform.GetChild(10).gameObject, "Text"));
-            Logging.Info("aadwadas");
             restartWarningText.text = LanguageManager.CurrentLanguage.options.general_restartWarning;
 
             GameObject restartWarningList = GetGameObjectChild(generalContent.transform.GetChild(10).gameObject, "Dropdown(Clone)");

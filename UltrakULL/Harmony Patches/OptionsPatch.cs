@@ -32,49 +32,44 @@ namespace UltrakULL.Harmony_Patches
         public static void OptionsSetSelectedPostfix(SettingsPageBuilder __instance) {
             try
             {
-                Logging.Info("Patching Option menu...");
+                Logging.Debug("Patching Option menu...");
                 GameObject optionsObject = __instance.gameObject;
                 switch (__instance.name.ToUpper())
                 {
                     case "GENERAL":
                         {
-                            Logging.Info("GENERAL");
+                            Logging.Debug("GENERAL");
                             Options.PatchGeneralOptions(optionsObject);
                             break;
                         }
                     case "CONTROLS":
                         {
-                            Logging.Info("CONTROLS");
+                            Logging.Debug("CONTROLS");
                             Options.PatchControlOptions(optionsObject);
                             break;
                         }
                     case "GRAPHICS":
                         {
-                            Logging.Info("GRAPHICS");
+                            Logging.Debug("GRAPHICS");
                             Options.PatchGraphicsOptions(optionsObject);
                             break;
                         }
                     case "AUDIO":
                         {
-                            Logging.Info("AUDIO");
+                            Logging.Debug("AUDIO");
                             Options.PatchAudioOptions(optionsObject);
                             break;
                         }
                     case "ASSIST":
                         {
-                            Logging.Info("ASSIST");
+                            Logging.Debug("ASSIST");
                             Options.PatchAssistOptions(optionsObject);
                             break;
                         }
                     case "HUD":
                         {
-                            Logging.Info("HUD");
+                            Logging.Debug("HUD");
                             Options.PatchHUDOptions(optionsObject);
-                            break;
-                        }
-                    case "COLORBLINDNESS OPTIONS":
-                        {
-                            Logging.Info("COLORBLIND");
                             break;
                         }
                     default:
