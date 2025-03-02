@@ -192,16 +192,16 @@ namespace UltrakULL
                 LitterCount.text = LanguageManager.CurrentLanguage.washing.wash_littercount;
 
                 //Faxeexittext
-                GameObject fakeexitCanvas = GetGameObjectChild(GetGameObjectChild(GetInactiveRootObject("Fake Exit"), "PuzzleScreen"), "Canvas");
-                TextMeshProUGUI fakeexittext = GetTextMeshProUGUI(GetGameObjectChild(fakeexitCanvas, "Cleaning Prompt Text"));
+                GameObject fakeexitCanvas = GetGameObjectChild(GetInactiveRootObject("PuzzleScreen"), "Canvas");
+                TextMeshProUGUI fakeexittext = GetTextMeshProUGUI(GetGameObjectChild(fakeexitCanvas, "Text (TMP)"));
                 fakeexittext.text = "<size=12><color=red><u><b>" + LanguageManager.CurrentLanguage.washing.wash_fakeexittext1 + "</u></b></color></size>\n\n\n"
-                + LanguageManager.CurrentLanguage.washing.wash_fakeexittext2
-                + LanguageManager.CurrentLanguage.washing.wash_fakeexittext3
-                + LanguageManager.CurrentLanguage.washing.wash_fakeexittext4
-                + LanguageManager.CurrentLanguage.washing.wash_fakeexittext5
+                + LanguageManager.CurrentLanguage.washing.wash_fakeexittext2 + "\n\n"
+                + LanguageManager.CurrentLanguage.washing.wash_fakeexittext3 + "\n\n"
+                + LanguageManager.CurrentLanguage.washing.wash_fakeexittext4 + "\n\n"
+                + LanguageManager.CurrentLanguage.washing.wash_fakeexittext5 + "\n\n"
                 + LanguageManager.CurrentLanguage.washing.wash_fakeexittext6;
 
-                TextMeshProUGUI thxtext = GetTextMeshProUGUI(GetGameObjectChild(fakeexitCanvas, "Thank You Text"));
+                TextMeshProUGUI thxtext = GetTextMeshProUGUI(GetGameObjectChild(fakeexitCanvas, "Text (TMP) (1)"));
                 thxtext.text = "<size=12><color=green><u><b>" + LanguageManager.CurrentLanguage.washing.wash_exitOpenText1 + "</u></b></color></size>\n\n\n"
                 + LanguageManager.CurrentLanguage.washing.wash_exitOpenText2 + "\n\n"
                 + LanguageManager.CurrentLanguage.washing.wash_exitOpenText3;
