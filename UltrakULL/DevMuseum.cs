@@ -687,36 +687,37 @@ namespace UltrakULL
         private void PatchChess()
         {
             GameObject chessGeneral = GetGameObjectChild(GetGameObjectChild(GetInactiveRootObject("__Room_Aquarium"),"Geo"),"Chess");
-            GameObject chessScreen = GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(chessGeneral,"PuzzleScreen"),"Canvas"),"Buttons");
+            GameObject chessBackground = GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(chessGeneral, "PuzzleScreen"),"Canvas"), "Background");
+            GameObject chessScreen = GetGameObjectChild(chessBackground, "Main Window");
 
-            TextMeshProUGUI chessVs = GetTextMeshProUGUI(GetGameObjectChild(chessScreen,"vs"));
+            TextMeshProUGUI chessVs = GetTextMeshProUGUI(GetGameObjectChild(chessScreen, "Versus Text"));
             chessVs.text = LanguageManager.CurrentLanguage.devMuseum.museum_chessVs;
             
-            TextMeshProUGUI chessNewgame = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(chessScreen,"NewGame"),"On"),"Text"));
+            TextMeshProUGUI chessNewgame = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(chessScreen, "Start New Game Button"),"Text"));
             chessNewgame.text = LanguageManager.CurrentLanguage.devMuseum.museum_chessNewgame;
             
-            TextMeshProUGUI chessBlack = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(chessScreen,"Black"),"Text"));
+            TextMeshProUGUI chessBlack = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(chessScreen,"Black"), "Black Text"));
             chessBlack.text = LanguageManager.CurrentLanguage.devMuseum.museum_chessBlack;
             
-            TextMeshProUGUI chessWhite = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(chessScreen,"White"),"Text"));
+            TextMeshProUGUI chessWhite = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(chessScreen,"White"), "White Text"));
             chessWhite.text = LanguageManager.CurrentLanguage.devMuseum.museum_chessWhite;
-            
-            TextMeshProUGUI chessBlackbot = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(chessScreen,"Black"),"Bot (1)"),"Text"));
+
+            TextMeshProUGUI chessBlackbot = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(chessScreen,"Black"), "Bot Button"),"Text"));
             chessBlackbot.text = LanguageManager.CurrentLanguage.devMuseum.museum_chessBot;
-            
-            TextMeshProUGUI chessBlackplayer = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(chessScreen,"Black"),"Player (1)"),"Text"));
+
+            TextMeshProUGUI chessBlackplayer = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(chessScreen,"Black"), "Player Button"),"Text"));
             chessBlackplayer.text = LanguageManager.CurrentLanguage.devMuseum.museum_chessPlayer;
-            
-            TextMeshProUGUI chessWhitebot = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(chessScreen,"White"),"Bot"),"Text"));
+
+            TextMeshProUGUI chessWhitebot = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(chessScreen,"White"), "Bot Button"),"Text"));
             chessWhitebot.text = LanguageManager.CurrentLanguage.devMuseum.museum_chessBot;
-            
-            TextMeshProUGUI chessWhiteplayer = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(chessScreen,"White"),"Player"),"Text"));
+
+            TextMeshProUGUI chessWhiteplayer = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(chessScreen,"White"), "Player Button"),"Text"));
             chessWhiteplayer.text = LanguageManager.CurrentLanguage.devMuseum.museum_chessPlayer;
-            
-            TextMeshProUGUI chessSettingsclose = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(chessScreen,"Settings"),"Difficulty"),"SettingsToggle Off"),"Text"));
+
+            TextMeshProUGUI chessSettingsclose = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(chessScreen,"Settings"), "Main Window"), "Close Button"),"Text"));
             chessSettingsclose.text = LanguageManager.CurrentLanguage.devMuseum.museum_chessSettingsclose;
             
-            TextMeshProUGUI chessSettingsBot = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(chessScreen,"Settings"),"Text (1)"));
+            TextMeshProUGUI chessSettingsBot = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(chessScreen, "Settings"), "Main Window"), "Set Elo"), "Slider"), "Bot Text")); 
             chessSettingsBot.text = LanguageManager.CurrentLanguage.devMuseum.museum_chessBot + ":";
             
             //these 2 not using UGUI
