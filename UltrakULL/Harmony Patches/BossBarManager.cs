@@ -14,10 +14,12 @@ namespace UltrakULL.Harmony_Patches
         {
             if(!isUsingEnglish())
             {
-                string translatedName = BossStrings.GetBossName(bossBar.source.FullName);
+
+                // Change "BossStrings.GetBossName(bossBar.source.FullName)" to "BossStrings.GetBossName(bossBar.bossName)" because RADIANT enemies have default source names (like RADIANT SWORDMACHINE = SWORDMACHINE) // Maybe this not work
+                string translatedName = BossStrings.GetBossName(bossBar.bossName);
                 if(translatedName != null)
                 {
-                    bossBar.bossName = BossStrings.GetBossName(bossBar.source.FullName);
+                    bossBar.bossName = BossStrings.GetBossName(bossBar.bossName);
                 }
                 else
                 {

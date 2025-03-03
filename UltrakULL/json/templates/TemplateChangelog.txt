@@ -26,7 +26,22 @@ cyberGrind: cybergrind_musicType
 tutorial: tutorial_introStatusUpdate
 options: controls_boundMultiple
 misc: DeathSequence
-"devMuseum" : "museum_bookKingGizzard1" - "museum_bookKingGizzard12", "museum_plaquesKingGizzard1", "museum_plaquesKingGizzard1"
+devMuseum: museum_bookKingGizzard1
+devMuseum: museum_bookKingGizzard2
+devMuseum: museum_bookKingGizzard3
+devMuseum: museum_bookKingGizzard4
+devMuseum: museum_bookKingGizzard5
+devMuseum: museum_bookKingGizzard6
+devMuseum: museum_bookKingGizzard7
+devMuseum: museum_bookKingGizzard8
+devMuseum: museum_bookKingGizzard9
+devMuseum: museum_bookKingGizzard10
+devMuseum: museum_bookKingGizzard11
+devMuseum: museum_bookKingGizzard12
+devMuseum: museum_plaquesKingGizzard1
+devMuseum: museum_plaquesKingGizzard2
+enemyNames: enemyname_radiant_swordsmachine
+enemyNames: enemyname_radiant_cerberus
 
 MODIFIED:
 style: style_catapaulted -> style_catapulted

@@ -194,6 +194,7 @@ namespace UltrakULL.json
                 language.act2,
                 language.act3,
                 language.cyberGrind,
+                language.encore,
                 language.primeSanctum,
                 language.secretLevels,
                 language.intermission,

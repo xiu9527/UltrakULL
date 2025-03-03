@@ -2035,6 +2035,10 @@
 		"enemyname_earthmoverRocketLauncher": "",
 		"enemyname_earthmoverTower": "",
 
+		"enemyname_radiant_swordsmachine": "",
+		"enemyname_radiant_cerberus": "",
+
+
 		"enemyname_boss_cerberus": "",
 		"enemyname_boss_cancerousRodent": "",
 		"enemyname_boss_veryCancerousRodent": "",
@@ -2650,7 +2654,7 @@
 
 		"act3_secretNotReady": ""
 	},
-	"encore" {
+	"encore": {
 		"encorePrelude_heatResistanceWarn": "",
 		"encorePrelude_heatResistanceText": "",
 		"encorePrelude_heatResistanceTitle": "",

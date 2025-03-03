@@ -1901,6 +1901,9 @@ namespace UltrakULL.json
         public string enemyname_earthmoverRocketLauncher;
         public string enemyname_earthmoverTower;
 
+        public string enemyname_radiant_swordsmachine;
+        public string enemyname_radiant_cerberus;
+
         public string enemyname_boss_cerberus;
         public string enemyname_boss_cancerousRodent;
         public string enemyname_boss_veryCancerousRodent;

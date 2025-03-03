@@ -69,12 +69,18 @@ namespace UltrakULL
             if (inputName.Contains("TREACHERY FIRST")) { return (LanguageManager.CurrentLanguage.levelNames.levelName_treacheryFirst); }
             if (inputName.Contains("TREACHERY SECOND")) { return (LanguageManager.CurrentLanguage.levelNames.levelName_treacherySecond); }
 
+            //Encore titles
+            if (inputName.Contains("THIS HEAT, AN EVIL HEAT")) { return (LanguageManager.CurrentLanguage.levelNames.levelName_encorePrelude); }
+            if (inputName.Contains("THEN FELL THE ASHES")) { return (LanguageManager.CurrentLanguage.levelNames.levelName_encoreLimbo); }
+
+
             //Prime titles
             if (inputName.Contains("SOUL SURVIVOR")) { return (LanguageManager.CurrentLanguage.levelNames.levelName_primeFirst); }
             if (inputName.Contains("WAIT OF THE WORLD")) { return (LanguageManager.CurrentLanguage.levelNames.levelName_primeSecond); }
             if (inputName.Contains("PRIME THIRD")) { return (LanguageManager.CurrentLanguage.levelNames.levelName_primeThird); }
 
-            return "UNKNOWN";
+            Logging.Warn("No translation strings are specified for “" + inputName + "”. Returning the original name");
+            return inputName;
         }
 
         public static string GetLayer(string inputTitle)

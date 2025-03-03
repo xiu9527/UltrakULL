@@ -1993,6 +1993,9 @@
 		"enemyname_earthmoverRocketLauncher": "",
 		"enemyname_earthmoverTower": "",
 
+		"enemyname_radiant_swordsmachine": "",
+		"enemyname_radiant_cerberus": "",
+
 		"enemyname_boss_cerberus": "CERBÈRE, GARDIEN DES ENFERS",
 		"enemyname_boss_fleshPrison": "PRISON DE CHAIR",
 		"enemyname_boss_fleshPanopticon": "PANOPTIQUE DE CHAIR",
@@ -2603,7 +2606,7 @@
 		"act3_secretNotReady": "VOUS NE DEVRIEZ PAS ÊTRE ICI."
 	},
 
-	"encore" {
+	"encore": {
 		"encorePrelude_heatResistanceWarn": "",
 		"encorePrelude_heatResistanceText": "",
 		"encorePrelude_heatResistanceTitle": "",

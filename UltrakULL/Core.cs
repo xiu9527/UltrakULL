@@ -382,7 +382,7 @@ namespace UltrakULL
                                 Logging.Message("Secret");
                                 SecretLevels secretLevels = new SecretLevels(ref canvasObj);
                             }
-                            if(levelName.Contains("0-"))
+                            if(levelName.Contains("0-") & !levelName.Contains("-E"))
                             { 
                                 Logging.Message("Prelude");
                                 Prelude preludePatchClass = new Prelude(ref canvasObj);

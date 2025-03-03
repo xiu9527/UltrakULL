@@ -65,7 +65,9 @@ namespace UltrakULL
 			if (missionName.Contains("9-1")) { return "9-1: " + LanguageManager.CurrentLanguage.levelNames.levelName_treacheryFirst; }
 			if (missionName.Contains("9-2")) { return "9-2: " + LanguageManager.CurrentLanguage.levelNames.levelName_treacherySecond; }
 			
-			if (missionName.Contains("P-1")) { return "P-1: " + LanguageManager.CurrentLanguage.levelNames.levelName_primeFirst; }
+			if (missionName.Contains("0-E")) { return "0-E: " + LanguageManager.CurrentLanguage.levelNames.levelName_encorePrelude; }
+            if (missionName.Contains("1-E")) { return "1-E: " + LanguageManager.CurrentLanguage.levelNames.levelName_encoreLimbo; }
+            if (missionName.Contains("P-1")) { return "P-1: " + LanguageManager.CurrentLanguage.levelNames.levelName_primeFirst; }
 			if (missionName.Contains("P-2")) { return "P-2: " + LanguageManager.CurrentLanguage.levelNames.levelName_primeSecond; }
 			if (missionName.Contains("P-3")) { return "P-3: " + LanguageManager.CurrentLanguage.levelNames.levelName_primeThird; }
 

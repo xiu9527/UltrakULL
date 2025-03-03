@@ -2035,6 +2035,9 @@
         "enemyname_earthmoverRocketLauncher": "EARTHMOVER ROCKET LAUNCHER",
         "enemyname_earthmoverTower": "EARTHMOVER TOWER",
 
+		"enemyname_radiant_swordsmachine": "RADIANT SWORDMACHINE",
+		"enemyname_radiant_cerberus": "RADIANT CERBERUS",
+
         "enemyname_boss_cerberus": "CERBERUS, GUARDIAN OF HELL",
         "enemyname_boss_cancerousRodent": "CANCEROUS RODENT",
         "enemyname_boss_veryCancerousRodent": "VERY CANCEROUS RODENT",
@@ -2650,7 +2653,7 @@
 
         "act3_secretNotReady": "YOU'RE NOT SUPPOSED TO BE HERE."
     },
-    "encore" {
+    "encore": {
         "encorePrelude_heatResistanceWarn": "WARNING:",
         "encorePrelude_heatResistanceText": "SUDDEN EXTREME TEMPERATURE SHIFT.\nHEAT SHIELD INTEGRITY COMPROMISED.",
         "encorePrelude_heatResistanceTitle": "HEAT RESISTANCE",
