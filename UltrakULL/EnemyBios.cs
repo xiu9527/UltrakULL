@@ -10,7 +10,7 @@ namespace UltrakULL
         public static string GetName(string originalName)
         {
             Logging.Warn(originalName);
-            if (originalName.ToUpper().Contains("RADIANT")) 
+            if (originalName.ToUpper().Contains("RADIANT"))
             {
                 if (originalName.Contains("SWORDSMACHINE"))
                 {
@@ -22,105 +22,86 @@ namespace UltrakULL
                 }
                 return "Untranslated RADIANT enemy name: " + originalName;
             }
-            else if (originalName.ToUpper() == "SWORDSMACHINE")
+            switch (originalName.ToUpper())
             {
-                if (GetCurrentSceneName() == "Level 1-3")
-                {
-                    if (!doubleBoss)
+                case "SWORDSMACHINE":
                     {
-                        doubleBoss = true;
-                        return LanguageManager.CurrentLanguage.enemyNames.enemyname_boss_swordsmachineAgony;
+                        if (GetCurrentSceneName() == "Level 1-3")
+                        {
+                            if (doubleBoss == false)
+                            {
+                                doubleBoss = true;
+                                return LanguageManager.CurrentLanguage.enemyNames.enemyname_boss_swordsmachineAgony; ;
+                            }
+                            doubleBoss = false;
+                            return LanguageManager.CurrentLanguage.enemyNames.enemyname_boss_swordsmachineTundra;
+                        }
+                        return LanguageManager.CurrentLanguage.enemyNames.enemyname_swordsmachine;
                     }
-                    doubleBoss = false;
-                    return LanguageManager.CurrentLanguage.enemyNames.enemyname_boss_swordsmachineTundra;
-                }
-                return LanguageManager.CurrentLanguage.enemyNames.enemyname_swordsmachine;
-            }
-            else if (originalName.ToUpper() == "SWORDSMACHINE DEFAULT")
-            {
-                return LanguageManager.CurrentLanguage.enemyNames.enemyname_swordsmachine;
-            }
-            else if (originalName.ToUpper() == "INSURRECTIONIST" || originalName.ToUpper() == "SISYPHEAN INSURRECTIONIST")
-            {
-                if (GetCurrentSceneName() == "Level 6-1")
-                {
-                    if (!doubleBoss)
+                case "SWORDSMACHINE DEFAULT": { return LanguageManager.CurrentLanguage.enemyNames.enemyname_swordsmachine; }
+
+                case "INSURRECTIONIST":
+                case "SISYPHEAN INSURRECTIONIST":
                     {
-                        doubleBoss = true;
-                        return LanguageManager.CurrentLanguage.enemyNames.enemyname_boss_insurrectionistAngry;
+                        if (GetCurrentSceneName() == "Level 6-1")
+                        {
+                            if (doubleBoss == false)
+                            {
+                                doubleBoss = true;
+                                return LanguageManager.CurrentLanguage.enemyNames.enemyname_boss_insurrectionistAngry;
+                            }
+                            doubleBoss = false;
+                            return LanguageManager.CurrentLanguage.enemyNames.enemyname_boss_insurrectionistRude;
+                        }
+                        return LanguageManager.CurrentLanguage.enemyNames.enemyname_boss_insurrectionist;
                     }
-                    doubleBoss = false;
-                    return LanguageManager.CurrentLanguage.enemyNames.enemyname_boss_insurrectionistRude;
-                }
-                return LanguageManager.CurrentLanguage.enemyNames.enemyname_boss_insurrectionist;
-            }
-            else if (originalName.ToUpper() == "INSURRECTIONIST DEFAULT")
-            {
-                return LanguageManager.CurrentLanguage.enemyNames.enemyname_insurrectionist;
-            }
-            else if (originalName.ToUpper() == "FILTH")
-            {
-                return LanguageManager.CurrentLanguage.enemyNames.enemyname_filth;
-            }
-            else if (originalName.ToUpper() == "STRAY")
-            {
-                return LanguageManager.CurrentLanguage.enemyNames.enemyname_stray;
-            }
-            else if (originalName.ToUpper() == "SCHISM")
-            {
-                return LanguageManager.CurrentLanguage.enemyNames.enemyname_schism;
-            }
-            else if (originalName.ToUpper() == "SOLDIER")
-            {
-                return LanguageManager.CurrentLanguage.enemyNames.enemyname_soldier;
-            }
-            else if (originalName.ToUpper() == "THE CORPSE OF KING MINOS" || originalName.ToUpper() == "MINOS")
-            {
-                return LanguageManager.CurrentLanguage.enemyNames.enemyname_boss_corpseOfKingMinos;
-            }
-            else if (originalName.ToUpper() == "STALKER")
-            {
-                return LanguageManager.CurrentLanguage.enemyNames.enemyname_stalker;
-            }
-            else if (originalName.ToUpper() == "VERY CANCEROUS RODENT")
-            {
-                return LanguageManager.CurrentLanguage.enemyNames.enemyname_boss_veryCancerousRodent;
-            }
-            else if (originalName.ToUpper() == "CANCEROUS RODENT")
-            {
-                return LanguageManager.CurrentLanguage.enemyNames.enemyname_boss_cancerousRodent;
-            }
-            else if (originalName.ToUpper() == "FERRYMAN")
-            {
-                return LanguageManager.CurrentLanguage.enemyNames.enemyname_ferryman;
-            }
-            else if (originalName.ToUpper() == "DRONE")
-            {
-                return LanguageManager.CurrentLanguage.enemyNames.enemyname_drone;
-            }
-            else if (originalName.ToUpper() == "STREETCLEANER")
-            {
-                return LanguageManager.CurrentLanguage.enemyNames.enemyname_streetCleaner;
-            }
-            else if (originalName.ToUpper() == "V2 (2ND)")
-            {
-                return LanguageManager.CurrentLanguage.enemyNames.enemyname_v2Second;
-            }
-            else if (originalName.ToUpper() == "V2" || originalName.ToUpper() == "V2SECOND")
-            {
-                return LanguageManager.CurrentLanguage.enemyNames.enemyname_v2;
-            }
-            else if (originalName.ToUpper() == "SENTRY" || originalName.ToUpper() == "TURRET")
-            {
-                return LanguageManager.CurrentLanguage.enemyNames.enemyname_sentry;
-            }
-            else if (originalName.ToUpper() == "CENTAUR")
-            {
-                return LanguageManager.CurrentLanguage.enemyNames.enemyname_boss_earthmover;
-            }
-            else
-            {
-                return "Untranslated enemy name: " + originalName;
+                case "INSURRECTIONIST DEFAULT": { return LanguageManager.CurrentLanguage.enemyNames.enemyname_insurrectionist; }
+
+                case "FILTH": { return LanguageManager.CurrentLanguage.enemyNames.enemyname_filth; }
+                case "STRAY": { return LanguageManager.CurrentLanguage.enemyNames.enemyname_stray; }
+                case "SCHISM": { return LanguageManager.CurrentLanguage.enemyNames.enemyname_schism; }
+                case "SOLDIER": { return LanguageManager.CurrentLanguage.enemyNames.enemyname_soldier; }
+                case "THE CORPSE OF KING MINOS": case "MINOS": { return LanguageManager.CurrentLanguage.enemyNames.enemyname_boss_corpseOfKingMinos; }
+                case "STALKER": { return LanguageManager.CurrentLanguage.enemyNames.enemyname_stalker; }
+                case "VERY CANCEROUS RODENT": { return LanguageManager.CurrentLanguage.enemyNames.enemyname_boss_veryCancerousRodent; }
+                case "CANCEROUS RODENT": { return LanguageManager.CurrentLanguage.enemyNames.enemyname_boss_cancerousRodent; }
+                case "FERRYMAN": { return LanguageManager.CurrentLanguage.enemyNames.enemyname_ferryman; }
+                case "DRONE": { return LanguageManager.CurrentLanguage.enemyNames.enemyname_drone; }
+                case "STREETCLEANER": { return LanguageManager.CurrentLanguage.enemyNames.enemyname_streetCleaner; }
+                case "V2 (2nd)": { return LanguageManager.CurrentLanguage.enemyNames.enemyname_v2Second; }
+                case "V2": case "V2SECOND": { return LanguageManager.CurrentLanguage.enemyNames.enemyname_v2; }
+                case "SENTRY": case "TURRET": { return LanguageManager.CurrentLanguage.enemyNames.enemyname_sentry; }
+                case "GUTTERMAN": { return LanguageManager.CurrentLanguage.enemyNames.enemyname_gutterman; }
+                case "GUTTERTANK": { return LanguageManager.CurrentLanguage.enemyNames.enemyname_guttertank; }
+                case "MINDFLAYER": { return LanguageManager.CurrentLanguage.enemyNames.enemyname_mindFlayer; }
+                case "CENTAUR": { return LanguageManager.CurrentLanguage.enemyNames.enemyname_boss_earthmover; }
+                case "1000-THR DEFENCE SYSTEM": { return LanguageManager.CurrentLanguage.enemyNames.enemyname_boss_earthmoverDefence; }
+                case "EARTHMOVER": { return LanguageManager.CurrentLanguage.enemyNames.enemyname_earthmover; }
+                case "MALICIOUS FACE": case "MALICIOUSFACE": { return LanguageManager.CurrentLanguage.enemyNames.enemyname_malFace; }
+                case "MYSTERIOUS DRUID KNIGHT (& OWL)": { return LanguageManager.CurrentLanguage.enemyNames.enemyname_boss_mandalore; }
+                case "IDOL": { return LanguageManager.CurrentLanguage.enemyNames.enemyname_idol; }
+                case "LEVIATHAN": { return LanguageManager.CurrentLanguage.enemyNames.enemyname_leviathan; }
+                case "CERBERUS, GUARDIAN OF HELL": { return LanguageManager.CurrentLanguage.enemyNames.enemyname_boss_cerberus; }
+                case "CERBERUS": case "STATUE": { return LanguageManager.CurrentLanguage.enemyNames.enemyname_cerberus; }
+                case "HIDEOUS MASS": case "HIDEOUSMASS": { return LanguageManager.CurrentLanguage.enemyNames.enemyname_hideousMass; }
+                case "MANNEQUIN": { return LanguageManager.CurrentLanguage.enemyNames.enemyname_mannequin; }
+                case "<S>MINOTAUR": case "<s>MINOTAUR": case "MINOTAUR": { return "<s>" + LanguageManager.CurrentLanguage.enemyNames.enemyname_minotaur + "</s>"; }
+                case "GABRIEL, JUDGE OF HELL": { return LanguageManager.CurrentLanguage.enemyNames.enemyname_boss_gabriel; }
+                case "GABRIEL, APOSTATE OF HATE": case "GABRIEL, THE APOSTATE OF HATE": { return LanguageManager.CurrentLanguage.enemyNames.enemyname_boss_gabrielSecond; }
+                case "VIRTUE": { return LanguageManager.CurrentLanguage.enemyNames.enemyname_virtue; }
+                case "SOMETHING WICKED": { return LanguageManager.CurrentLanguage.enemyNames.enemyname_somethingWicked; }
+                case "???": { return LanguageManager.CurrentLanguage.enemyNames.enemyname_puppet; }
+                case "FLESH PRISON": { return LanguageManager.CurrentLanguage.enemyNames.enemyname_boss_fleshPrison; }
+                case "MINOS PRIME": case "MINOSPRIME": { return LanguageManager.CurrentLanguage.enemyNames.enemyname_boss_minosPrime; }
+                case "FLESH PANOPTICON": { return LanguageManager.CurrentLanguage.enemyNames.enemyname_boss_fleshPanopticon; }
+                case "SISYPHUS PRIME": case "SISYPHUSPRIME": { return LanguageManager.CurrentLanguage.enemyNames.enemyname_boss_sisyphusPrime; }
+                case "BIG JOHNINATOR": case "BIGJOHNATOR": { return LanguageManager.CurrentLanguage.enemyNames.enemyname_boss_bigJohninator; }
+                case "1000-THR \"EARTHMOVER\"": { return LanguageManager.CurrentLanguage.enemyNames.enemyname_boss_earthmover; }
+                case "1000-THR DEFENSE SYSTEM": { return LanguageManager.CurrentLanguage.enemyNames.enemyname_boss_earthmoverDefence; }
+                case "EARTHMOVER MORTAR": { return LanguageManager.CurrentLanguage.enemyNames.enemyname_earthmoverMortar; }
+                case "EARTHMOVER ROCKET LAUNCHER": { return LanguageManager.CurrentLanguage.enemyNames.enemyname_earthmoverRocketLauncher; }
+                case "EARTHMOVER TOWER": { return LanguageManager.CurrentLanguage.enemyNames.enemyname_earthmoverTower; }
+                default: { return "Untranslated enemy name: " + originalName; }
             }
         }
 
