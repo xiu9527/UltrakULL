@@ -26,18 +26,17 @@ namespace UltrakULL.Harmony_Patches
 			RankData rank = GameProgressSaver.GetRank(num, false);
 			try
 			{
-				//Bandaid fix for P-2 and P-3 for now since they share the same level id as P-1 for some reason. Shall need to change/remove when they release.
-				if (__instance.name.Contains("P-2") || __instance.transform.Find("Name").GetComponent<TextMeshProUGUI>().text.Contains("P-2"))
+            //Bandaid fix for P-2 and P-3 for now since they share the same level id as P-1 for some reason. Shall need to change/remove when they release.
+                                if (__instance.name.Contains("P-2") /*|| __instance.transform.Find("Name").GetComponent<TextMeshProUGUI>().text.Contains("P-2")*/)
 				{
-					__instance.transform.Find("Name").GetComponent<TextMeshProUGUI>().text =
-						"P-2:" + (LanguageManager.CurrentLanguage.levelNames.levelName_primeSecond);
+					__instance.transform.Find("Name").GetComponent<TextMeshProUGUI>().text = "P-2:" + (LanguageManager.CurrentLanguage.levelNames.levelName_primeSecond);
 				}
-				else if (__instance.name.Contains("P-3") || __instance.transform.Find("Name").GetComponent<TextMeshProUGUI>().text.Contains("P-3"))
+				else if (__instance.name.Contains("P-3") /*|| __instance.transform.Find("Name").GetComponent<TextMeshProUGUI>().text.Contains("P-3")*/)
 				{
 					__instance.transform.Find("Name").GetComponent<TextMeshProUGUI>().text = "P-3: ???";
 				}
-				//All of the Encore levels share the same level id
-				if (__instance.name.Contains("0-E") || __instance.transform.Find("Name").GetComponent<TextMeshProUGUI>().text.Contains("0-E"))
+                //All of the Encore levels share the same level id
+                else if (__instance.name.Contains("0-E") || __instance.transform.Find("Name").GetComponent<TextMeshProUGUI>().text.Contains("0-E"))
                 {
                     __instance.transform.Find("Name").GetComponent<TextMeshProUGUI>().text =
                         "0-E:" + (LanguageManager.CurrentLanguage.levelNames.levelName_encorePrelude);
@@ -47,7 +46,6 @@ namespace UltrakULL.Harmony_Patches
                     __instance.transform.Find("Name").GetComponent<TextMeshProUGUI>().text =
                         "1-E:" + (LanguageManager.CurrentLanguage.levelNames.levelName_encoreLimbo);
                 }
-
                 else
 				{
 					string levelName = LevelNames.GetLevelName(num);
