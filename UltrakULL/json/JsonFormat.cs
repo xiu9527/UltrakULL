@@ -239,6 +239,7 @@ namespace UltrakULL.json
         public string cybergrind_musicFolderNameSecret;
         public string cybergrind_musicFolderNamePrime;
         public string cybergrind_musicFolderNameMisc;
+        public string cybergrind_musicFolderNameEncores;
 
         public string cybergrind_patternsWarning;
         public string cybergrind_patternsTitle;
@@ -1323,6 +1324,7 @@ namespace UltrakULL.json
     {
         public string mainmenu_imageReplacement;
         public string mainmenu_earlyAccess;
+        public string mainmenu_v1Init;
         public string mainmenu_halloween;
         public string mainmenu_easter;
         public string mainmenu_christmas;
@@ -1367,10 +1369,13 @@ namespace UltrakULL.json
         public string difficulty_underConstruction;
 
         public string chapter_title;
+        public string chapter_type_primary;
         public string chapter_prelude;
         public string chapter_act1;
         public string chapter_act2;
         public string chapter_act3;
+        public string chapter_type_secondary;
+        public string chapter_encore;
         public string chapter_prime;
         public string chapter_cyberGrind;
         public string chapter_sandbox;
@@ -1402,6 +1407,12 @@ namespace UltrakULL.json
         public string leaderboard_noEntries;
         public string leaderboard_reminder;
 
+        public string aboutEncoreTitle;
+        public string aboutEncoreMain; 
+        public string aboutEncoreButton;
+        
+        public string encoreAvailableMainText;
+        public string encoreAvailableButton;
     }
 
     public class Book
@@ -2536,6 +2547,7 @@ namespace UltrakULL.json
         public string act3_violenceFourth_countdownTitle;
 
         public string act3_secretNotReady;
+        public string act3_magentaAttacks;
     }
 
     public class Enc

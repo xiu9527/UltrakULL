@@ -22,7 +22,14 @@ namespace UltrakULL
 				TextMeshProUGUI earlyAccessText = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(titleObject, "Text (3)"), "Text"));
 				earlyAccessText.text = LanguageManager.CurrentLanguage.frontend.mainmenu_earlyAccess;
 
-				GameObject holidayObject = GetGameObjectChild(titleObject, "Holiday Greetings"); 
+				//V1 Initialization strings
+				TextMeshProUGUI v1InitText = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(titleObject, "Text (2)"), "Text (1)"));
+				v1InitText.text = LanguageManager.CurrentLanguage.frontend.mainmenu_v1Init;
+                TextMeshProUGUI v1InitBackground = GetTextMeshProUGUI(GetGameObjectChild(titleObject, "Text (2)")); // Yep. Background is a TMP too. 
+                v1InitBackground.text = "<mark=#000000>" + LanguageManager.CurrentLanguage.frontend.mainmenu_v1Init;
+
+
+                GameObject holidayObject = GetGameObjectChild(titleObject, "Holiday Greetings"); 
                 //Halloween
                 TextMeshProUGUI halloweenText = GetTextMeshProUGUI(GetGameObjectChild(holidayObject, "Text (Halloween)"));
 				halloweenText.text = "<color=orange>" + LanguageManager.CurrentLanguage.frontend.mainmenu_halloween + "</color>";
@@ -57,8 +64,82 @@ namespace UltrakULL
 				Logging.Error(e.ToString());
 			}
 		}
-		
-		public static void ChangeTitle(GameObject mainMenu)
+
+        private static void PatchPopUps(GameObject mainMenu)
+        {
+            try
+            {
+                GameObject aboutEncoreObject = GetGameObjectChild(GetGameObjectChild(mainMenu, "EncorePopUp (1)"), "Image");
+
+                //About Encore Title
+                TextMeshProUGUI aboutEncoreTitleText = GetTextMeshProUGUI(GetGameObjectChild(aboutEncoreObject, "Text (TMP) (1)"));
+				if (LanguageManager.CurrentLanguage.frontend.aboutEncoreTitle != "")
+				{
+					aboutEncoreTitleText.text = LanguageManager.CurrentLanguage.frontend.aboutEncoreTitle;
+				}
+				else 
+				{
+                    Logging.Warn("No aboutEncoreTitle text found in the language file. Using default: " + aboutEncoreTitleText.text);
+                }
+                //About Encore Main text
+                TextMeshProUGUI aboutEncoreMainText = GetTextMeshProUGUI(GetGameObjectChild(aboutEncoreObject, "Text (TMP)"));
+				if (LanguageManager.CurrentLanguage.frontend.aboutEncoreMain != "")
+				{
+                    aboutEncoreMainText.text = LanguageManager.CurrentLanguage.frontend.aboutEncoreMain;
+                }
+				else 
+				{ 
+					Logging.Warn("No aboutEncoreMain text found in the language file. Using default: " + aboutEncoreMainText.text); 
+				}
+
+                //About Encore Button //Umm, id dont know, need to translate "Ok" button, but... OK
+                GameObject aboutEncoreButtonTextObject = GetGameObjectChild(GetGameObjectChild(aboutEncoreObject, "General (1)"), "Text");
+				TextMeshProUGUI aboutEncoreButtonText = GetTextMeshProUGUI(aboutEncoreButtonTextObject);
+				if (LanguageManager.CurrentLanguage.frontend.aboutEncoreButton != "")
+				{
+					aboutEncoreButtonText.text = LanguageManager.CurrentLanguage.frontend.aboutEncoreButton;
+				}
+                else
+                {
+                    Logging.Warn("No aboutEncoreButton text found in the language file. Using default: " + aboutEncoreButtonText.text);
+                }
+
+                //Encore available PopUp
+                GameObject encoreAvailableObject = GetGameObjectChild(GetGameObjectChild(mainMenu, "EncorePopUp"), "Image");
+
+                //Encore available Main text
+                TextMeshProUGUI encoreAvailableMainText = GetTextMeshProUGUI(GetGameObjectChild(encoreAvailableObject, "Text (TMP)"));
+                if (LanguageManager.CurrentLanguage.frontend.encoreAvailableMainText != "")
+                {
+                    encoreAvailableMainText.text = LanguageManager.CurrentLanguage.frontend.encoreAvailableMainText;
+                }
+                else
+                {
+                    Logging.Warn("No encoreAvailableMainText text found in the language file. Using default: " + encoreAvailableMainText.text);
+                }
+
+                //Encore available Button //Umm, id dont know, need to translate "Ok" button, but... OK
+                GameObject encoreAvailableButtonTextObject = GetGameObjectChild(GetGameObjectChild(encoreAvailableObject, "General (1)"), "Text");
+                TextMeshProUGUI encoreAvailableButtonText = GetTextMeshProUGUI(encoreAvailableButtonTextObject);
+                if (LanguageManager.CurrentLanguage.frontend.encoreAvailableButton != "")
+                {
+                    encoreAvailableButtonText.text = LanguageManager.CurrentLanguage.frontend.encoreAvailableButton;
+                }
+                else
+                {
+                    Logging.Warn("No encoreAvailableButton text found in the language file. Using default: " + encoreAvailableButtonText.text);
+                }
+
+            }
+            catch (Exception e)
+            {
+                Logging.Error("An error occured while patching PopUp's. Check the console for details.");
+                Logging.Error(e.ToString());
+            }
+        }
+
+
+        public static void ChangeTitle(GameObject mainMenu)
 		{
 			try
             {
@@ -367,7 +448,17 @@ namespace UltrakULL
             TextMeshProUGUI chapterText = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(frontEnd, "Chapter Select"), "Title (1)"));
 			chapterText.text = "--" + LanguageManager.CurrentLanguage.frontend.chapter_title + "--";
 
-			GameObject preludeObject = GetGameObjectChild(chapterObject, "Prelude");
+            //Start patching the Primary and Secondary chapters type titles
+            GameObject primaryObject = GetGameObjectChild(GetGameObjectChild(chapterObject, "Primary"), "Title");
+            TextMeshProUGUI primaryText = GetTextMeshProUGUI(primaryObject);
+            primaryText.text = LanguageManager.CurrentLanguage.frontend.chapter_type_primary;
+
+            GameObject secondaryObject = GetGameObjectChild(GetGameObjectChild(chapterObject, "Secondary"), "Title");
+            TextMeshProUGUI secondaryText = GetTextMeshProUGUI(secondaryObject);
+            secondaryText.text = LanguageManager.CurrentLanguage.frontend.chapter_type_secondary;
+            // End patching the Primary and Secondary chapters type titles
+
+            GameObject preludeObject = GetGameObjectChild(chapterObject, "Prelude");
             TextMeshProUGUI preludeText = GetTextMeshProUGUI(preludeObject.transform.Find("Name").gameObject);
 			preludeText.text = LanguageManager.CurrentLanguage.frontend.chapter_prelude;
 
@@ -383,7 +474,12 @@ namespace UltrakULL
             TextMeshProUGUI act3Text = GetTextMeshProUGUI(act3Object.transform.Find("Name").gameObject);
 			act3Text.text = LanguageManager.CurrentLanguage.frontend.chapter_act3;
 
-			GameObject primeObject = GetGameObjectChild(chapterObject, "Prime");
+			GameObject encoreObject = GetGameObjectChild(chapterObject, "Encore");
+            TextMeshProUGUI encoreText = GetTextMeshProUGUI(encoreObject.transform.Find("Name").gameObject);
+            encoreText.text = LanguageManager.CurrentLanguage.frontend.chapter_encore;
+
+
+            GameObject primeObject = GetGameObjectChild(chapterObject, "Prime");
             TextMeshProUGUI primeText = GetTextMeshProUGUI(primeObject.transform.Find("Name").gameObject);
 			primeText.text = LanguageManager.CurrentLanguage.frontend.chapter_prime;
 
@@ -457,7 +553,7 @@ namespace UltrakULL
             Text fullIntroText = GetTextfromGameObject(fullIntroObject.transform.Find("Text").gameObject);
 			fullIntroText.text = LanguageManager.CurrentLanguage.frontend.level_fullIntroPrompt;
 
-            Text fullIntroYesText = GetTextfromGameObject(GetGameObjectChild(fullIntroObject, "Button (1)").transform.Find("Text").gameObject);
+            UnityEngine.UI.Text fullIntroYesText = GetTextfromGameObject(GetGameObjectChild(fullIntroObject, "Button (1)").transform.Find("Text").gameObject);
 			fullIntroYesText.text = LanguageManager.CurrentLanguage.frontend.level_fullIntroPromptYes;
 
             Text fullIntroNoText = GetTextfromGameObject(GetGameObjectChild(fullIntroObject, "Button").transform.Find("Text").gameObject);
@@ -707,7 +803,8 @@ namespace UltrakULL
 			try
 			{
 				PatchMainMenu(frontEnd);
-				ChangeTitle(frontEnd);
+                PatchPopUps(frontEnd);
+                ChangeTitle(frontEnd);
 				PatchDifficultyMenu(frontEnd);
 				PatchDifficultyDescriptors(frontEnd);
 

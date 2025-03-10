@@ -134,6 +134,7 @@ namespace UltrakULL
 
         public static void PatchMisc(ref GameObject canvasObj)
         {
+            string currentLevel = GetCurrentSceneName();
             GameObject player = GameObject.Find("Player");
             GameObject styleMeter = GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(player, "Main Camera"), "HUD Camera"), "HUD"), "StyleCanvas"), "Panel (1)"), "Panel"), "Text (1)"), "Text");
             TextMeshProUGUI styleMeterMultiplierText = GetTextMeshProUGUI(styleMeter);
@@ -177,6 +178,13 @@ namespace UltrakULL
             TextBinds bookPanelBinds = GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(canvasObj, "ScanningStuff"), "ReadingScanned"), "Panel"), "Text (1)").GetComponent<TextBinds>();
             bookPanelBinds.text1 = LanguageManager.CurrentLanguage.books.books_pressToClose1 + " <color=orange>";
             bookPanelBinds.text2 = "</color> " + LanguageManager.CurrentLanguage.books.books_pressToClose2;
+
+            if (currentLevel.Contains("7-3")) // Feed It Message
+            {
+                GameObject feedItMessage = GetGameObjectChild(canvasObj, "Feed It");
+                feedItMessage.GetComponent<TextMeshProUGUI>().text = "<color=red>" + LanguageManager.CurrentLanguage.act3.act3_violenceThird_feedIt + "</color>";
+                feedItMessage.GetComponent<ScrollingText>().message = "<color=red>" + LanguageManager.CurrentLanguage.act3.act3_violenceThird_feedIt + "</color>";
+            }
 
         }
     }

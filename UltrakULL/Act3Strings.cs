@@ -1,5 +1,6 @@
 ﻿using UltrakULL.json;
 using static UltrakULL.CommonFunctions;
+using static UnityEngine.InputSystem.InputRemoting;
 
 namespace UltrakULL
 {
@@ -44,6 +45,7 @@ namespace UltrakULL
         public static string Level73(string message, string message2)
         {
             string fullMessage = message + message2;
+            //Logging.Warn(fullMessage);
             if (fullMessage.Contains("YOU'RE NOT"))
             {
                 return (LanguageManager.CurrentLanguage.act3.act3_secretNotReady);
@@ -52,12 +54,18 @@ namespace UltrakULL
             {
                 return ("<color=red>" + LanguageManager.CurrentLanguage.act3.act3_violenceThird_feedIt + "</color>");
             }
-            return "Unknown 7-3 string";
+            return fullMessage;
         }
         
-        public static string Level74()
+        public static string Level74(string message, string message2)
         {
-            return "Unknown 7-4 string";
+            string fullMessage = message + message2;
+            //Logging.Warn(fullMessage);
+            if (fullMessage.Contains("MAGENTA"))
+            {
+                return LanguageManager.CurrentLanguage.act3.act3_magentaAttacks;
+            }
+            return fullMessage;
         }
         
         public static string Level7Secret()
@@ -121,7 +129,7 @@ namespace UltrakULL
                     }
                 case "Level 7-4":
                     {
-                        return Level74();
+                        return Level74(message, message2);
                     }
                 case "Level 7-S":
                     {

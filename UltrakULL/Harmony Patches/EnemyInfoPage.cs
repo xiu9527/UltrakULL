@@ -30,9 +30,11 @@ namespace UltrakULL.Harmony_Patches
             }
             else { enemyName = EnemyBios.GetName(source.objectName); }
 
+            Logging.Warn("Enemy Name in SHOP: " + enemyName);
             string enemyType = EnemyBios.GetType(source.type);
             string enemyDescription = EnemyBios.GetDescription(source.objectName);
             string enemyStrategy = EnemyBios.GetStrategy(source.objectName);
+            
 
             ___enemyPageTitle.text = enemyName;
             ___enemyEntryTitle.text = enemyName;

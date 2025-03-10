@@ -127,7 +127,7 @@ namespace UltrakULL
         }
 
         //Tips for each level
-        public static string GetLevelTip()
+        public static string GetLevelTip(string tipDescriptionText)
         {
             string currentLevel = GetCurrentSceneName();
 
@@ -332,8 +332,8 @@ namespace UltrakULL
             {
                 return LanguageManager.CurrentLanguage.levelTips.leveltips_devMuseum;
             }
-
-            return ("Uninplemented level tip");
+            Logging.Warn("The source of the Level tip is not specified in the mod. We returned the value as it was. Level name: " + currentLevel + ". tipDescriptionText= \"" + tipDescriptionText + "\"");
+            return tipDescriptionText;
         }
 
 

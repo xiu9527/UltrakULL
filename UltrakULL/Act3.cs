@@ -100,10 +100,10 @@ namespace UltrakULL
             else if (currentLevel.Contains("7-3"))
             {
                 GameObject secretScreenArea = GetGameObjectChild(GetInactiveRootObject("Outdoors Areas"), "8 - Upper Garden Battlefield");
-                GameObject secretScreen = GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(secretScreenArea, "8 Stuff"), "Destructible Tunnel"), "PuzzleScreen"), "Canvas");
+                GameObject secretScreen = GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(secretScreenArea, "8 Stuff"), "Destructible Tunnel"), "InteractiveScreenWithStand"), "InteractiveScreen"), "Canvas"), "Background");
 
                 TextMeshProUGUI becomeMarked = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(secretScreen, "PreActivation"), "Text (TMP) (1)"));
-                TextMeshProUGUI becomeMarkedButton = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(secretScreen, "PreActivation"), "Button A"), "On"), "Text"));
+                TextMeshProUGUI becomeMarkedButton = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(secretScreen, "PreActivation"), "InteractiveScreenButton"), "Text (TMP)"));
                 //TextMeshProUGUI becomeMarkedButtonClosed = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(secretScreen, "PreActivation"), "Button A"), "Off"), "Text"));
                 TextMeshProUGUI starOfTheShow = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(secretScreen, "PostActivation"), "Text (TMP) (1)"));
 

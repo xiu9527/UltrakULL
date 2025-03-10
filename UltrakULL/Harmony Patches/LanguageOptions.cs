@@ -104,11 +104,10 @@ namespace UltrakULL.Harmony_Patches
 
             if (langBrowserPage.transform.FindChild("Title") == null)
             {
-                langBrowserPage = new GameObject("LanguageBrowserPage", typeof(RectTransform), typeof(CanvasRenderer), typeof(Image));
+                langBrowserPage = new GameObject("LanguageBrowserPage", typeof(RectTransform), typeof(CanvasRenderer));
                 langBrowserPage.transform.SetParent(parent, false);
                 RectTransform pageRect = langBrowserPage.GetComponent<RectTransform>();
-                pageRect.sizeDelta = new Vector2(600, 800);
-                langBrowserPage.GetComponent<Image>().color = new Color(0, 0, 0, 0.8f);
+                pageRect.sizeDelta = new Vector2(600, 800);        
 
                 // Title
                 GameObject titleObject = new GameObject("Title", typeof(TextMeshProUGUI));
@@ -403,40 +402,31 @@ namespace UltrakULL.Harmony_Patches
             Transform optionsParent = __instance.optionsMenu.transform;
             Transform navigationRail = optionsParent.Find("Navigation Rail");
             Transform pagesParent = optionsParent.Find("Pages");
+            Transform generalPage = pagesParent.Find("General");
+            Transform generalScrollRect = generalPage.Find("Scroll Rect");
+            Transform generalContents = generalScrollRect.Find("Contents");
+            RectTransform generalScrollRectTransform = generalScrollRect.GetComponent<RectTransform>();
+            RectTransform generalContentsTransform = generalContents.GetComponent<RectTransform>();
+
 
             Logging.Message("Creating language settings page...");
-            GameObject languagePage = new GameObject("Language Page", typeof(RectTransform), typeof(CanvasRenderer), typeof(Image));
+            GameObject languagePage = new GameObject("Language Page", typeof(RectTransform), typeof(CanvasRenderer));
             languagePage.transform.SetParent(pagesParent, false);
             languagePage.SetActive(false);
             RectTransform pageRect = languagePage.GetComponent<RectTransform>();
             pageRect.sizeDelta = new Vector2(600, 800);
-            languagePage.GetComponent<Image>().color = new Color(0, 0, 0, 0.8f);
             //languagePage.SetActive(false);
 
-            GameObject titleObject = new GameObject("Title", typeof(TextMeshProUGUI));
-            titleObject.transform.SetParent(languagePage.transform, false);
-            TextMeshProUGUI languagePageTitle = titleObject.GetComponent<TextMeshProUGUI>();
-            languagePageTitle.text = "--LANGUAGES--";
-            languagePageTitle.alignment = TextAlignmentOptions.Center;
-            languagePageTitle.fontSize = 24;
-            languagePageTitle.font = Core.GlobalFontTMP;
-
-            RectTransform titleRect = languagePageTitle.rectTransform;
-            titleRect.anchorMin = new Vector2(0.5f, 1);
-            titleRect.anchorMax = new Vector2(0.5f, 1);
-            titleRect.pivot = new Vector2(0.5f, 1);
-            titleRect.anchoredPosition = new Vector2(0, -50);
-            titleRect.sizeDelta = new Vector2(400, 50);
 
             // ScrollView
-            GameObject scrollView = new GameObject("ScrollView", typeof(RectTransform), typeof(ScrollRect), typeof(Image), typeof(Mask));
+            GameObject scrollView = new GameObject("Scroll Rect", typeof(RectTransform), typeof(ScrollRect), typeof(Image), typeof(Mask));
             scrollView.transform.SetParent(languagePage.transform, false);
             RectTransform scrollRect = scrollView.GetComponent<RectTransform>();
-            scrollRect.anchorMin = new Vector2(0.5f, 0.5f);
-            scrollRect.anchorMax = new Vector2(0.5f, 0.5f);
-            scrollRect.pivot = new Vector2(0.5f, 0.5f);
-            scrollRect.anchoredPosition = new Vector2(0, 0);
-            scrollRect.sizeDelta = new Vector2(550, 600);
+            scrollRect.anchorMin = generalScrollRectTransform.anchorMin;
+            scrollRect.anchorMax = generalScrollRectTransform.anchorMax;
+            scrollRect.pivot = generalScrollRectTransform.pivot;
+            scrollRect.anchoredPosition = generalScrollRectTransform.anchoredPosition;
+            scrollRect.sizeDelta = generalScrollRectTransform.sizeDelta;
             scrollView.GetComponent<Image>().color = new Color(0, 0, 0, 0.5f);
             scrollView.GetComponent<Mask>().showMaskGraphic = false;
 
@@ -458,14 +448,14 @@ namespace UltrakULL.Harmony_Patches
             scrollRectComponent.verticalScrollbar = scrollbarComponent;
 
             // Content Container
-            GameObject content = new GameObject("Content", typeof(RectTransform), typeof(VerticalLayoutGroup), typeof(ContentSizeFitter));
+            GameObject content = new GameObject("Contents", typeof(RectTransform), typeof(VerticalLayoutGroup), typeof(ContentSizeFitter));
             content.transform.SetParent(scrollView.transform, false);
             RectTransform contentRect = content.GetComponent<RectTransform>();
-            contentRect.anchorMin = new Vector2(0, 1);
-            contentRect.anchorMax = new Vector2(1, 1);
-            contentRect.pivot = new Vector2(0.5f, 1);
-            contentRect.anchoredPosition = Vector2.zero;
-            contentRect.sizeDelta = new Vector2(0, 0);
+            contentRect.anchorMin = generalContentsTransform.anchorMin;
+            contentRect.anchorMax = generalContentsTransform.anchorMax;
+            contentRect.pivot = generalContentsTransform.pivot;
+            contentRect.anchoredPosition = generalContentsTransform.anchoredPosition;
+            contentRect.sizeDelta = generalContentsTransform.sizeDelta;
 
             VerticalLayoutGroup vGroup = content.GetComponent<VerticalLayoutGroup>();
             vGroup.spacing = 10;
@@ -481,6 +471,20 @@ namespace UltrakULL.Harmony_Patches
 
             scrollView.GetComponent<ScrollRect>().content = contentRect;
 
+            GameObject titleObject = new GameObject("Title", typeof(TextMeshProUGUI));
+            titleObject.transform.SetParent(content.transform, false);
+            TextMeshProUGUI languagePageTitle = titleObject.GetComponent<TextMeshProUGUI>();
+            languagePageTitle.text = "--" + LanguageManager.CurrentLanguage.options.language_languages + "--";
+            languagePageTitle.alignment = TextAlignmentOptions.Center;
+            languagePageTitle.fontSize = 24;
+            languagePageTitle.font = Core.GlobalFontTMP;
+
+            RectTransform titleRect = languagePageTitle.rectTransform;
+            titleRect.anchorMin = new Vector2(0.5f, 1);
+            titleRect.anchorMax = new Vector2(0.5f, 1);
+            titleRect.pivot = new Vector2(0.5f, 1);
+            titleRect.anchoredPosition = new Vector2(0, -50);
+            titleRect.sizeDelta = new Vector2(400, 50);
             //VerticalLayoutGroup layoutGroup = languagePage.AddComponent<VerticalLayoutGroup>();
             //layoutGroup.spacing = 10f;
             //layoutGroup.childAlignment = TextAnchor.UpperCenter;
@@ -508,7 +512,7 @@ namespace UltrakULL.Harmony_Patches
             Button languageButtonComp = languageButton.GetComponent<Button>();
             languageButtonComp.onClick = new Button.ButtonClickedEvent();
             languageButtonComp.onClick.AddListener(() => ShowLanguagePage());
-            languageButton.GetComponentInChildren<TextMeshProUGUI>().text = "Language";
+            languageButton.GetComponentInChildren<TextMeshProUGUI>().text = LanguageManager.CurrentLanguage.options.language_title;
 
             Logging.Message("Adding language selection buttons...");
             foreach (string language in LanguageManager.allLanguages.Keys)
@@ -519,10 +523,18 @@ namespace UltrakULL.Harmony_Patches
                 Button langButtonComp = langButton.GetComponent<Button>();
                 langButtonComp.onClick = new Button.ButtonClickedEvent();
                 langButtonComp.onClick.AddListener(() => SelectLanguage(language));
-
+                langButtonComp.colors = new ColorBlock()
+                {
+                    normalColor = new Color32(255, 255, 255, 255),
+                    highlightedColor = new Color32(255, 0, 0, 255),
+                    pressedColor = new Color32(255, 255, 0, 255),
+                    disabledColor = new Color32(255, 255, 0, 255),
+                    colorMultiplier = 1f,
+                    fadeDuration = 0.1f
+                };
                 TextMeshProUGUI textComponent = langButton.GetComponentInChildren<TextMeshProUGUI>();
                 
-                textComponent.text = language;
+                textComponent.text = LanguageManager.allLanguages[language].metadata.langDisplayName;
                 textComponent.alignment = TextAlignmentOptions.Center;
                 textComponent.enableAutoSizing = true;
                 textComponent.fontSizeMin = 10f;
@@ -543,7 +555,7 @@ namespace UltrakULL.Harmony_Patches
 
             TextMeshProUGUI openLangFolderTextComponent = openLangFolder.GetComponentInChildren<TextMeshProUGUI>();
 
-            openLangFolderTextComponent.text = "<color=#03fc07>Open language folder</color>"; ;
+            openLangFolderTextComponent.text = "<color=#03fc07>" + LanguageManager.CurrentLanguage.options.language_openLanguageFolder + "</color>"; ;
             openLangFolderTextComponent.alignment = TextAlignmentOptions.Center;
             openLangFolderTextComponent.enableAutoSizing = true;
             openLangFolderTextComponent.fontSizeMin = 10f;

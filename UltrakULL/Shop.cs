@@ -24,8 +24,8 @@ namespace UltrakULL
                 TextMeshProUGUI tipDescription = GetTextMeshProUGUI((GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(tipPanel, "Panel"), "Text Inset"), "TipText")));
                 string tipDescriptionText = tipDescription.text;
                 //V-Rank Check, do nothing if "V-Rank" is in them, otherwise replace by the correct text
-                if (tipDescriptionText.Contains("V-Rank")) { }
-                else { tipDescription.text = StringsParent.GetLevelTip(); }
+                if (tipDescriptionText.Contains("V-Rank")) { tipDescription.text = tipDescriptionText; }
+                else { tipDescription.text = StringsParent.GetLevelTip(tipDescriptionText); }
 
                 //--MENU--
                 // removed and replaced with SmileOS 2.0 in patch 16

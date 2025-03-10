@@ -24,21 +24,10 @@ namespace UltrakULL
             }
             switch (originalName.ToUpper())
             {
-                case "SWORDSMACHINE":
-                    {
-                        if (GetCurrentSceneName() == "Level 1-3")
-                        {
-                            if (doubleBoss == false)
-                            {
-                                doubleBoss = true;
-                                return LanguageManager.CurrentLanguage.enemyNames.enemyname_boss_swordsmachineAgony; ;
-                            }
-                            doubleBoss = false;
-                            return LanguageManager.CurrentLanguage.enemyNames.enemyname_boss_swordsmachineTundra;
-                        }
-                        return LanguageManager.CurrentLanguage.enemyNames.enemyname_swordsmachine;
-                    }
+                case "SWORDSMACHINE": { return LanguageManager.CurrentLanguage.enemyNames.enemyname_swordsmachine; }
                 case "SWORDSMACHINE DEFAULT": { return LanguageManager.CurrentLanguage.enemyNames.enemyname_swordsmachine; }
+                case "SWORDSMACHINE \"AGONY\"": { return LanguageManager.CurrentLanguage.enemyNames.enemyname_boss_swordsmachineAgony; }
+                case "SWORDSMACHINE \"TUNDRA\"": { return LanguageManager.CurrentLanguage.enemyNames.enemyname_boss_swordsmachineTundra; }
 
                 case "INSURRECTIONIST":
                 case "SISYPHEAN INSURRECTIONIST":
@@ -101,7 +90,11 @@ namespace UltrakULL
                 case "EARTHMOVER MORTAR": { return LanguageManager.CurrentLanguage.enemyNames.enemyname_earthmoverMortar; }
                 case "EARTHMOVER ROCKET LAUNCHER": { return LanguageManager.CurrentLanguage.enemyNames.enemyname_earthmoverRocketLauncher; }
                 case "EARTHMOVER TOWER": { return LanguageManager.CurrentLanguage.enemyNames.enemyname_earthmoverTower; }
-                default: { return "Untranslated enemy name: " + originalName; }
+                default: 
+                    { 
+                    Logging.Warn("Untranslated enemy name: " + originalName); 
+                    return "Untranslated enemy name: " + originalName; 
+                    }
             }
         }
 

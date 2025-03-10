@@ -94,7 +94,7 @@ namespace UltrakULL
                 GameObject calibrationAudioWindow = GetGameObjectChild(calibrationIntro, "Audio Calibration");
                 GameObject calibrationAudioWindowWarning = GetGameObjectChild(calibrationAudioWindow, "Warning");
                 GameObject calibrationVideoWindow = GetGameObjectChild(calibrationIntro, "Video Calibration");
-                GameObject calibrationMechanicsWindow = GetGameObjectChild(calibrationIntro, "Difficulty Select");
+                GameObject calibrationMechanicsWindow = GetGameObjectChild(GetGameObjectChild(calibrationIntro, "Difficulty Select"), "Interactables");
                 GameObject calibrationControllerWindow = GetGameObjectChild(calibrationIntro, "Auto-Aim Settings");
 
                 TextMeshProUGUI nofade = GetTextMeshProUGUI(GetGameObjectChild(calibrationIntro, "Page 2 NoFade"));

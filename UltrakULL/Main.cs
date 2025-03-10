@@ -58,9 +58,9 @@ namespace UltrakULL
 	{
 		private const string Guid = "clearwater.ultrakill.ultrakull";
 		private const string InternalName = "clearwater.ultrakull.ultrakULL";
-		private const string InternalVersion = "1.3.0";
+		private const string InternalVersion = "1.3.1"; //Why was the mod version still 1.3.0?
 
-		public static MainPatch Instance;
+        public static MainPatch Instance;
 		public bool ready;
 
 		public static string ModFolder => Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
