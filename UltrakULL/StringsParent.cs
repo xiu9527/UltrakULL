@@ -45,11 +45,69 @@ namespace UltrakULL
             }
             else if (level.Contains("CreditsMuseum2"))
             {
-                return DevMuseum.GetMessage(message,message2,input);
+                return DevMuseum.GetMessage(message, message2, input);
+            }
+
+            else if (message.Contains("V-Rank"))
+            {
+                return message;
+            }
+
+            else if (message.Contains("PUNCH"))
+            {
+                return "<color=red>" + LanguageManager.CurrentLanguage.misc.hud_noArm1 + "</color>\n"
+                    + LanguageManager.CurrentLanguage.misc.hud_noArm2;
+            }
+            else if (message.Contains("MAJOR"))
+            {
+                return "<color=#4C99E6>" + LanguageManager.CurrentLanguage.misc.hud_majorAssists + "</color>";
+            }
+            else if (message.Contains("200"))
+            {
+                return LanguageManager.CurrentLanguage.misc.hud_overhealOrb1 + "\n"
+                    + LanguageManager.CurrentLanguage.misc.hud_overhealOrb2;
+            }
+            else if (message.Contains("ERROR"))
+            {
+                return "<color=red>" + LanguageManager.CurrentLanguage.misc.hud_itemGrabError + "</color>";
+            }
+            else if (message.Contains("TAB"))
+            {
+                return LanguageManager.CurrentLanguage.misc.hud_levelStats1 + "\n"
+                    + LanguageManager.CurrentLanguage.misc.hud_levelStats2;
+            }
+            else if (message.Contains("Whoops"))
+            {
+                return LanguageManager.CurrentLanguage.misc.hud_outOfBounds;
+            }
+            else if (message.Contains("CLASH"))
+            {
+                return LanguageManager.CurrentLanguage.misc.hud_clashMode;
+            }
+            else if (message.Contains("DRONE HAUNTING"))
+            {
+                return LanguageManager.CurrentLanguage.misc.hud_droneHaunting;
+            }
+            else if (message.Contains("EQUIPPED"))
+            {
+                return LanguageManager.CurrentLanguage.misc.hud_weaponVariation;
+            }
+            else if (message.Contains("Altered"))
+            {
+                return "<color=red>" + LanguageManager.CurrentLanguage.misc.enemyAlter_alteredDestroyed + "</color>";
+            }
+            else if (message.Contains("INSUFFICIENT LIGHT"))
+            {
+                return LanguageManager.CurrentLanguage.primeSanctum.primeSanctum_first_insufficientlight;
+            }
+            else if (message.Contains("=>")) //4-S transaction complete
+            {
+                return message; //4-S transaction complete
             }
             else
             {
-                return "Unimplemented unknown string";
+                Logging.Warn("Unimplemented unknown string:" + message);
+                return message;
             }
         }
 

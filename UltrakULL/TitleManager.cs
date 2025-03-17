@@ -184,6 +184,10 @@ namespace UltrakULL
             {
                 titleToReturn.Append(LanguageManager.CurrentLanguage.misc.hellmap_climax);
             }
+            else if (inputTitle.Contains("ENCORE"))
+            {
+                titleToReturn.Append(LanguageManager.CurrentLanguage.frontend.chapter_encore);
+            }
             return titleToReturn.ToString();
         }
     }

@@ -65,6 +65,7 @@ namespace UltrakULL
                 case "ultrakill.insurrknockdown": { return "<color=green>" + LanguageManager.CurrentLanguage.style.style_insurrknockdown + "</color>"; }
                 case "ultrakill.interruption": { return "<color=green>" + LanguageManager.CurrentLanguage.style.style_interruption + "</color>"; }
                 case "ultrakill.kill": { return LanguageManager.CurrentLanguage.style.style_kill; }
+                case "ultrakill.landyours": { return LanguageManager.CurrentLanguage.style.style_landyours; }
                 case "ultrakill.lightningbolt": { return "<color=green>" + LanguageManager.CurrentLanguage.style.style_lightningbolt + "</color>"; }
                 case "ultrakill.limbhit": { return LanguageManager.CurrentLanguage.style.style_limbshot; }
                 case "ultrakill.mauriced": { return LanguageManager.CurrentLanguage.style.style_mauriced; }
@@ -108,6 +109,7 @@ namespace UltrakULL
                     case "FRIED": { return LanguageManager.CurrentLanguage.style.style_fried; }
                     case "GROOVY": { return LanguageManager.CurrentLanguage.style.style_groovy; }
                     case "GUARD BREAK": { return "<color=green>" + LanguageManager.CurrentLanguage.style.style_guardbreak + "</color>"; }
+                    case "HEAVY LIGHT": { return LanguageManager.CurrentLanguage.style.style_heavylight; }
                     case "MINCED": { return LanguageManager.CurrentLanguage.style.style_minced; }
                     case "NO-NO": { return LanguageManager.CurrentLanguage.style.style_nono; }
                     case "OUT OF BOUNDS": { return LanguageManager.CurrentLanguage.style.style_outofbounds; }
@@ -121,6 +123,8 @@ namespace UltrakULL
                     case "TRAMPLED": { return LanguageManager.CurrentLanguage.style.style_trampled; }
                     case "UNCHAINEDSAW": { return LanguageManager.CurrentLanguage.style.style_unchainedsaw; }
                     //Level-specific styles
+                    //2-1
+                    case "OSHA VIOLATION": { return LanguageManager.CurrentLanguage.style.style_oshaviolation; }
                     //5-4
                     case "why are you even spawning enemies here": { return LanguageManager.CurrentLanguage.style.style_why; }
                     //7-2

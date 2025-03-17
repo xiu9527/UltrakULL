@@ -16,8 +16,11 @@ namespace UltrakULL.Harmony_Patches
         {
             if(!isUsingEnglish())
             {
-                ___txt2.text = "<color=red>" + LanguageManager.CurrentLanguage.shop.shop_cybergrindReturningTo +
-                               "</color>:\n" + LevelNames.GetLevelName(__instance.otherLevelNumber);
+                if (!GetCurrentSceneName().Contains("-E"))
+                {
+                    ___txt2.text = "<color=red>" + LanguageManager.CurrentLanguage.shop.shop_cybergrindReturningTo +
+                                   "</color>:\n" + LevelNames.GetLevelName(__instance.otherLevelNumber);
+                }
 
             }
         }

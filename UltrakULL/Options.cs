@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 using UltrakULL.json;
 using static UltrakULL.CommonFunctions;
+using UltrakULL.Harmony_Patches;
 
 namespace UltrakULL
 {
@@ -498,7 +499,6 @@ namespace UltrakULL
         static public void PatchSavesOptions(GameObject optionMenu)
         {
             //Save options
-            Logging.Info(optionMenu.name);
             GameObject saveReloadPanel = GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(optionMenu, "Reload Consent Blocker"), "Consent"), "Panel");
             
             TextMeshProUGUI saveReloadText = GetTextMeshProUGUI(GetGameObjectChild(saveReloadPanel, "Text"));
@@ -559,6 +559,12 @@ namespace UltrakULL
             GameObject iconsObject = GetGameObjectChild(hudContent, "Cheat & Sandbox Icons");
             TextMeshProUGUI iconsText = GetTextMeshProUGUI(GetGameObjectChild(iconsObject, "Text"));
             iconsText.text = LanguageManager.CurrentLanguage.options.hud_icons;
+
+            TMP_Dropdown iconsDropdown = iconsObject.GetComponentInChildren<TMP_Dropdown>();
+            List<TMP_Dropdown.OptionData> iconsDropdownListText = iconsDropdown.options;
+
+            iconsDropdownListText[0].text = LanguageManager.CurrentLanguage.sandbox.sandbox_shop_default;
+            iconsDropdownListText[1].text = LanguageManager.CurrentLanguage.sandbox.sandbox_shop_pitr;
 
             TextMeshProUGUI hudElements = GetTextMeshProUGUI(GetGameObjectChild(hudContent.transform.GetChild(5).gameObject, "Text"));
             hudElements.text = "--" + LanguageManager.CurrentLanguage.options.hud_hudElements + "--";
@@ -810,7 +816,6 @@ namespace UltrakULL
         
         private void PatchAdvancedOptions(GameObject optionMenu)
         {
-            Console.WriteLine(optionMenu.name);
             GameObject advancedOptions = optionMenu;
 
             TextMeshProUGUI advancedOptionsTitle = GetTextMeshProUGUI(GetGameObjectChild(advancedOptions, "Title"));

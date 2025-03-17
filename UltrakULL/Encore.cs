@@ -12,6 +12,8 @@ namespace UltrakULL
         public static void PatchEncore(ref GameObject canvasObj)
         {
             string currentLevel = GetCurrentSceneName();
+            string levelName = GetLevelName();
+            PatchResultsScreen(levelName, "");
             if (currentLevel.Contains("0-E"))
             {
                 try
@@ -44,6 +46,27 @@ namespace UltrakULL
 
                 }
             }
+        }
+        private static string GetLevelName()
+        {
+            string currentLevel = GetCurrentSceneName();
+
+            switch (currentLevel)
+            {
+                case "Level 0-E": { return "0-E - " + LanguageManager.CurrentLanguage.levelNames.levelName_encorePrelude; }
+                case "Level 1-E": { return "1-E - " + LanguageManager.CurrentLanguage.levelNames.levelName_encoreLimbo; }
+                case "Level 2-E": { return "2-E - " + LanguageManager.CurrentLanguage.levelNames.levelName_encoreLust; }
+                case "Level 3-E": { return "3-E - " + LanguageManager.CurrentLanguage.levelNames.levelName_encoreGluttony; }
+                case "Level 4-E": { return "4-E - " + LanguageManager.CurrentLanguage.levelNames.levelName_encoreGreed; }
+                case "Level 5-E": { return "5-E - " + LanguageManager.CurrentLanguage.levelNames.levelName_encoreWrath; }
+                case "Level 6-E": { return "6-E - " + LanguageManager.CurrentLanguage.levelNames.levelName_encoreHeresy; }
+                case "Level 7-E": { return "7-E - " + LanguageManager.CurrentLanguage.levelNames.levelName_encoreViolence; }
+                case "Level 8-E": { return "8-E - " + LanguageManager.CurrentLanguage.levelNames.levelName_encoreFraud; }
+                case "Level 9-E": { return "9-E - " + LanguageManager.CurrentLanguage.levelNames.levelName_encoreTreachery; }
+
+                default: { return "Unknown level name"; }
+            }
+
         }
     }
 }

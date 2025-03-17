@@ -39,23 +39,23 @@ namespace UltrakULL
 
                 //Panel that controls the 4 gates in the inside section
                 //Clone is not exists until when player goes further on the level
-                GameObject fourGatesControl = GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(GetInactiveRootObject("Other Interiors"), "9 - Tram Station"), "9 Stuff"), "9A"), "PuzzleScreen"), "Canvas");
+                GameObject fourGatesControl = GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(GetInactiveRootObject("Other Interiors"), "9 - Tram Station"), "9 Stuff"), "9A"), "InteractiveScreenWithStand"), "InteractiveScreen"), "Canvas"), "Background");
 
-                TextMeshProUGUI gatesControlTitle = GetTextMeshProUGUI(GetGameObjectChild(fourGatesControl, "Text (TMP) (1)"));
+                //TextMeshProUGUI gatesControlTitle = GetTextMeshProUGUI(GetGameObjectChild(fourGatesControl, "Text (TMP) (1)"));
                 //First Button
-                TextMeshProUGUI gatesControlButtonOpen1 = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(fourGatesControl, "Button A"), "On"), "Text"));
-                TextMeshProUGUI gatesControlButtonClosed1 = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(fourGatesControl, "Button A"), "Off"), "Text"));
+                TextMeshProUGUI gatesControlButtonOpen1 = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(fourGatesControl, "A"), "Opened"), "Text (TMP)"));
+                TextMeshProUGUI gatesControlButtonClosed1 = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(fourGatesControl, "A"), "Closed"), "Text (TMP)"));
                 //Second Button
-                TextMeshProUGUI gatesControlButtonOpen2 = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(fourGatesControl, "Button B"), "On"), "Text"));
-                TextMeshProUGUI gatesControlButtonClosed2 = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(fourGatesControl, "Button B"), "Off"), "Text"));
+                TextMeshProUGUI gatesControlButtonOpen2 = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(fourGatesControl, "B"), "Opened"), "Text (TMP)"));
+                TextMeshProUGUI gatesControlButtonClosed2 = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(fourGatesControl, "B"), "Closed"), "Text (TMP)"));
                 //Third Button
-                TextMeshProUGUI gatesControlButtonOpen3 = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(fourGatesControl, "Button C"), "On"), "Text"));
-                TextMeshProUGUI gatesControlButtonClosed3 = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(fourGatesControl, "Button C"), "Off"), "Text"));
+                TextMeshProUGUI gatesControlButtonOpen3 = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(fourGatesControl, "C"), "Opened"), "Text (TMP)"));
+                TextMeshProUGUI gatesControlButtonClosed3 = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(fourGatesControl, "C"), "Closed"), "Text (TMP)"));
                 //Fourth Button
-                TextMeshProUGUI gatesControlButtonOpen4 = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(fourGatesControl, "Button D"), "On"), "Text"));
-                TextMeshProUGUI gatesControlButtonClosed4 = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(fourGatesControl, "Button D"), "Off"), "Text"));
+                TextMeshProUGUI gatesControlButtonOpen4 = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(fourGatesControl, "D"), "Opened"), "Text (TMP)"));
+                TextMeshProUGUI gatesControlButtonClosed4 = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(fourGatesControl, "D"), "Closed"), "Text (TMP)"));
 
-                gatesControlTitle.text = LanguageManager.CurrentLanguage.act3.act3_violenceSecond_gateControlTitle;
+                //gatesControlTitle.text = LanguageManager.CurrentLanguage.act3.act3_violenceSecond_gateControlTitle;
 
                 gatesControlButtonOpen1.text = LanguageManager.CurrentLanguage.act3.act3_violenceSecond_gateControlOpen;
                 gatesControlButtonClosed1.text = LanguageManager.CurrentLanguage.act3.act3_violenceSecond_gateControlClosed;
@@ -68,8 +68,8 @@ namespace UltrakULL
 
 
                 //That one panel to lift the cart blocker
-                GameObject cartGateControl = GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(GetInactiveRootObject("Outdoors"), "10 - Ambush Station"), "10 Nonstuff"), "UsableScreen"), "PuzzleScreen (1)"), "Canvas");
-                TextMeshProUGUI cartGateControlTitle = GetTextMeshProUGUI(GetGameObjectChild(cartGateControl, "Text (TMP)"));
+                GameObject cartGateControl = GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(GetInactiveRootObject("Outdoors"), "10 - Ambush Station"), "10 Nonstuff"), "InteractiveScreenWithStand"), "InteractiveScreen"), "Canvas"),"Background");
+                TextMeshProUGUI cartGateControlTitle = GetTextMeshProUGUI(GetGameObjectChild(cartGateControl, "Text (TMP) (1)"));
                 TextMeshProUGUI cartGateControlOpen = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(cartGateControl, "Button (Open)"), "Text (TMP)"));
                 TextMeshProUGUI cartGateControlClosed = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(cartGateControl, "Button (Closed)"), "Text (TMP)"));
 
@@ -79,18 +79,24 @@ namespace UltrakULL
 
 
                 //Payload panel (fuckin' finland container)
-                GameObject payloadControl = GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(GetInactiveRootObject("Outdoors"), "11 - Bomb Station"), "11 Nonstuff"), "Bomb Mechanisms"), "UsableScreen (1)"), "PuzzleScreen (1)"), "Canvas");
+                GameObject payloadControl = GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(GetInactiveRootObject("Outdoors"), "11 - Bomb Station"), "11 Nonstuff"), "Bomb Mechanisms"), "InteractiveScreenWithStand"), "InteractiveScreen"), "Canvas");
                 TextMeshProUGUI payloadControlTitle = GetTextMeshProUGUI(GetGameObjectChild(payloadControl, "Text (TMP)"));
-                TextMeshProUGUI payloadControlLower = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(payloadControl, "UsableButtons"), "Button (Closed)"), "Text (TMP)"));
-                TextMeshProUGUI payloadControlWait = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(payloadControl, "UsableButtons"), "Button (Open)"), "Text (TMP)"));
+                GameObject UsableButtons = GetGameObjectChild(payloadControl, "UsableButtons");
+                TextMeshProUGUI[] payloadControlLower = UsableButtons.GetComponentsInChildren<TextMeshProUGUI>(true);
                 TextMeshProUGUI payloadControlError = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(payloadControl, "UsableButtons"), "Error"));
                 //became unused in patch 15
                 //TextMeshProUGUI payloadControlEmpty = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(payloadControl, "Button (Done)"), "Text (TMP)"));
                 TextMeshProUGUI payloadControlGiveEmHell = GetTextMeshProUGUI(GetGameObjectChild(payloadControl, "Done"));
 
                 payloadControlTitle.text = LanguageManager.CurrentLanguage.act3.act3_violenceSecond_payloadControlTitle;
-                payloadControlLower.text = LanguageManager.CurrentLanguage.act3.act3_violenceSecond_payloadControlLower;
-                payloadControlWait.text = LanguageManager.CurrentLanguage.act3.act3_violenceSecond_payloadControlWait;
+                foreach(TextMeshProUGUI child in payloadControlLower)
+                {
+                    if (child.text.Contains("LOWER"))
+                    {
+                        child.text = LanguageManager.CurrentLanguage.act3.act3_violenceSecond_payloadControlLower;
+                    }
+                }
+                //payloadControlWait.text = LanguageManager.CurrentLanguage.act3.act3_violenceSecond_payloadControlWait;
                 payloadControlError.text = LanguageManager.CurrentLanguage.act3.act3_violenceSecond_payloadControlError1 + "<size=12>\n" + LanguageManager.CurrentLanguage.act3.act3_violenceSecond_payloadControlError2;
                 //payloadControlEmpty.text = LanguageManager.CurrentLanguage.act3.act3_violenceSecond_payloadControlEmpty;
                 payloadControlGiveEmHell.text = LanguageManager.CurrentLanguage.act3.act3_violenceSecond_payloadControlHell;

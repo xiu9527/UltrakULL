@@ -3,27 +3,31 @@ using System;
 using static UltrakULL.CommonFunctions;
 using SettingsMenu.Components;
 using UnityEngine;
+using TMPro;
+using UltrakULL.json;
 
 namespace UltrakULL.Harmony_Patches
 {
 
-    [HarmonyPatch(typeof(SettingsMenu.Components.SettingsMenu))]
-    public static class HUDOptionsPatch
+    [HarmonyPatch(typeof(PauseMenu))]
+    public static class PauseMenuPatch
     {
-        /*[HarmonyPatch("Start"), HarmonyPostfix]
-        public static void HUDOptionsStartPostfix(TMP_Dropdown ___iconPackDropdown)
+        [HarmonyPatch("OnEnable"), HarmonyPostfix]
+        public static void PauseMenuOnEnablePostfix(TMP_Text ___checkpointText)
         {
-            List<TMP_Dropdown.OptionData> iconsDropdownListText = ___iconPackDropdown.options;
             try
             {
-                iconsDropdownListText[0].text = LanguageManager.CurrentLanguage.sandbox.sandbox_shop_default;
-                iconsDropdownListText[1].text = LanguageManager.CurrentLanguage.sandbox.sandbox_shop_pitr;
+                if (___checkpointText.text.Contains("SKIP"))
+                {
+                    ___checkpointText.text = LanguageManager.CurrentLanguage.pauseMenu.pause_skip;
+                }
             }
             catch (Exception e)
-            { Logging.Warn("Failed to patch icons text in HUD options.");
+            { 
+                Logging.Warn("Failed to patch SKIP button in pause menu");
                 Logging.Warn(e.ToString());
             }
-        }*/
+        }
     }
     [HarmonyPatch(typeof(SettingsMenu.Components.SettingsPageBuilder))]
     public static class OptionsPatch

@@ -3,7 +3,18 @@
 ADDED:
 New category: encore
 
-frontend: layer_encore
+frontend: mainmenu_v1Init
+frontend: chapter_type_primary
+frontend: chapter_type_secondary
+frontend: chapter_encore
+frontend: aboutEncoreTitle
+frontend: aboutEncoreMain
+frontend: aboutEncoreButton
+frontend: encoreAvailableMainText
+frontend: encoreAvailableButton
+shop: shop_equipped
+shop: shop_unequipped
+shop: shop_colorsStandard
 act3: act3_violenceSecond_guttermanTutorialNoKB
 act3: act3_violenceFourth_magentaAttack
 encore: encorePrelude_heatResistanceWarn
@@ -11,6 +22,7 @@ encore: encorePrelude_heatResistanceText
 encore: encorePrelude_heatResistanceTitle
 encore: encorePrelude_heatResistanceRepaired
 encore: encorePrelude_heatResistanceRepairedText
+primeSanctum: primeSanctum_first_insufficientlight
 levelNames: levelName_encorePrelude
 levelNames: levelName_encoreLimbo
 levelNames: levelName_encoreLust
@@ -22,7 +34,18 @@ levelNames: levelName_encoreViolence
 levelNames: levelName_encoreFraud
 levelNames: levelName_encoreTreachery
 style: style_lightningbolt
+style: style_heavylight
+style: style_oshaviolation
+cyberGrind: cybergrind_themesCustomFog
+cyberGrind: cybergrind_themesCustomFogColor
+cyberGrind: cybergrind_themesCustomFogDynamicDesc
+cyberGrind: cybergrind_themesCustomFogStart
+cyberGrind: cybergrind_themesCustomFogEnd
+cyberGrind: cybergrind_themesCustomFogDynamicEnable
+cyberGrind: cybergrind_themesCustomFogDynamicDisable
+cyberGrind: cybergrind_themesCustomFogDefault
 cyberGrind: cybergrind_musicType
+cyberGrind: cybergrind_musicFolderNameEncores
 tutorial: tutorial_introStatusUpdate
 options: controls_boundMultiple
 misc: DeathSequence

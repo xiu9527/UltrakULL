@@ -46,6 +46,46 @@ namespace UltrakULL.Harmony_Patches
                     __instance.transform.Find("Name").GetComponent<TextMeshProUGUI>().text =
                         "1-E:" + (LanguageManager.CurrentLanguage.levelNames.levelName_encoreLimbo);
                 }
+                else if (__instance.name.Contains("2-E") || __instance.transform.Find("Name").GetComponent<TextMeshProUGUI>().text.Contains("2-E"))
+                {
+                    __instance.transform.Find("Name").GetComponent<TextMeshProUGUI>().text =
+                        "2-E: ???";
+                }
+                else if (__instance.name.Contains("3-E") || __instance.transform.Find("Name").GetComponent<TextMeshProUGUI>().text.Contains("3-E"))
+                {
+                    __instance.transform.Find("Name").GetComponent<TextMeshProUGUI>().text =
+                        "3-E: ???";
+                }
+                else if (__instance.name.Contains("4-E") || __instance.transform.Find("Name").GetComponent<TextMeshProUGUI>().text.Contains("4-E"))
+                {
+                    __instance.transform.Find("Name").GetComponent<TextMeshProUGUI>().text =
+                        "4-E: ???";
+                }
+                else if (__instance.name.Contains("5-E") || __instance.transform.Find("Name").GetComponent<TextMeshProUGUI>().text.Contains("5-E"))
+                {
+                    __instance.transform.Find("Name").GetComponent<TextMeshProUGUI>().text =
+                        "5-E: ???";
+                }
+                else if (__instance.name.Contains("6-E") || __instance.transform.Find("Name").GetComponent<TextMeshProUGUI>().text.Contains("6-E"))
+                {
+                    __instance.transform.Find("Name").GetComponent<TextMeshProUGUI>().text =
+                        "6-E: ???";
+                }
+                else if (__instance.name.Contains("7-E") || __instance.transform.Find("Name").GetComponent<TextMeshProUGUI>().text.Contains("7-E"))
+                {
+                    __instance.transform.Find("Name").GetComponent<TextMeshProUGUI>().text =
+                        "7-E: ???";
+                }
+                else if (__instance.name.Contains("8-E") || __instance.transform.Find("Name").GetComponent<TextMeshProUGUI>().text.Contains("8-E"))
+                {
+                    __instance.transform.Find("Name").GetComponent<TextMeshProUGUI>().text =
+                        "8-E: ???";
+                }
+                else if (__instance.name.Contains("9-E") || __instance.transform.Find("Name").GetComponent<TextMeshProUGUI>().text.Contains("9-E"))
+                {
+                    __instance.transform.Find("Name").GetComponent<TextMeshProUGUI>().text =
+                        "9-E: ???";
+                }
                 else
 				{
 					string levelName = LevelNames.GetLevelName(num);

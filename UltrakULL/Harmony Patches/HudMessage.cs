@@ -24,25 +24,6 @@ namespace UltrakULL.Harmony_Patches
         }
     }
 
-    /*[HarmonyPatch(typeof(HudMessage), "Update")]
-    public static class HudMessageUpdatePatch
-    {
-        [HarmonyPrefix]
-        public static bool Update_MyPatch(HudMessage __instance, Image ___img, Text ___text)
-        {
-            if(isUsingEnglish())
-            {
-                return false;
-            }
-            
-            if(___img != null && ___text != null)
-            {
-                return true;
-            }
-            return false;
-        }
-    }*/
-
     [HarmonyPatch(typeof(HudMessageReceiver),"SendHudMessage")]
     public static class SendHudMessagePatch
     {
@@ -63,44 +44,6 @@ namespace UltrakULL.Harmony_Patches
                 }
             }
             return true;
-        }
-    }
-
-    //@Override
-    //Overrides the PlayMessage method from the HudMessage class. This is needed for swapping text in message boxes.
-    [HarmonyPatch(typeof(HudMessage), "PlayMessage")]
-    public static class LocalizeHudMessage
-    {
-        [HarmonyPostfix]
-        public static void PlayMessage_MyPatch(HudMessage __instance)
-        {
-            if(isUsingEnglish())
-            {
-                return;
-            }
-            //The HUD display uses 2 kinds of messages.
-            //One for messages that displays KeyCode inputs (for controls), and one that doesn't.
-            //Get the string table based on the area of the game we're currently in.
-
-            HudMessageReceiver ___messageHud = MonoSingleton<HudMessageReceiver>.Instance;
-            //___text = ___messageHud.text;
-            if(__instance.actionReference == null)
-            {
-                string newMessage = StringsParent.GetMessage(__instance.message, __instance.message2, "");
-                //___text.text = newMessage;
-            }
-
-            else
-            {
-                string bindingString = MonoSingleton<InputManager>.Instance.GetBindingString(__instance.actionReference.action.id);
-
-                //Messages that get input.
-                //Compare the start of the first message with the string table.
-                __instance.message = StringsParent.GetMessage(__instance.message, __instance.message2, bindingString);
-                
-                //___text.text = __instance.message;
-            }
-            //___text.text = ___text.text.Replace('$', '\n');
         }
     }
 }

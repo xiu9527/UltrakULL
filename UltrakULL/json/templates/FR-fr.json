@@ -574,6 +574,7 @@
 		"style_hammerHitRed": "",
 		"style_hammerHitYellow": "",
 		"style_headshot": "PLEINE TÊTE",
+		"style_heavylight": "",
 		"style_homerun": "BASEBALL",
 		"style_iconoclasm": "",
 		"style_instakill": "ÉLIMINATION INSTANTANÉE",
@@ -586,6 +587,7 @@
 		"style_mauriced": "MAURICE",
 		"style_nailbombed": "CLOUÉ",
 		"style_overkill": "BOUT PORTANT",
+		"style_oshaviolation": "",
 		"style_pancaked": "CRÊPES",
 		"style_parry": "RENVOI",
 		"style_projectileboost": "PROJECTILE BOOSTÉ",
@@ -700,6 +702,15 @@
 		"cybergrind_themesCustomTop": "HAUT",
 		"cybergrind_themesCustomGlowIntensity": "INTENSITÉ",
 
+		"cybergrind_themesCustomFog": "",
+		"cybergrind_themesCustomFogColor": "",
+		"cybergrind_themesCustomFogDynamicDesc": "",
+		"cybergrind_themesCustomFogStart": "",
+		"cybergrind_themesCustomFogEnd": "",
+		"cybergrind_themesCustomFogDynamicEnable": "",
+		"cybergrind_themesCustomFogDynamicDisable": "",
+		"cybergrind_themesCustomFogDefault": "",
+
 		"cybergrind_musicTitle": "MUSIQUES",
 		"cybergrind_musicType": "",
 		"cybergrind_musicCompleteChallengeRequirement": "COMPLÉTEZ LE DÉFI POUR",
@@ -717,6 +728,7 @@
 		"cybergrind_musicFolderNameAct3": "ACTE 3",
 		"cybergrind_musicFolderNameSecret": "NIVEAUX SECRETS",
 		"cybergrind_musicFolderNamePrime": "SANCTUAIRES PRIMES",
+		"cybergrind_musicFolderNameEncores": "",
 		"cybergrind_musicFolderNameMisc": "EXTRAS",
 
 		"cybergrind_patternsWarning": "ATTENTION : VOTRE SCORE NE SERA PAS SAUVEGARDÉ LORSQUE VOUS UTILISEZ DES TERRAINS PERSONNALISÉES",
@@ -904,6 +916,8 @@
 	},
 	"frontend": {
 		"mainmenu_earlyAccess": "ACCÈS ANTICIPÉ",
+		"mainmenu_v1Init": "",
+
 		"mainmenu_easter": "JOYEUSES PÂQUES",
 		"mainmenu_halloween": "JOYEUX HALLOWEEN",
 		"mainmenu_christmas": "JOYEUX NOËL",
@@ -946,10 +960,14 @@
 		"difficulty_brutalDescription3": "",
 
 		"chapter_title": "CHAPITRE",
+
+		"chapter_type_primary": "",
 		"chapter_prelude": "PRÉLUDE",
 		"chapter_act1": "ACTE I - MORT INFINIE",
 		"chapter_act2": "ACTE II - HAINE IMPARFAITE",
 		"chapter_act3": "ACTE III - SUICIDE DIVIN",
+
+		"chapter_type_secondary": "",
 		"chapter_prime": "SANCTUAIRES PRIMES",
 		"chapter_cyberGrind": "LE CYBER GRIND",
 		"chapter_sandbox": "BAC À SABLE",
@@ -976,7 +994,13 @@
 		"leaderboard_anyPercent": "TOUS",
 		"leaderboard_pPercent": "P-RANK",
 		"leaderboard_noEntries": "[pas de temps enregistrés]",
-		"leaderboard_reminder": ""
+		"leaderboard_reminder": "",
+
+		"aboutEncoreTitle": "",
+		"aboutEncoreMain": "",
+		"aboutEncoreButton": "",
+		"encoreAvailableMainText": "",
+		"encoreAvailableButton": ""
 	},
 
 	"visualnovel": {
@@ -1761,6 +1785,8 @@
 		"shop_soulOrbs": "ORBES D'ÂMES",
 		"moneyCount": "<color=orange>P</color>",
 		"lotsOfMoney": "VRAIMENT BEAUCOUP DE ",
+		"shop_equipped": "",
+		"shop_unequipped": "",
 
 		"shop_cybergrindDescription1": "<color=red>Le Cyber Grind est un mode de survie sans fin</color>.",
 		"shop_cybergrindDescription2": "Une bonne performance donnera beaucoup de <color=red>points</color>.",
@@ -1955,6 +1981,7 @@
 
 		"shop_colorsPreset": "PRÉSET",
 		"shop_colorsCustom": "PERSONNALISÉ",
+		"shop_colorsStandard": "",
 		"shop_colorsAlternative": "ALTERNATIF",
 		"shop_colorsDone": "CONFIRMER",
 		"shop_colorsCustomUnlockPrompt": "DÉBLOQUER LES COULEURS PERSONNALISÉ POUR:"
@@ -2615,6 +2642,8 @@
 	},
 
 	"primeSanctum": {
+		"primeSanctum_first_insufficientlight": "",
+
 		"primeSanctum_first_secretText1": "DOCUMENT DU TERMINAL 01 <color=red>[CHIFFRÉ]</color>",
 		"primeSanctum_first_secretText2": "INTRODUCTION AUX TERMINAUX (<color=grey>BROUILLON! À NE PAS ENVOYER ! //todo: AJOUTER DES DESSINS POUR ÉVITER QUE LES PAUVRE CONS CHEZ L'ENTREPRISE DORMENT COMME LA DERNIÈRE FOIS</color>)",
 		"primeSanctum_first_secretText3": "Les terminaux chez les ascenseurs sont un réseau interconnecté complexe, construit pour le transfert des matériaux et outils entre les zones différentes. Ils sont capables de transférer de la matière physique par moyenne de signal radio, auquel les autres terminaux puissent reçevoir et reconstruire les objets envoyés. L'objet original est détruit puisqu'il est transformé en énergie qui est utilisé pour transmettre l'information de la matière, et le processus est ralenti à cause de la quantité d'information que la matière physique porte.",

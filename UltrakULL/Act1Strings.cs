@@ -112,7 +112,8 @@ namespace UltrakULL
                 return (LanguageManager.CurrentLanguage.act1.act1_lustSecond_railcannon);
             }
 
-            return ("Unknown 2-2 string");
+            Logging.Warn("Unknown 2-2 string:" + fullMessage);
+            return fullMessage;
         }
         //2-3 - Sheer Heart Attack
         private static string Level23(string message, string message2)
@@ -122,30 +123,39 @@ namespace UltrakULL
             {
                 return (LanguageManager.CurrentLanguage.act1.act1_lustThird_water);
             }
-            return "Unknown 2-3 string";
+            Logging.Warn("Unknown 2-3 string:" + fullMessage);
+            return fullMessage;
         }
         //2-4 - Court Of The Corpse King
         //This level has no HUD box strings.
-        private static string Level24()
+        private static string Level24(string message, string message2)
         {
-            return "Unknown 2-4 string";
+            string fullMessage = message + message2;
+            Logging.Warn("Unknown 2-4 string:" + fullMessage);
+            return fullMessage;
         }
         //2-S
-        private static string Level2Secret()
+        private static string Level2Secret(string message, string message2)
         {
-            return "Unknown 2-S string";
+            string fullMessage = message + message2;
+            Logging.Warn("Unknown 2-S string:" + fullMessage);
+            return fullMessage;
         }
         //3-1 - Belly Of The Beast
         //This level has no HUD box strings.
-        private static string Level31()
+        private static string Level31(string message, string message2)
         {
-            return "Unknown 3-1 string";
+            string fullMessage = message + message2;
+            Logging.Warn("Unknown 3-1 string:" + fullMessage);
+            return fullMessage;
         }
         //3-2 - In The Flesh
         //This level has no HUD box strings.
-        private static string Level32()
+        private static string Level32(string message, string message2)
         {
-            return "Unknown 3-2 string";
+            string fullMessage = message + message2;
+            Logging.Warn("Unknown 3-2 string:" + fullMessage);
+            return fullMessage;
         }
 
 
@@ -200,19 +210,19 @@ namespace UltrakULL
                     }
                 case "Level 2-4":
                     {
-                        return Level24();
+                        return Level24(message, message2);
                     }
                 case "Level 2-S":
                     {
-                        return Level2Secret();
+                        return Level2Secret(message, message2);
                     }
                 case "Level 3-1":
                     {
-                        return Level31();
+                        return Level31(message, message2);
                     }
                 case "Level 3-2":
                     {
-                        return Level32();
+                        return Level32(message, message2);
                     }
                 default: return "Unimplemented Act 1 string";
             }

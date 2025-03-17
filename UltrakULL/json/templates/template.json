@@ -592,6 +592,7 @@
 		"style_hammerHitRed": "",
 		"style_hammerHitYellow": "",
 		"style_headshot": "",
+		"style_heavylight": "",
 		"style_homerun": "",
 		"style_iconoclasm": "",
 		"style_instakill": "",
@@ -606,6 +607,7 @@
 		"style_multikill": "",
 		"style_nailbombed": "",
 		"style_overkill": "",
+		"style_oshaviolation": "",
 		"style_pancaked": "",
 		"style_parry": "",
 		"style_projectileboost": "",
@@ -724,6 +726,15 @@
 		"cybergrind_themesCustomTop": "",
 		"cybergrind_themesCustomGlowIntensity": "",
 
+		"cybergrind_themesCustomFog": "",
+		"cybergrind_themesCustomFogColor": "",
+		"cybergrind_themesCustomFogDynamicDesc": "",
+		"cybergrind_themesCustomFogStart": "",
+		"cybergrind_themesCustomFogEnd": "",
+		"cybergrind_themesCustomFogDynamicEnable": "",
+		"cybergrind_themesCustomFogDynamicDisable": "",
+		"cybergrind_themesCustomFogDefault": "",
+
 		"cybergrind_musicTitle": "",
 		"cybergrind_musicType": "",
 		"cybergrind_musicCompleteChallengeRequirement": "",
@@ -740,6 +751,7 @@
 		"cybergrind_musicFolderNameAct3": "",
 		"cybergrind_musicFolderNameSecret": "",
 		"cybergrind_musicFolderNamePrime": "",
+		"cybergrind_musicFolderNameEncores": "",
 		"cybergrind_musicFolderNameMisc": "",
 
 		"cybergrind_patternsWarning": "",
@@ -947,6 +959,8 @@
 	},
 	"frontend": {
 		"mainmenu_earlyAccess": "",
+		"mainmenu_v1Init": "",
+
 		"mainmenu_halloween": "",
 		"mainmenu_easter": "",
 		"mainmenu_christmas": "",
@@ -988,10 +1002,14 @@
 		"difficulty_brutalDescription3": "",
 
 		"chapter_title": "",
+
+		"chapter_type_primary": "",
 		"chapter_prelude": "",
 		"chapter_act1": "",
 		"chapter_act2": "",
 		"chapter_act3": "",
+
+		"chapter_type_secondary": "",
 		"chapter_prime": "",
 		"chapter_cyberGrind": "",
 		"chapter_sandbox": "",
@@ -1008,7 +1026,6 @@
 		"layer_fraud": "",
 		"layer_treachery": "",
 		"layer_prime": "",
-		"layer_encore": "",
 
 		"level_challenge": "",
 		"level_challengeCompleted": "",
@@ -1021,7 +1038,13 @@
 		"leaderboard_anyPercent": "",
 		"leaderboard_pPercent": "",
 		"leaderboard_noEntries": "",
-		"leaderboard_reminder": ""
+		"leaderboard_reminder": "",
+
+		"aboutEncoreTitle": "",
+		"aboutEncoreMain": "",
+		"aboutEncoreButton": "",
+		"encoreAvailableMainText": "",
+		"encoreAvailableButton": ""
 	},
 	"visualnovel": {
 		"visualnovel_mirageName1": "",
@@ -1802,6 +1825,8 @@
 		"shop_soulOrbs": "",
 		"shop_moneyCount": "",
 		"shop_lotsOfMoney": "",
+		"shop_equipped": "",
+		"shop_unequipped": "",
 
 		"shop_cybergrindDescription1": "",
 		"shop_cybergrindDescription2": "",
@@ -1998,6 +2023,7 @@
 
 		"shop_colorsPreset": "",
 		"shop_colorsCustom": "",
+		"shop_colorsStandard": "",
 		"shop_colorsAlternative": "",
 		"shop_colorsDone": "",
 		"shop_colorsCustomUnlockPrompt": ""
@@ -2662,6 +2688,8 @@
 		"encorePrelude_heatResistanceRepairedText": ""
 	},
 	"primeSanctum": {
+		"primeSanctum_first_insufficientlight": "",
+
 		"primeSanctum_first_secretText1": "",
 		"primeSanctum_first_secretText2": "",
 		"primeSanctum_first_secretText3": "",

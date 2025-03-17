@@ -1,15 +1,29 @@
 ﻿using HarmonyLib;
-using UnityEngine.UI;
+using TMPro;
 using UltrakULL.json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Remoting.Lifetime;
 using static UltrakULL.CommonFunctions;
 
 
 namespace UltrakULL.Harmony_Patches
 {
+    public class CybergrindFogSettings
+    {
+        [HarmonyPatch(typeof(CustomFogController))]
+        public class CustomFogPatch
+        {
+
+            [HarmonyPatch("Start"), HarmonyPostfix]
+            public static void AwakePatch(TMP_Text ___dynamicDistanceButtonText, bool ___dynamicDistance)
+            {
+                ___dynamicDistanceButtonText.SetText(___dynamicDistance ? LanguageManager.CurrentLanguage.cyberGrind.cybergrind_themesCustomFogDynamicDisable : LanguageManager.CurrentLanguage.cyberGrind.cybergrind_themesCustomFogDynamicEnable, true);
+            }
+            [HarmonyPatch(nameof(CustomFogController.ToggleDynamicFogDistance)),HarmonyPostfix]
+            public static void CustomFogPostPatch(TMP_Text ___dynamicDistanceButtonText, bool ___dynamicDistance)
+            {
+                ___dynamicDistanceButtonText.SetText(___dynamicDistance ? LanguageManager.CurrentLanguage.cyberGrind.cybergrind_themesCustomFogDynamicDisable : LanguageManager.CurrentLanguage.cyberGrind.cybergrind_themesCustomFogDynamicEnable, true);
+            }
+        }
+    }
     public class CybergrindJukeboxCompleteLevelChallengeRequirement
     {
         [HarmonyPatch(typeof(UnlockCondition.HasCompletedLevelChallenge),"description",MethodType.Getter)]

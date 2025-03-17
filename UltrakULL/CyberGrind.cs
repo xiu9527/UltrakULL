@@ -257,9 +257,8 @@ namespace UltrakULL
             TextMeshProUGUI cgCustomSkybox = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(cgCustomThemeSelectorButtons, "Skybox Button"), "Text"));
             cgCustomSkybox.text = LanguageManager.CurrentLanguage.cyberGrind.cybergrind_themesCustomSkybox;
 
-            //Fog place it later
-            //TextMeshProUGUI cgCustomFog = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(cgCustomThemeSelectorButtons, "Fog Button"), "Text"));
-            //cgCustomFog.text = LanguageManager.CurrentLanguage.cyberGrind.cybergrind_themesCustomFog;
+            TextMeshProUGUI cgCustomFog = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(cgCustomThemeSelectorButtons, "Fog Button"), "Text"));
+            cgCustomFog.text = LanguageManager.CurrentLanguage.cyberGrind.cybergrind_themesCustomFog;
 
             TextMeshProUGUI cgCustomThemeBack = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(cgCustomThemeButtons, "Back Button"), "Text"));
             cgCustomThemeBack.text = LanguageManager.CurrentLanguage.cyberGrind.cybergrind_themesCustomBack;
@@ -285,7 +284,25 @@ namespace UltrakULL
             cgCustomAdditionalGlowIntensity.text = LanguageManager.CurrentLanguage.cyberGrind.cybergrind_themesCustomGlowIntensity;
             //Fog Control goes here, add it later
 
+            GameObject cgCustomFogWindow = GetGameObjectChild(cgCustomAdditionalRows, "Fog Control");
+            GameObject cgCustomFogSlider = GetGameObjectChild(cgCustomFogWindow, "Sliders");
 
+            TextMeshProUGUI cgCustomFogColor = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(cgCustomFogSlider, "Color"), "Text"));
+            cgCustomFogColor.text = LanguageManager.CurrentLanguage.cyberGrind.cybergrind_themesCustomFogColor;
+
+            TextMeshProUGUI cgCustomFogDynamicDesc = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(cgCustomFogSlider, "Start Distance"), "Dynamic Distance Text"));
+            cgCustomFogDynamicDesc.text = LanguageManager.CurrentLanguage.cyberGrind.cybergrind_themesCustomFogDynamicDesc;
+
+            TextMeshProUGUI cgCustomFogStart = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(cgCustomFogSlider, "Start Distance"), "Text"));
+            cgCustomFogStart.text = LanguageManager.CurrentLanguage.cyberGrind.cybergrind_themesCustomFogStart;
+
+            TextMeshProUGUI cgCustomFogEnd = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(cgCustomFogSlider, "End Distance"), "Text"));
+            cgCustomFogEnd.text = LanguageManager.CurrentLanguage.cyberGrind.cybergrind_themesCustomFogEnd;
+
+            TextMeshProUGUI cgCustomFogDefault = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(cgCustomFogWindow, "Default Button"), "Text"));
+            cgCustomFogDefault.text = LanguageManager.CurrentLanguage.cyberGrind.cybergrind_themesCustomFogDefault;
+
+            //Disable/Enable Dynamic distance button is patched in CybergrindJukebox.cs
 
             //Patterns
             GameObject cgTerminalPatterns = GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(cgTerminalMainPanel, "Patterns"), "Patterns Window"), "Panel");

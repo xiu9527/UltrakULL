@@ -221,6 +221,15 @@ namespace UltrakULL.json
         public string cybergrind_themesCustomTop;
         public string cybergrind_themesCustomGlowIntensity;
 
+        public string cybergrind_themesCustomFog;
+        public string cybergrind_themesCustomFogColor;
+        public string cybergrind_themesCustomFogDynamicDesc;
+        public string cybergrind_themesCustomFogStart;
+        public string cybergrind_themesCustomFogEnd;
+        public string cybergrind_themesCustomFogDefault;
+        public string cybergrind_themesCustomFogDynamicEnable;
+        public string cybergrind_themesCustomFogDynamicDisable;
+
         public string cybergrind_musicTitle;
         public string cybergrind_musicType;
         public string cybergrind_musicCompleteChallengeRequirement;
@@ -257,7 +266,6 @@ namespace UltrakULL.json
     {
         public string cheats_disclaimer1;
         public string cheats_disclaimer2;
-        public string cheats_disclaimerConfirm;
         public string cheats_disclaimerYes;
         public string cheats_disclaimerNo;
 
@@ -379,6 +387,7 @@ namespace UltrakULL.json
         public string style_hammerHitYellow;
         public string style_headshot;
         public string style_headshotcombo;
+        public string style_heavylight;
         public string style_homerun;
         public string style_iconoclasm;
         public string style_instakill;
@@ -392,6 +401,7 @@ namespace UltrakULL.json
         public string style_multikill;
         public string style_nailbombed;
         public string style_overkill;
+        public string style_oshaviolation;
         public string style_parry;
         public string style_projectileboost;
         public string style_quickdraw;
@@ -1526,6 +1536,8 @@ namespace UltrakULL.json
         public string shop_soulOrbs;
         public string shop_moneyCount;
         public string shop_lotsOfMoney;
+        public string shop_equipped;
+        public string shop_unequipped;
 
         public string shop_cybergrindDescription1;
         public string shop_cybergrindDescription2;
@@ -1723,6 +1735,7 @@ namespace UltrakULL.json
         public string shop_colorsPreset;
         public string shop_colorsCustom;
         public string shop_colorsDone;
+        public string shop_colorsStandard;
         public string shop_colorsAlternative;
         public string shop_colorsCustomUnlockPrompt;
 
@@ -2562,6 +2575,8 @@ namespace UltrakULL.json
 
     public class Prime
     {
+        public string primeSanctum_first_insufficientlight;
+
         public string primeSanctum_first_secretText1;
         public string primeSanctum_first_secretText2;
         public string primeSanctum_first_secretText3;
