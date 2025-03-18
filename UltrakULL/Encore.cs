@@ -12,8 +12,12 @@ namespace UltrakULL
         public static void PatchEncore(ref GameObject canvasObj)
         {
             string currentLevel = GetCurrentSceneName();
-            string levelName = GetLevelName();
-            PatchResultsScreen(levelName, "");
+            string levelName = EncoreStrings.GetLevelName();
+            string levelChallenge = EncoreStrings.GetLevelChallenge(currentLevel); //We leave the part with the challenges patch if the game developers decide to add them.
+
+            PatchResultsScreen(levelName, levelChallenge);
+            Logging.Info("Current level: " + currentLevel);
+
             if (currentLevel.Contains("0-E"))
             {
                 try
@@ -42,31 +46,24 @@ namespace UltrakULL
                 }
                 catch (Exception e)
                 {
-                    Debug.LogError("Error patching Encore: " + e.Message);
+                    Debug.LogError("Error patching 0-E: " + e.Message);
 
                 }
             }
-        }
-        private static string GetLevelName()
-        {
-            string currentLevel = GetCurrentSceneName();
-
-            switch (currentLevel)
+            if (currentLevel.Contains("1-E"))
             {
-                case "Level 0-E": { return "0-E - " + LanguageManager.CurrentLanguage.levelNames.levelName_encorePrelude; }
-                case "Level 1-E": { return "1-E - " + LanguageManager.CurrentLanguage.levelNames.levelName_encoreLimbo; }
-                case "Level 2-E": { return "2-E - " + LanguageManager.CurrentLanguage.levelNames.levelName_encoreLust; }
-                case "Level 3-E": { return "3-E - " + LanguageManager.CurrentLanguage.levelNames.levelName_encoreGluttony; }
-                case "Level 4-E": { return "4-E - " + LanguageManager.CurrentLanguage.levelNames.levelName_encoreGreed; }
-                case "Level 5-E": { return "5-E - " + LanguageManager.CurrentLanguage.levelNames.levelName_encoreWrath; }
-                case "Level 6-E": { return "6-E - " + LanguageManager.CurrentLanguage.levelNames.levelName_encoreHeresy; }
-                case "Level 7-E": { return "7-E - " + LanguageManager.CurrentLanguage.levelNames.levelName_encoreViolence; }
-                case "Level 8-E": { return "8-E - " + LanguageManager.CurrentLanguage.levelNames.levelName_encoreFraud; }
-                case "Level 9-E": { return "9-E - " + LanguageManager.CurrentLanguage.levelNames.levelName_encoreTreachery; }
+                try
+                {
+                    GameObject warningCanvas = GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(GetInactiveRootObject("11 - Skull Room"), "11 Nonstuff"), "Room"), "Cube (24)"), "Canvas");
+                    TextMeshProUGUI warningText = GetTextMeshProUGUI(GetGameObjectChild(warningCanvas, "Text (TMP)"));
+                    warningText.text = LanguageManager.CurrentLanguage.encore.encoreLimbo_warningText;
+                }
+                catch (Exception e)
+                {
+                    Debug.LogError("Error patching 1-E: " + e.Message);
 
-                default: { return "Unknown level name"; }
+                }
             }
-
         }
     }
 }

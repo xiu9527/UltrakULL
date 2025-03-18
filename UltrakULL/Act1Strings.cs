@@ -111,9 +111,12 @@ namespace UltrakULL
             {
                 return (LanguageManager.CurrentLanguage.act1.act1_lustSecond_railcannon);
             }
-
-            Logging.Warn("Unknown 2-2 string:" + fullMessage);
-            return fullMessage;
+            if (fullMessage.Contains("CHECKPOINTS"))
+            {
+                return (LanguageManager.CurrentLanguage.act1.act1_lustSecond_checkPoints);
+            }
+            Logging.Warn("Unknown 2-2 string: " + fullMessage);
+            return ("Unknown 2-2 string");
         }
         //2-3 - Sheer Heart Attack
         private static string Level23(string message, string message2)

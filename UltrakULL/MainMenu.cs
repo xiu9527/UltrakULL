@@ -21,13 +21,20 @@ namespace UltrakULL
 				//Early access tag
 				TextMeshProUGUI earlyAccessText = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(titleObject, "Text (3)"), "Text"));
 				earlyAccessText.text = LanguageManager.CurrentLanguage.frontend.mainmenu_earlyAccess;
+				TextMeshProUGUI earlyAccessBackground = GetTextMeshProUGUI(GetGameObjectChild(titleObject, "Text (3)"));
+                earlyAccessBackground.text = "<mark=#000000>" + LanguageManager.CurrentLanguage.frontend.mainmenu_earlyAccess;
 
-				//V1 Initialization strings
-				TextMeshProUGUI v1InitText = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(titleObject, "Text (2)"), "Text (1)"));
+                //V1 Initialization strings
+                TextMeshProUGUI v1InitText = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(titleObject, "Text (2)"), "Text (1)"));
 				v1InitText.text = LanguageManager.CurrentLanguage.frontend.mainmenu_v1Init;
                 TextMeshProUGUI v1InitBackground = GetTextMeshProUGUI(GetGameObjectChild(titleObject, "Text (2)")); // Yep. Background is a TMP too. 
                 v1InitBackground.text = "<mark=#000000>" + LanguageManager.CurrentLanguage.frontend.mainmenu_v1Init;
 
+                //Init Socials
+                TextMeshProUGUI initSocialsText = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(titleObject, "Panel"), "Text (2)"), "Text"));
+                initSocialsText.text = LanguageManager.CurrentLanguage.frontend.mainmenu_initSocials;
+				TextMeshProUGUI initSocialsBackground = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(titleObject, "Panel"), "Text (2)")); // Yep. Background is a TMP too. 
+                initSocialsBackground.text = "<mark=#000000>" + LanguageManager.CurrentLanguage.frontend.mainmenu_initSocials;
 
                 GameObject holidayObject = GetGameObjectChild(titleObject, "Holiday Greetings"); 
                 //Halloween
@@ -497,7 +504,8 @@ namespace UltrakULL
 				RtlFixActButton(act1Object, act1Text);
 				RtlFixActButton(act2Object, act2Text);
 				RtlFixActButton(act3Object, act3Text);
-				RtlFixActButton(sandboxObject, sandboxText);
+                RtlFixActButton(encoreObject, encoreText);
+                RtlFixActButton(sandboxObject, sandboxText);
 				RtlFixActButton(cgObject, cgText);
 				RtlFixActButton(primeObject, primeText);
             }
@@ -790,7 +798,20 @@ namespace UltrakULL
 			treacherySecondChallenge.text = Act3Strings.GetLevelChallenge("Level 9-2");
 		}
 
-		private static void PatchLevelSelectPrime(GameObject frontEnd)
+        private static void PatchLevelSelectEncore(GameObject frontEnd)
+        {
+            GameObject lsEncoreObject = GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(frontEnd, "Level Select (Encore)"), "Scroll Rect"), "Contents");
+
+            GameObject encoreHeader = GetGameObjectChild(GetGameObjectChild(lsEncoreObject, "Encores"), "Header");
+
+            //Encore title
+            TextMeshProUGUI preludeTitleText = GetTextMeshProUGUI(GetGameObjectChild(encoreHeader, "Text"));
+            preludeTitleText.text = LanguageManager.CurrentLanguage.frontend.chapter_encore;
+            preludeTitleText.fontSize = 36;
+            
+        }
+
+        private static void PatchLevelSelectPrime(GameObject frontEnd)
 		{
 			GameObject primeObject = GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(frontEnd, "Level Select (Prime)"), "Prime Sanctums"),"Header");
             TextMeshProUGUI primeTitle = GetTextMeshProUGUI(GetGameObjectChild(primeObject, "Text"));
@@ -813,7 +834,8 @@ namespace UltrakULL
 				PatchLevelSelectAct1(frontEnd);
 				PatchLevelSelectAct2(frontEnd);
 				PatchLevelSelectAct3(frontEnd);
-				PatchLevelSelectPrime(frontEnd);
+				PatchLevelSelectEncore(frontEnd);
+                PatchLevelSelectPrime(frontEnd);
 			}
 			catch (Exception e)
 			{

@@ -88,7 +88,7 @@ namespace UltrakULL.Harmony_Patches
                 }
                 else
 				{
-					string levelName = LevelNames.GetLevelName(num);
+					string levelName = LevelNames.GetLevelName(num, __instance.name);
 					if (LanguageManager.IsRightToLeft)
 					{
 						string lvlNumber = "";

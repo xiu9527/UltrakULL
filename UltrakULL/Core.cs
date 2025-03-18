@@ -387,17 +387,17 @@ namespace UltrakULL
                                 Logging.Message("Prelude");
                                 Prelude preludePatchClass = new Prelude(ref canvasObj);
                             }
-                            else if(levelName.Contains("1-") || levelName.Contains("2-") || levelName.Contains("3-"))
+                            else if((levelName.Contains("1-") & !levelName.Contains("-E")) || (levelName.Contains("2-") & !levelName.Contains("-E")) || (levelName.Contains("3-") & !levelName.Contains("-E")) )
                             {
                                 Logging.Message("Act 1");
                                 Act1.PatchAct1(ref canvasObj);
                             }
-                            else if(levelName.Contains("4-") || levelName.Contains("5-") || levelName.Contains("6-"))
+                            else if((levelName.Contains("4-") & !levelName.Contains("-E")) || (levelName.Contains("5-") & !levelName.Contains("-E")) || (levelName.Contains("6-") & !levelName.Contains("-E")) )
                             {
                                 Logging.Message("Act 2");
                                 Act2.PatchAct2(ref canvasObj);
                             }
-                            else if(levelName.Contains("7-") || levelName.Contains("8-") || levelName.Contains("9-"))
+                            else if((levelName.Contains("7-") & !levelName.Contains("-E")) || (levelName.Contains("8-") & !levelName.Contains("-E")) || (levelName.Contains("9-") & !levelName.Contains("-E")) )
                             {
                                 Logging.Message("Act 3");
                                 if(LanguageManager.CurrentLanguage.act3 != null)

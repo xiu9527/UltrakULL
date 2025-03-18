@@ -20,6 +20,10 @@ namespace UltrakULL
                 {
                     return LanguageManager.CurrentLanguage.enemyNames.enemyname_radiant_cerberus;
                 }
+                if (originalName.Contains("HIDEOUS MASS")) //I don't know why, but the RADIANT HIDEOUS MASS, when the Idol is destroyed (in the 1-E), does not translate.
+                {
+                    return LanguageManager.CurrentLanguage.enemyNames.enemyname_radiant_hideousMass;
+                }
                 return "Untranslated RADIANT enemy name: " + originalName;
             }
             switch (originalName.ToUpper())
@@ -57,7 +61,7 @@ namespace UltrakULL
                 case "FERRYMAN": { return LanguageManager.CurrentLanguage.enemyNames.enemyname_ferryman; }
                 case "DRONE": { return LanguageManager.CurrentLanguage.enemyNames.enemyname_drone; }
                 case "STREETCLEANER": { return LanguageManager.CurrentLanguage.enemyNames.enemyname_streetCleaner; }
-                case "V2 (2nd)": { return LanguageManager.CurrentLanguage.enemyNames.enemyname_v2Second; }
+                case "V2 (2ND)": { return LanguageManager.CurrentLanguage.enemyNames.enemyname_v2Second; } //A small change is related to the ToUpper function
                 case "V2": case "V2SECOND": { return LanguageManager.CurrentLanguage.enemyNames.enemyname_v2; }
                 case "SENTRY": case "TURRET": { return LanguageManager.CurrentLanguage.enemyNames.enemyname_sentry; }
                 case "GUTTERMAN": { return LanguageManager.CurrentLanguage.enemyNames.enemyname_gutterman; }
@@ -249,7 +253,7 @@ namespace UltrakULL
 
                     }
 
-                case "V2 (2nd)":
+                case "V2 (2ND)":
                     {
                         return
                             LanguageManager.CurrentLanguage.enemyBios.enemyBios_v2Second_1 + "\n\n" +
@@ -331,7 +335,7 @@ namespace UltrakULL
                             LanguageManager.CurrentLanguage.enemyBios.enemyBios_mannequin_4 + "\n\n" +
                             LanguageManager.CurrentLanguage.enemyBios.enemyBios_mannequin_5;
                     }
-                case "<s>MINOTAUR": case "MINOTAUR": case "<S>MINOTAUR":
+                case "<S>MINOTAUR": case "MINOTAUR": case "<s>MINOTAUR":
                     {
                         return
                             LanguageManager.CurrentLanguage.enemyBios.enemyBios_minotaur_1 + "\n\n\n...\n\n\n...\n\n\n...\n\n\n" +
@@ -545,7 +549,7 @@ namespace UltrakULL
                           + "- " + LanguageManager.CurrentLanguage.enemyBios.enemyBios_mindflayer_strategy2 + "\n\n"
                           + "- " + LanguageManager.CurrentLanguage.enemyBios.enemyBios_mindflayer_strategy3;
                     }
-                case "V2 (2nd)":
+                case "V2 (2ND)":
                     {
                         return
                             "- " + LanguageManager.CurrentLanguage.enemyBios.enemyBios_v2Second_strategy1 + "\n\n"
@@ -600,7 +604,7 @@ namespace UltrakULL
                           + "- " + LanguageManager.CurrentLanguage.enemyBios.enemyBios_mannequin_strategy2 + "\n\n"
                           + "- " + LanguageManager.CurrentLanguage.enemyBios.enemyBios_mannequin_strategy3;
                     }
-                case "<s>MINOTAUR": case "MINOTAUR":
+                case "<S>MINOTAUR": case "MINOTAUR": case "<s>MINOTAUR":
                     {
                         return
                             "- " + LanguageManager.CurrentLanguage.enemyBios.enemyBios_minotaur_strategy1 + "\n\n"

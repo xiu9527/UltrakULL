@@ -125,7 +125,10 @@ namespace UltrakULL
                     
                     
                 }
-                
+                case "Level 6-1":
+                    {
+                        return "<size=244>" + LanguageManager.CurrentLanguage.act2.act2_heresyFirst_armboy + "</size>";
+                    }
                 case "Level 7-1": {
                     //Book
                     if(originalText.Contains("The unending halls of")) {

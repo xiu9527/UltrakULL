@@ -68,9 +68,21 @@ namespace UltrakULL
             return fullMessage;
         }
         
-        public static string Level7Secret()
+        public static string Level7Secret(string message, string message2)
         {
-            return "Unknown 7-S string";
+            string fullMessage = message + message2;
+            Logging.Warn("7-S Message " + fullMessage);
+            if (fullMessage.Contains("DRONE HAUNTING"))
+            {
+                return (LanguageManager.CurrentLanguage.secretLevels.secretLevels_seventh_droneHauntingAvailable);
+            }
+            if (fullMessage.Contains("BLOCKING DOOR"))
+            {
+                return (LanguageManager.CurrentLanguage.secretLevels.secretLevels_seventh_blockingDoor);
+            }
+            Logging.Warn("UNKNOWN 7-S Message " + fullMessage); 
+            return fullMessage;
+            
         }
         
         public static string Level81()
@@ -133,7 +145,7 @@ namespace UltrakULL
                     }
                 case "Level 7-S":
                     {
-                        return Level7Secret();
+                        return Level7Secret(message, message2);
                     }
                 case "Level 8-1":
                     {

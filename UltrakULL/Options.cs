@@ -236,6 +236,9 @@ namespace UltrakULL
             gammaCorrectionText.text = LanguageManager.CurrentLanguage.options.graphics_gamma1 +
                 "<size=8>" + LanguageManager.CurrentLanguage.options.graphics_gamma2 + "</size>";
 
+            TextMeshProUGUI disableNewShadersText = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(graphicsContent, "Disable New Shaders (Requires Reload)"), "Text"));
+            disableNewShadersText.text = LanguageManager.CurrentLanguage.options.graphics_disableNewShaders;
+
             //--PSX--
             TextMeshProUGUI psxFilterSettingsText = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(graphicsContent, "-- PSX --"), "Text"));
             psxFilterSettingsText.text = "--" + LanguageManager.CurrentLanguage.options.graphics_filters + "--\n<size=16>"
@@ -323,6 +326,10 @@ namespace UltrakULL
             disabledParticlesText.text = LanguageManager.CurrentLanguage.options.graphics_performanceDisableEnviParticles;
 
             TextMeshProUGUI simplehitParticlesText = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(graphicsContent, "Disable Environmental Hit Particles"), "Text"));
+            simplehitParticlesText.text = LanguageManager.CurrentLanguage.options.graphics_performanceDisableEnviHitParticles;
+
+            TextMeshProUGUI disableHeatWavesText = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(graphicsContent, "Disable Heat Waves"), "Text"));
+            disableHeatWavesText.text = LanguageManager.CurrentLanguage.options.graphics_performanceDisableHeatWaves;
 
             //removed and unused after patch 16
             //TextMeshProUGUI simpleNailPhysicsText = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(graphicsContent, "Simple Nail Physics"), "Text"));

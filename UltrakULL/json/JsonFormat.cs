@@ -1335,6 +1335,7 @@ namespace UltrakULL.json
         public string mainmenu_imageReplacement;
         public string mainmenu_earlyAccess;
         public string mainmenu_v1Init;
+        public string mainmenu_initSocials;
         public string mainmenu_halloween;
         public string mainmenu_easter;
         public string mainmenu_christmas;
@@ -1402,7 +1403,6 @@ namespace UltrakULL.json
         public string layer_fraud;
         public string layer_treachery;
         public string layer_prime;
-        public string layer_encore;
 
         public string level_challenge;
         public string level_challengeCompleted;
@@ -1878,6 +1878,9 @@ namespace UltrakULL.json
         public string leveltips_treacheryFirst;
         public string leveltips_treacherySecond;
 
+        public string leveltips_encorePrelude;
+        public string leveltips_encoreLimbo;
+
         public string leveltips_primeFirst1;
         public string leveltips_primeFirst2;
         public string leveltips_primeSecond;
@@ -1927,6 +1930,7 @@ namespace UltrakULL.json
 
         public string enemyname_radiant_swordsmachine;
         public string enemyname_radiant_cerberus;
+        public string enemyname_radiant_hideousMass;
 
         public string enemyname_boss_cerberus;
         public string enemyname_boss_cancerousRodent;
@@ -2063,6 +2067,7 @@ namespace UltrakULL.json
         public string graphics_fieldOfVision;
         public string graphics_gamma1;
         public string graphics_gamma2;
+        public string graphics_disableNewShaders;
         public string graphics_filters;
         public string graphics_filtersDescription;
         public string graphics_pixelisation;
@@ -2099,6 +2104,8 @@ namespace UltrakULL.json
         public string graphics_performanceSimpleFire;
         public string graphics_performanceSimpleSpawn;
         public string graphics_performanceDisableEnviParticles;
+        public string graphics_performanceDisableEnviHitParticles;
+        public string graphics_performanceDisableHeatWaves;
         public string graphics_performanceSimpleNails;
         public string graphics_gore;
         public string graphics_goreNote;
@@ -2468,6 +2475,7 @@ namespace UltrakULL.json
         public string act1_lustSecond_feedbacker1;
         public string act1_lustSecond_feedbacker2;
         public string act1_lustSecond_railcannon;
+        public string act1_lustSecond_checkPoints;
 
         public string act1_lustThird_water;
 
@@ -2570,6 +2578,7 @@ namespace UltrakULL.json
         public string encorePrelude_heatResistanceTitle;
         public string encorePrelude_heatResistanceRepaired;
         public string encorePrelude_heatResistanceRepairedText;
+        public string encoreLimbo_warningText;
 
     }
 
@@ -2670,6 +2679,8 @@ namespace UltrakULL.json
         public string secretLevels_seventh_testament8;
         public string secretLevels_seventh_testament9;
         public string secretLevels_seventh_testament10;
+        public string secretLevels_seventh_droneHauntingAvailable;
+        public string secretLevels_seventh_blockingDoor;
 
         public string secretLevels_complete1;
         public string secretLevels_complete2;
@@ -3243,6 +3254,8 @@ namespace UltrakULL.json
         public string earlyAccessEnd2;
         public string earlyAccessEnd3;
 
+        public string violenceScreenText1;
+        public string violenceScreenText2;
     }
 
     public class SandboxStrings

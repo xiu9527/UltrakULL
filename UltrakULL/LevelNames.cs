@@ -77,8 +77,8 @@ namespace UltrakULL
 			return missionName;
         }
 
-		public static string GetLevelName(int missionNum)
-		{
+		public static string GetLevelName(int missionNum, string levelname="None") //We get the original name of the level, and if we couldn't change it, we return it back.
+        {
 			//if (SceneHelper.IsPlayingCustom)
 			//{
 			//	return MapInfoBase.InstanceAnyType.levelName;
@@ -159,7 +159,15 @@ namespace UltrakULL
 						return "9-1: " + LanguageManager.CurrentLanguage.levelNames.levelName_treacheryFirst;
 					case 35:
 						return "9-2: " + LanguageManager.CurrentLanguage.levelNames.levelName_treacherySecond;
-					default:
+					case 100: //Encore levels have same level id
+						{
+                            if (levelname.Contains("0-E")) 
+								return "0-E: " + LanguageManager.CurrentLanguage.levelNames.levelName_encorePrelude;
+                            if (levelname.Contains("1-E"))
+                                return "1-E: " + LanguageManager.CurrentLanguage.levelNames.levelName_encoreLimbo;
+                            return levelname;
+                        }
+                    default:
 						switch (missionNum)
 						{
 							case 666:
@@ -169,7 +177,7 @@ namespace UltrakULL
 							case 668:
 								return "P-3: " + LanguageManager.CurrentLanguage.levelNames.levelName_primeThird;
 							default:
-								return "MISSION NAME NOT FOUND";
+								return levelname;
 						}
 				}
 			}
@@ -259,7 +267,7 @@ namespace UltrakULL
 							case 668:
 								return "P-٣: " + LanguageManager.CurrentLanguage.levelNames.levelName_primeThird;
 							default:
-								return "MISSION NAME NOT FOUND";
+								return levelname;
 						}
 				}
 			}

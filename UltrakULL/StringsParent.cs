@@ -368,6 +368,15 @@ namespace UltrakULL
                     + LanguageManager.CurrentLanguage.levelTips.leveltips_sandbox2;
             }
 
+            //Encore levels
+            if (currentLevel.Contains("0-E"))
+            {
+                return LanguageManager.CurrentLanguage.levelTips.leveltips_encorePrelude;
+            }
+            if (currentLevel.Contains("1-E"))
+            {
+                return LanguageManager.CurrentLanguage.levelTips.leveltips_encoreLimbo;
+            }
 
             //Prime sanctums
             if (currentLevel.Contains("P-1"))

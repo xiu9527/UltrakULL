@@ -127,6 +127,9 @@
     <BepInExCoreDir>$(BepInExRootDir)\core\</BepInExCoreDir>
     <BepInExPluginsDir>$(BepInExRootDir)\plugins\</BepInExPluginsDir>
   </PropertyGroup>
+  <PropertyGroup>
+    <RunPostBuildEvent>Always</RunPostBuildEvent>
+  </PropertyGroup>
   <ItemGroup>
     <ModDlls Include="$(OutDir)/$(AssemblyName).dll" />
   </ItemGroup>
@@ -176,8 +179,18 @@
     <Copy SourceFiles="@(_CopyAudio)" DestinationFolder="$(TargetDir)config/ultrakull/audio/%(RecursiveDir)" />
     <Message Text="Audio files/folders moved." Importance="High" />
   </Target>
+  <Target Name="MoveIntroViolenceScreenToFolder" AfterTargets="AfterBuild">
+    <Message Text="Moving IntroViolenceScreen resources to plugins/ultrakULL..." Importance="High" />
+    <ItemGroup>
+      <_IntroViolenceScreenPack Include="$(TargetDir)/../../IntroViolenceScreen/violence1.png" />
+      <_IntroViolenceScreenPack Include="$(TargetDir)/../../IntroViolenceScreen/violence2.png" />
+    </ItemGroup>
+    <Copy SourceFiles="@(_IntroViolenceScreenPack)" DestinationFolder="$(TargetDir)plugins/UltrakULL/IntroViolenceScreen">
+    </Copy>
+  </Target>
   <ItemGroup>
     <Compile Include="Act1.cs" />
+    <Compile Include="EncoreStrings.cs" />
     <Compile Include="Act1Strings.cs" />
     <Compile Include="Act1VN.cs" />
     <Compile Include="Act2.cs" />
@@ -204,6 +217,7 @@
     <Compile Include="Harmony Patches\BossBarManager.cs" />
     <Compile Include="Harmony Patches\CheatsManager.cs" />
     <Compile Include="Harmony Patches\HellMap.cs" />
+    <Compile Include="Harmony Patches\IntroViolenceScreenPatch.cs" />
     <Compile Include="Harmony Patches\MoneyTextPatch.cs" />
     <Compile Include="Harmony Patches\Nailgun.cs" />
     <Compile Include="Harmony Patches\OptionsPatch.cs" />
@@ -294,6 +308,8 @@
     <Content Include="fonts\ullfont.resource" />
     <Content Include="fonts\arabfonts" />
     <Content Include="fonts\VCR_OSD_MONO.ttf" />
+    <Content Include="IntroViolenceScreen\violence1.png" />
+    <Content Include="IntroViolenceScreen\violence2.png" />
     <Content Include="json\templates\TemplateChangelog.txt" />
     <Content Include="ChangeLog.txt" />
     <Content Include="Resources\SubtitledSources.json" />
@@ -308,4 +324,8 @@
     <Folder Include="img\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
 </Project>
