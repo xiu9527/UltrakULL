@@ -68,7 +68,7 @@ namespace UltrakULL
             }
             else
             {
-                return ("Unimplemented tutorial string");
+                return ("Unimplemented string");
             }
         }
 

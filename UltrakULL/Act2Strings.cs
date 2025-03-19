@@ -11,8 +11,7 @@ namespace UltrakULL
         private static string Level41(string message, string message2)
         {
             string fullMessage = message + message2;
-            Logging.Warn("Unknown 4-1 string:" + fullMessage);
-            return fullMessage;
+            return ("Unimplemented string");
         }
         
         private static string Level42(string message, string message2)
@@ -22,8 +21,7 @@ namespace UltrakULL
             {
                 return (LanguageManager.CurrentLanguage.act2.act2_greedSecond_sand);
             }
-            Logging.Warn("Unknown 4-2 string:" + fullMessage);
-            return fullMessage;
+            return ("Unimplemented string");
         }
         
         private static string Level43(string message, string message2)
@@ -45,8 +43,7 @@ namespace UltrakULL
             {
                 return (LanguageManager.CurrentLanguage.act2.act2_greedThird_tombOfKings);
             }
-            Logging.Warn("Unknown 4-3 string:" + fullMessage);
-            return fullMessage;
+            return ("Unimplemented string");
         }
 
         private static string Level44(string message, string message2, string input)
@@ -92,8 +89,7 @@ namespace UltrakULL
                 return LanguageManager.CurrentLanguage.act2.act2_greedFourth_whiplashHardDamage1 + "\n"
                 + LanguageManager.CurrentLanguage.act2.act2_greedFourth_whiplashHardDamage2;
             }
-            Logging.Warn("Unknown 4-4 string:" + fullMessage);
-            return fullMessage;
+            return ("Unimplemented string");
         }
 
         private static string Level4Secret(string message, string message2, string input)
@@ -104,8 +100,7 @@ namespace UltrakULL
                 return (LanguageManager.CurrentLanguage.act2.act2_greedSecret_holdToJump1 + "<color=orange> " + input + " </color>" + LanguageManager.CurrentLanguage.act2.act2_greedSecret_holdToJump2);
             }
 
-            Logging.Warn("Unknown 4-S string:" + fullMessage);
-            return fullMessage;
+            return ("Unimplemented string");
         }
 
         private static string Level51(string message, string message2)
@@ -128,8 +123,7 @@ namespace UltrakULL
                 return (LanguageManager.CurrentLanguage.act2.act2_wrathFirst_waterDrained);
             }
 
-            Logging.Warn("Unknown 5-1 string:" + fullMessage);
-            return fullMessage;
+            return ("Unimplemented string");
         }
 
         private static string Level52(string message, string message2)
@@ -155,8 +149,7 @@ namespace UltrakULL
             {
                 return (LanguageManager.CurrentLanguage.act2.act2_wrathSecond_idol);
             }
-            Logging.Warn("Unknown 5-2 string:" + fullMessage);
-            return fullMessage;
+            return ("Unimplemented string");
         }
 
         private static string Level53(string message, string message2)
@@ -180,15 +173,13 @@ namespace UltrakULL
                 return (LanguageManager.CurrentLanguage.act2.act2_wrathThird_hank);
             }
 
-            Logging.Warn("Unknown 5-3 string:" + fullMessage);
-            return fullMessage;
+            return ("Unimplemented string");
         }
 
         private static string Level54(string message, string message2)
         {
             string fullMessage = message + message2;
-            Logging.Warn("Unknown 5-4 string:" + fullMessage);
-            return fullMessage;
+            return ("Unimplemented string");
         }
 
         private static string Level5Secret(string message)
@@ -223,8 +214,7 @@ namespace UltrakULL
             }
 
 
-            Logging.Warn("Unknown 5-S string:" + message);
-            return message;
+            return ("Unimplemented string");
         }
 
         private static string Level61(string message, string message2)
@@ -235,15 +225,13 @@ namespace UltrakULL
             {
                 return (LanguageManager.CurrentLanguage.act2.act2_heresyFirst_armboy);
             }
-            Logging.Warn("Unknown 6-1 string:" + fullMessage);
-            return fullMessage;
+            return ("Unimplemented string");
         }
 
         private static string Level62(string message, string message2)
         {
             string fullMessage = message + message2;
-            Logging.Warn("Unknown 6-2 string:" + fullMessage);
-            return fullMessage;
+            return ("Unimplemented string");
         }
 
         public static string GetMessage(string message, string message2, string input)
@@ -306,7 +294,11 @@ namespace UltrakULL
                     {
                         return Level62(message, message2);
                     }
-                default: return "Unimplemented Act 2 string";
+                default:
+                    {
+                        //Console.WriteLine("Unknown ACT 2 string in " + currentLevel + ": \n" + message + message2);
+                        return ("Unimplemented string");
+                    }
             }
         }
 

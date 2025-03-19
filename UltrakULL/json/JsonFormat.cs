@@ -2679,8 +2679,6 @@ namespace UltrakULL.json
         public string secretLevels_seventh_testament8;
         public string secretLevels_seventh_testament9;
         public string secretLevels_seventh_testament10;
-        public string secretLevels_seventh_droneHauntingAvailable;
-        public string secretLevels_seventh_blockingDoor;
 
         public string secretLevels_complete1;
         public string secretLevels_complete2;

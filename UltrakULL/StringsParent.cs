@@ -7,6 +7,8 @@ namespace UltrakULL
 {
     public static class StringsParent
     {
+        private static string fullMessage;
+
         public static string GetMessage(string message, string message2, string input)
         {
             string level = GetCurrentSceneName();
@@ -25,90 +27,94 @@ namespace UltrakULL
             {
                 GameObject canvasObj = GetInactiveRootObject("Canvas");
                 TutorialStrings tutStrings = new TutorialStrings(ref canvasObj);
-                return TutorialStrings.GetMessage(message, message2, input);
+                fullMessage = TutorialStrings.GetMessage(message, message2, input);
+                if (!fullMessage.Contains("Unimplemented string"))  { return fullMessage; }
+
             }
-            else if (level.Contains("0-"))
+            if (level.Contains("0-"))
             {
-                return PreludeStrings.GetMessage(message, message2, input);
+                fullMessage = PreludeStrings.GetMessage(message, message2, input);
+                if (!fullMessage.Contains("Unimplemented string")) { return fullMessage; }
             }
-            else if (level.Contains("1-") || (level.Contains("2-") || (level.Contains("3-"))))
+            if(level.Contains("1-") || (level.Contains("2-") || (level.Contains("3-"))))
             {
-                return Act1Strings.GetMessage(message, message2, input);
+                fullMessage = Act1Strings.GetMessage(message, message2, input);
+                if (!fullMessage.Contains("Unimplemented string")) { return fullMessage; }
             }
-            else if (level.Contains("4-") || (level.Contains("5-") || (level.Contains("6-"))))
+            if(level.Contains("4-") || (level.Contains("5-") || (level.Contains("6-"))))
             {
-                return Act2Strings.GetMessage(message, message2, input);
+                fullMessage = Act2Strings.GetMessage(message, message2, input);
+                if (!fullMessage.Contains("Unimplemented string")) { return fullMessage; }
             }
-            else if (level.Contains("7-") || (level.Contains("8-") || (level.Contains("9-"))))
+            if(level.Contains("7-") || (level.Contains("8-") || (level.Contains("9-"))))
             {
-                return Act3Strings.GetMessage(message, message2, input);
+                fullMessage = Act3Strings.GetMessage(message, message2, input);
+                if (!fullMessage.Contains("Unimplemented string")) { return fullMessage; }
             }
-            else if (level.Contains("CreditsMuseum2"))
+            if(level.Contains("CreditsMuseum2"))
             {
-                return DevMuseum.GetMessage(message, message2, input);
+                fullMessage = DevMuseum.GetMessage(message, message2, input);
+                if (!fullMessage.Contains("Unimplemented string")) { return fullMessage; }
             }
 
-            else if (message.Contains("V-Rank"))
+            if(message.Contains("V-Rank"))
             {
                 return message;
             }
 
-            else if (message.Contains("PUNCH"))
+            if(message.Contains("PUNCH"))
             {
                 return "<color=red>" + LanguageManager.CurrentLanguage.misc.hud_noArm1 + "</color>\n"
                     + LanguageManager.CurrentLanguage.misc.hud_noArm2;
             }
-            else if (message.Contains("MAJOR"))
+            if(message.Contains("MAJOR"))
             {
                 return "<color=#4C99E6>" + LanguageManager.CurrentLanguage.misc.hud_majorAssists + "</color>";
             }
-            else if (message.Contains("200"))
+            if(message.Contains("200"))
             {
                 return LanguageManager.CurrentLanguage.misc.hud_overhealOrb1 + "\n"
                     + LanguageManager.CurrentLanguage.misc.hud_overhealOrb2;
             }
-            else if (message.Contains("ERROR"))
+            if(message.Contains("ERROR"))
             {
                 return "<color=red>" + LanguageManager.CurrentLanguage.misc.hud_itemGrabError + "</color>";
             }
-            else if (message.Contains("TAB"))
+            if(message.Contains("TAB"))
             {
                 return LanguageManager.CurrentLanguage.misc.hud_levelStats1 + "\n"
                     + LanguageManager.CurrentLanguage.misc.hud_levelStats2;
             }
-            else if (message.Contains("Whoops"))
+            if(message.Contains("Whoops"))
             {
                 return LanguageManager.CurrentLanguage.misc.hud_outOfBounds;
             }
-            else if (message.Contains("CLASH"))
+            if(message.Contains("CLASH"))
             {
                 return LanguageManager.CurrentLanguage.misc.hud_clashMode;
             }
-            else if (message.Contains("DRONE HAUNTING"))
+            if(message.Contains("DRONE HAUNTING"))
             {
                 return LanguageManager.CurrentLanguage.misc.hud_droneHaunting;
             }
-            else if (message.Contains("EQUIPPED"))
+            if(message.Contains("EQUIPPED"))
             {
                 return LanguageManager.CurrentLanguage.misc.hud_weaponVariation;
             }
-            else if (message.Contains("Altered"))
+            if(message.Contains("Altered"))
             {
                 return "<color=red>" + LanguageManager.CurrentLanguage.misc.enemyAlter_alteredDestroyed + "</color>";
             }
-            else if (message.Contains("INSUFFICIENT LIGHT"))
+            if(message.Contains("INSUFFICIENT LIGHT"))
             {
                 return LanguageManager.CurrentLanguage.primeSanctum.primeSanctum_first_insufficientlight;
             }
-            else if (message.Contains("=>")) //4-S transaction complete
+            if(message.Contains("=>")) //4-S transaction complete
             {
                 return message; //4-S transaction complete
             }
-            else
-            {
-                Logging.Warn("Unimplemented unknown string:" + message);
-                return message;
-            }
+            Logging.Warn("Unimplemented string in \"" + GetCurrentSceneName() + "\": " + message);
+            return message;
         }
 
         public static string GetReturningLevelName(string input)

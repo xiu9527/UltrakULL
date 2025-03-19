@@ -13,7 +13,7 @@ namespace UltrakULL
             {
                 return (LanguageManager.CurrentLanguage.act3.act3_violenceFirst_doorOpens);
             }
-            return "Unknown 7-1 string";
+            return ("Unimplemented string");
         }
         
         public static string Level72(string message, string message2, string input)
@@ -39,7 +39,7 @@ namespace UltrakULL
             {
                 return LanguageManager.CurrentLanguage.act3.act3_violenceSecond_alternateShotgun;
             }
-            return "Unknown 7-2 string";
+            return ("Unimplemented string");
         }
         
         public static string Level73(string message, string message2)
@@ -54,7 +54,7 @@ namespace UltrakULL
             {
                 return ("<color=red>" + LanguageManager.CurrentLanguage.act3.act3_violenceThird_feedIt + "</color>");
             }
-            return fullMessage;
+            return ("Unimplemented string");
         }
         
         public static string Level74(string message, string message2)
@@ -65,24 +65,12 @@ namespace UltrakULL
             {
                 return LanguageManager.CurrentLanguage.act3.act3_magentaAttacks;
             }
-            return fullMessage;
+            return ("Unimplemented string");
         }
         
         public static string Level7Secret(string message, string message2)
         {
-            string fullMessage = message + message2;
-            Logging.Warn("7-S Message " + fullMessage);
-            if (fullMessage.Contains("DRONE HAUNTING"))
-            {
-                return (LanguageManager.CurrentLanguage.secretLevels.secretLevels_seventh_droneHauntingAvailable);
-            }
-            if (fullMessage.Contains("BLOCKING DOOR"))
-            {
-                return (LanguageManager.CurrentLanguage.secretLevels.secretLevels_seventh_blockingDoor);
-            }
-            Logging.Warn("UNKNOWN 7-S Message " + fullMessage); 
-            return fullMessage;
-            
+            return ("Unimplemented string");
         }
         
         public static string Level81()
@@ -175,7 +163,11 @@ namespace UltrakULL
                     {
                         return Level92();
                     }
-                default: return "Unimplemented Act 3 string";
+                default:
+                    {
+                        //Console.WriteLine("Unknown ACT 3 string in " + currentLevel + ": \n" + message + message2);
+                        return ("Unimplemented string");
+                    }
             }
         }
 

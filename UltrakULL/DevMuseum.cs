@@ -28,9 +28,8 @@ namespace UltrakULL
             {
                 return LanguageManager.CurrentLanguage.devMuseum.museum_chessTip;
             }
-            
-            
-            return "";
+
+            return ("Unimplemented string");
         }
         
         public static string GetMuseumBook(string originalText)
