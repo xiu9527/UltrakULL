@@ -33,22 +33,12 @@ namespace UltrakULL
                 case "SWORDSMACHINE \"AGONY\"": { return LanguageManager.CurrentLanguage.enemyNames.enemyname_boss_swordsmachineAgony; }
                 case "SWORDSMACHINE \"TUNDRA\"": { return LanguageManager.CurrentLanguage.enemyNames.enemyname_boss_swordsmachineTundra; }
 
+                case "INSURRECTIONIST \"ANGRY\"": { return LanguageManager.CurrentLanguage.enemyNames.enemyname_boss_insurrectionistAngry; }
+                case "INSURRECTIONIST \"RUDE\"": { return LanguageManager.CurrentLanguage.enemyNames.enemyname_boss_insurrectionistRude; }
                 case "INSURRECTIONIST":
                 case "SISYPHEAN INSURRECTIONIST":
-                    {
-                        if (GetCurrentSceneName() == "Level 6-1")
-                        {
-                            if (doubleBoss == false)
-                            {
-                                doubleBoss = true;
-                                return LanguageManager.CurrentLanguage.enemyNames.enemyname_boss_insurrectionistAngry;
-                            }
-                            doubleBoss = false;
-                            return LanguageManager.CurrentLanguage.enemyNames.enemyname_boss_insurrectionistRude;
-                        }
-                        return LanguageManager.CurrentLanguage.enemyNames.enemyname_boss_insurrectionist;
-                    }
-                case "INSURRECTIONIST DEFAULT": { return LanguageManager.CurrentLanguage.enemyNames.enemyname_insurrectionist; }
+                case "INSURRECTIONIST DEFAULT":
+                    { return LanguageManager.CurrentLanguage.enemyNames.enemyname_boss_insurrectionist; }
 
                 case "FILTH": { return LanguageManager.CurrentLanguage.enemyNames.enemyname_filth; }
                 case "STRAY": { return LanguageManager.CurrentLanguage.enemyNames.enemyname_stray; }
