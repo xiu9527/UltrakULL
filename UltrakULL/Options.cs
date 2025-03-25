@@ -243,8 +243,6 @@ namespace UltrakULL
             psxFilterSettingsText.text = "--" + LanguageManager.CurrentLanguage.options.graphics_filters + "--\n<size=16>"
                                         + LanguageManager.CurrentLanguage.options.graphics_filtersDescription + "</size>";
 
-            TextMeshProUGUI psxFilterSettingsDescription = GetTextMeshProUGUI(GetGameObjectChild(graphicsContent, "Text (6)"));
-            psxFilterSettingsDescription.text = LanguageManager.CurrentLanguage.options.graphics_filtersDescription;
 
             TextMeshProUGUI downscalingText = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(graphicsContent, "Downscaling"), "Text"));
             downscalingText.text = LanguageManager.CurrentLanguage.options.graphics_pixelisation;
