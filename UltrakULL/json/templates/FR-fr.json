@@ -917,6 +917,7 @@
 	"frontend": {
 		"mainmenu_earlyAccess": "ACCÈS ANTICIPÉ",
 		"mainmenu_v1Init": "",
+		"mainmenu_initSocials": "",
 
 		"mainmenu_easter": "JOYEUSES PÂQUES",
 		"mainmenu_halloween": "JOYEUX HALLOWEEN",
@@ -1273,6 +1274,11 @@
 		"controls_weaponTitle": "ARME",
 		"controls_primaryFire": "TIR PRINCIPAL",
 		"controls_secondaryFire": "TIR SECONDAIRE",
+		"controls_revolver": "",
+		"controls_shotgun": "",
+		"controls_nailgun": "",
+		"controls_railcannon": "",
+		"controls_rocketLauncher": "",
 		"controls_spawnerArm": "",
 		"controls_nextWeapon": "PROCHAINE ARME",
 		"controls_previousWeapon": "ARME PRÉCÉDENTE",
@@ -1282,13 +1288,13 @@
 		"controls_variationSlot3": "",
 		"controls_nextVariation": "",
 		"controls_previousVariation": "",
-		"controls_arms": "BRAS",
+		"controls_fist": "BRAS",
 		"controls_punch": "COUP DE POING",
 		"controls_punchFeedbacker": "",
 		"controls_punchKnuckleblaster": "",
 		"controls_whiplash": "GRAPPIN",
 		"controls_boundMultiple": "",
-		"controls_changeArm": "CHANGER DE BRAS",
+		"controls_changeFist": "CHANGER DE BRAS",
 		"controls_movementTitle": "MOUVEMENT",
 		"controls_resetDefault": "RÉINITIALISER",
 		"controls_forward": "AVANCER",
@@ -1315,7 +1321,7 @@
 		"graphics_maxFps2x": "2X FRÉQUENCE DU MONITEUR",
 		"graphics_vsync": "V-SYNC",
 		"graphics_fieldOfVision": "CHAMP DE VISION",
-		"graphics_gamma1": "GAMMA <size=12>(LUMINOSITÉ)",
+		"graphics_gamma": "GAMMA <size=12>(LUMINOSITÉ)",
 		"graphics_gamma2": "\n(pas vraiment)",
 		"graphics_filters": "FILTRES",
 		"graphics_filtersDescription": "(Abaisser pour plus de clarté visuelle)",
@@ -1351,6 +1357,8 @@
 		"graphics_performanceSimpleFire": "FEU SIMPLIFIÉ",
 		"graphics_performanceSimpleSpawn": "EFFETS D'APPARITION SIMPLIFIÉS",
 		"graphics_performanceDisableEnviParticles": "DÉSACTIVER LES EFFETS D'ENVIRONNEMENT",
+		"graphics_performanceDisableEnviHitParticles": "",
+		"graphics_performanceDisableHeatWaves": "",
 		"graphics_performanceSimpleNails": "PHYSIQUES DES CLOUS SIMPLIFIÉS",
 		"graphics_gore": "SANG ET GORE",
 		"graphics_goreNote": "(N'affecte pas le jeu)",
@@ -1740,6 +1748,8 @@
 
 		"leveltips_primeSecond": "Amusez-vous bien.",
 
+		"leveltips_primeThird": "",
+
 		"leveltips_wrathFirst": "Les chutes <color=orange>sous l'eau</color> sont lentes, mais un <color=orange>lancement au sol</color> permet de se retourner rapidement sur le sol.",
 		"leveltips_wrathSecond": "Les <color=orange>glissements</color> sur l'eau vous permettra d'y <color=orange>rebondir</color> sur sa surface.",
 		"leveltips_wrathThird": "Si un ennemi est <color=orange>béni</color> par un <color=orange>Idol</color>, une connexion visible et directe est formé entre les deux, permettant de <color=orange>retrouver</color> facilement et détruire le protecteur.",
@@ -1765,6 +1775,18 @@
 
 		"leveltips_treacheryFirst": "???",
 		"leveltips_treacherySecond": "???",
+
+		"leveltips_encorePrelude1": "",
+		"leveltips_encorePrelude2": "",
+		"leveltips_encoreLimbo": "",
+		"leveltips_encoreLust": "",
+		"leveltips_encoreGluttony": "",
+		"leveltips_encoreGreed": "",
+		"leveltips_encoreWrath": "",
+		"leveltips_encoreHeresy": "",
+		"leveltips_encoreViolence": "",
+		"leveltips_encoreFraud": "",
+		"leveltips_encoreTreachery": "",
 
 		"leveltips_cybergrind": "Si vous vous faites envoyer trop loin de l'arène, le surpompement du <color=green>SURCHARGEMENT</color> est une bonne façon d'y revenir.",
 		"leveltips_sandbox1": "<color=orange>LES TRICHES</color> peuvent être activés dans les autres niveaux en entrant les touches suivantes:",
@@ -1793,7 +1815,6 @@
 		"shop_cybergrindDescription3": "<color=red>Tout progrès dans la mission actuelle sera perdu</color>.",
 		"shop_cybergrindEnterTitle": "LE CYBER GRIND",
 		"shop_cybergrindEnter": "ENTRER LE CYBER GRIND",
-		"shop_cybergrindReturningTo": "Retourner à:",
 		"shop_cybergrindExitTitle": "RETOURNER AU MISSION",
 		"shop_cybergrindExit": "QUITTER LE CYBER GRIND",
 
@@ -1801,6 +1822,8 @@
 		"shop_sandboxDescription1": "Le bac à sable est une zone vide que vous pouvez utiliser pour vous pratiquer.",
 		"shop_sandboxDescription2": "Tout progrès dans la mission actuelle sera perdu.",
 		"shop_sandboxEnter": "ENTRER LE BAC À SABLE",
+
+		"shop_ReturningTo": "Retourner à:",
 
 		"shop_back": "RETOUR",
 		"shop_weaponInfo": "INFO",
@@ -2638,7 +2661,9 @@
 		"encorePrelude_heatResistanceText": "",
 		"encorePrelude_heatResistanceTitle": "",
 		"encorePrelude_heatResistanceRepaired": "",
-		"encorePrelude_heatResistanceRepairedText": ""
+		"encorePrelude_heatResistanceRepairedText": "",
+
+		"encoreLimbo_warningText": ""
 	},
 
 	"primeSanctum": {
@@ -3053,7 +3078,10 @@
 
 		"earlyAccessEnd1": "MERCI D'AVOIR JOUÉ",
 		"earlyAccessEnd2": "Le 8e cercle : [Fraud] est encore en développement.",
-		"earlyAccessEnd3": "Pour avoir des nouvelles sur le développement, suivez-nous sur : "
+		"earlyAccessEnd3": "Pour avoir des nouvelles sur le développement, suivez-nous sur : ",
+
+		"violenceScreenText1": "",
+		"violenceScreenText2": ""
 	},
 	"weapon": {
 		"weapon_nailgunZapperReady": "",

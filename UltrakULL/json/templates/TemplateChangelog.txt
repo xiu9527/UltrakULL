@@ -13,6 +13,18 @@ frontend: aboutEncoreMain
 frontend: aboutEncoreButton
 frontend: encoreAvailableMainText
 frontend: encoreAvailableButton
+leveltips: leveltips_encorePrelude1
+leveltips: leveltips_encorePrelude2
+leveltips: leveltips_encoreLimbo
+leveltips: leveltips_encoreLust
+leveltips: leveltips_encoreGluttony
+leveltips: leveltips_encoreGreed
+leveltips: leveltips_encoreWrath
+leveltips: leveltips_encoreHeresy
+leveltips: leveltips_encoreViolence
+leveltips: leveltips_encoreFraud
+leveltips: leveltips_encoreTreachery
+leveltips: leveltips_primeThird
 shop: shop_equipped
 shop: shop_unequipped
 shop: shop_colorsStandard
@@ -80,6 +92,14 @@ enemyNames: enemyname_radiant_hideousMass
 
 MODIFIED:
 style: style_catapaulted -> style_catapulted
+shop: shop_cybergrindReturningTo -> shop_returningTo
+options: control_arms -> controls_fist
+options: controls_changeArm -> controls_changeFist
+options: graphics_gamma1 -> graphics_gamma
+
+REMOVED:
+options: graphics_gamma2
+options: graphics_performanceSimpleNails
 
 1.3.0:
 

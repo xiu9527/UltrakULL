@@ -18,7 +18,7 @@ namespace UltrakULL.Harmony_Patches
             {
                 if (!GetCurrentSceneName().Contains("-E"))
                 {
-                    ___txt2.text = "<color=red>" + LanguageManager.CurrentLanguage.shop.shop_cybergrindReturningTo +
+                    ___txt2.text = "<color=red>" + LanguageManager.CurrentLanguage.shop.shop_returningTo +
                                    "</color>:\n" + LevelNames.GetLevelName(__instance.otherLevelNumber);
                 }
 

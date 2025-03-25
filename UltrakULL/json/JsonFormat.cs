@@ -1544,7 +1544,7 @@ namespace UltrakULL.json
         public string shop_cybergrindDescription3;
         public string shop_cybergrindEnterTitle;
         public string shop_cybergrindEnter;
-        public string shop_cybergrindReturningTo;
+        public string shop_returningTo;
         public string shop_cybergrindExitTitle;
         public string shop_cybergrindExit;
 
@@ -1878,12 +1878,22 @@ namespace UltrakULL.json
         public string leveltips_treacheryFirst;
         public string leveltips_treacherySecond;
 
-        public string leveltips_encorePrelude;
+        public string leveltips_encorePrelude1;
+        public string leveltips_encorePrelude2;
         public string leveltips_encoreLimbo;
+        public string leveltips_encoreLust;
+        public string leveltips_encoreGluttony;
+        public string leveltips_encoreGreed;
+        public string leveltips_encoreWrath;
+        public string leveltips_encoreHeresy;
+        public string leveltips_encoreViolence;
+        public string leveltips_encoreFraud;
+        public string leveltips_encoreTreachery;
 
         public string leveltips_primeFirst1;
         public string leveltips_primeFirst2;
         public string leveltips_primeSecond;
+        public string leveltips_primeThird;
 
         public string leveltips_cybergrind;
         public string leveltips_sandbox1;
@@ -2050,9 +2060,9 @@ namespace UltrakULL.json
         public string controls_variationSlot1;
         public string controls_variationSlot2;
         public string controls_variationSlot3;
-        public string controls_arms;
+        public string controls_fist;
         public string controls_punch;
-        public string controls_changeArm;
+        public string controls_changeFist;
         public string controls_punchFeedbacker;
         public string controls_punchKnuckleblaster;
         public string controls_whiplash;
@@ -2065,8 +2075,7 @@ namespace UltrakULL.json
         public string graphics_maxFps2x;
         public string graphics_vsync;
         public string graphics_fieldOfVision;
-        public string graphics_gamma1;
-        public string graphics_gamma2;
+        public string graphics_gamma;
         public string graphics_disableNewShaders;
         public string graphics_filters;
         public string graphics_filtersDescription;
@@ -2106,7 +2115,6 @@ namespace UltrakULL.json
         public string graphics_performanceDisableEnviParticles;
         public string graphics_performanceDisableEnviHitParticles;
         public string graphics_performanceDisableHeatWaves;
-        public string graphics_performanceSimpleNails;
         public string graphics_gore;
         public string graphics_goreNote;
         public string graphics_goreEnable;

@@ -34,7 +34,7 @@ namespace UltrakULL.Harmony_Patches
                         }
                         case "-- FIST --":
                         {
-                            sectionText.text = "-- " + LanguageManager.CurrentLanguage.options.controls_arms + " --";
+                            sectionText.text = "-- " + LanguageManager.CurrentLanguage.options.controls_fist + " --";
                             break;
                         }
                         case "-- HUD --":
@@ -65,11 +65,11 @@ namespace UltrakULL.Harmony_Patches
                 case "SECONDARY FIRE": { return LanguageManager.CurrentLanguage.options.controls_secondaryFire; }
                 case "NEXT VARIATION": { return LanguageManager.CurrentLanguage.options.controls_nextVariation; }
                 case "PREVIOUS VARIATION": { return LanguageManager.CurrentLanguage.options.controls_previousVariation; }
-                case "REVOLVER": { return LanguageManager.CurrentLanguage.shop.shop_weaponsRevolver; }
-                case "SHOTGUN": { return LanguageManager.CurrentLanguage.shop.shop_weaponsShotgun; }
-                case "NAILGUN": { return LanguageManager.CurrentLanguage.shop.shop_weaponsNailgun; }
-                case "RAILCANNON": { return LanguageManager.CurrentLanguage.shop.shop_weaponsRailcannon; }
-                case "ROCKET LAUNCHER": { return LanguageManager.CurrentLanguage.shop.shop_weaponsRocketLauncher; }
+                case "REVOLVER": { return LanguageManager.CurrentLanguage.options.controls_revolver; }
+                case "SHOTGUN": { return LanguageManager.CurrentLanguage.options.controls_shotgun; }
+                case "NAILGUN": { return LanguageManager.CurrentLanguage.options.controls_nailgun; }
+                case "RAILCANNON": { return LanguageManager.CurrentLanguage.options.controls_railcannon; }
+                case "ROCKET LAUNCHER": { return LanguageManager.CurrentLanguage.options.controls_rocketLauncher; }
                 case "SPAWNER ARM": { return LanguageManager.CurrentLanguage.options.controls_spawnerArm; }
                 case "NEXT WEAPON": { return LanguageManager.CurrentLanguage.options.controls_nextWeapon; }
                 case "PREVIOUS WEAPON": { return LanguageManager.CurrentLanguage.options.controls_previousWeapon; }
@@ -78,7 +78,7 @@ namespace UltrakULL.Harmony_Patches
                 case "VARIATION SLOT 2": { return LanguageManager.CurrentLanguage.options.controls_variationSlot2; }
                 case "VARIATION SLOT 3": { return LanguageManager.CurrentLanguage.options.controls_variationSlot3; }
                 case "PUNCH": { return LanguageManager.CurrentLanguage.options.controls_punch; }
-                case "CHANGE FIST": { return LanguageManager.CurrentLanguage.options.controls_changeArm; }
+                case "CHANGE FIST": { return LanguageManager.CurrentLanguage.options.controls_changeFist; }
                 case "PUNCH (FEEDBACKER)": { return LanguageManager.CurrentLanguage.options.controls_punchFeedbacker; }
                 case "PUNCH (KNUCKLEBLASTER)": { return LanguageManager.CurrentLanguage.options.controls_punchKnuckleblaster; }
                 case "HOOK": { return LanguageManager.CurrentLanguage.options.controls_whiplash; }

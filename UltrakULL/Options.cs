@@ -233,8 +233,7 @@ namespace UltrakULL
             fovText.text = LanguageManager.CurrentLanguage.options.graphics_fieldOfVision;
 
             TextMeshProUGUI gammaCorrectionText = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(graphicsContent, "Gamma (Brightness)"), "Text"));
-            gammaCorrectionText.text = LanguageManager.CurrentLanguage.options.graphics_gamma1 +
-                "<size=8>" + LanguageManager.CurrentLanguage.options.graphics_gamma2 + "</size>";
+            gammaCorrectionText.text = LanguageManager.CurrentLanguage.options.graphics_gamma;
 
             TextMeshProUGUI disableNewShadersText = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(graphicsContent, "Disable New Shaders (Requires Reload)"), "Text"));
             disableNewShadersText.text = LanguageManager.CurrentLanguage.options.graphics_disableNewShaders;
@@ -244,9 +243,8 @@ namespace UltrakULL
             psxFilterSettingsText.text = "--" + LanguageManager.CurrentLanguage.options.graphics_filters + "--\n<size=16>"
                                         + LanguageManager.CurrentLanguage.options.graphics_filtersDescription + "</size>";
 
-            //(Not shown by default anymore, safe to get rid of?)
-            //TextMeshProUGUI psxFilterSettingsDescription = GetTextMeshProUGUI(GetGameObjectChild(graphicsContent, "Text (6)"));
-            //psxFilterSettingsDescription.text = LanguageManager.CurrentLanguage.options.graphics_filtersDescription;
+            TextMeshProUGUI psxFilterSettingsDescription = GetTextMeshProUGUI(GetGameObjectChild(graphicsContent, "Text (6)"));
+            psxFilterSettingsDescription.text = LanguageManager.CurrentLanguage.options.graphics_filtersDescription;
 
             TextMeshProUGUI downscalingText = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(graphicsContent, "Downscaling"), "Text"));
             downscalingText.text = LanguageManager.CurrentLanguage.options.graphics_pixelisation;
@@ -330,10 +328,6 @@ namespace UltrakULL
 
             TextMeshProUGUI disableHeatWavesText = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(graphicsContent, "Disable Heat Waves"), "Text"));
             disableHeatWavesText.text = LanguageManager.CurrentLanguage.options.graphics_performanceDisableHeatWaves;
-
-            //removed and unused after patch 16
-            //TextMeshProUGUI simpleNailPhysicsText = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(graphicsContent, "Simple Nail Physics"), "Text"));
-            //simpleNailPhysicsText.text = LanguageManager.CurrentLanguage.options.graphics_performanceSimpleNails;
 
             //--GORE--
             TextMeshProUGUI goreSettingsText = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(graphicsContent, "-- Gore --"), "Text"));

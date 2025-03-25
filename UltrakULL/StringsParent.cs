@@ -377,11 +377,44 @@ namespace UltrakULL
             //Encore levels
             if (currentLevel.Contains("0-E"))
             {
-                return LanguageManager.CurrentLanguage.levelTips.leveltips_encorePrelude;
+                return LanguageManager.CurrentLanguage.levelTips.leveltips_encorePrelude1 + "\n\n"
+                    + LanguageManager.CurrentLanguage.levelTips.leveltips_encorePrelude2;
             }
             if (currentLevel.Contains("1-E"))
             {
                 return LanguageManager.CurrentLanguage.levelTips.leveltips_encoreLimbo;
+            }
+            if (currentLevel.Contains("2-E"))
+            {
+                return LanguageManager.CurrentLanguage.levelTips.leveltips_encoreLust;
+            }
+            if (currentLevel.Contains("3-E"))
+            {
+                return LanguageManager.CurrentLanguage.levelTips.leveltips_encoreGluttony;
+            }
+            if (currentLevel.Contains("4-E"))
+            {
+                return LanguageManager.CurrentLanguage.levelTips.leveltips_encoreGreed;
+            }
+            if (currentLevel.Contains("5-E"))
+            {
+                return LanguageManager.CurrentLanguage.levelTips.leveltips_encoreWrath;
+            }
+            if (currentLevel.Contains("6-E"))
+            {
+                return LanguageManager.CurrentLanguage.levelTips.leveltips_encoreHeresy;
+            }
+            if (currentLevel.Contains("7-E"))
+            {
+                return LanguageManager.CurrentLanguage.levelTips.leveltips_encoreViolence;
+            }
+            if (currentLevel.Contains("8-E"))
+            {
+                return LanguageManager.CurrentLanguage.levelTips.leveltips_encoreFraud;
+            }
+            if (currentLevel.Contains("9-E"))
+            {
+                return LanguageManager.CurrentLanguage.levelTips.leveltips_encoreTreachery;
             }
 
             //Prime sanctums
@@ -392,6 +425,10 @@ namespace UltrakULL
             if (currentLevel.Contains("P-2"))
             {
                 return LanguageManager.CurrentLanguage.levelTips.leveltips_primeSecond;
+            }
+            if (currentLevel.Contains("P-3"))
+            {
+                return LanguageManager.CurrentLanguage.levelTips.leveltips_primeThird;
             }
 
             //Cybergrind
