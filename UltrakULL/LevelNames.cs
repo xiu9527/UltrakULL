@@ -159,25 +159,41 @@ namespace UltrakULL
 						return "9-1: " + LanguageManager.CurrentLanguage.levelNames.levelName_treacheryFirst;
 					case 35:
 						return "9-2: " + LanguageManager.CurrentLanguage.levelNames.levelName_treacherySecond;
-					case 100: //Encore levels have same level id
-						{
-                            if (levelname.Contains("0-E")) 
-								return "0-E: " + LanguageManager.CurrentLanguage.levelNames.levelName_encorePrelude;
-                            if (levelname.Contains("1-E"))
-                                return "1-E: " + LanguageManager.CurrentLanguage.levelNames.levelName_encoreLimbo;
-                            return levelname;
-                        }
-                    default:
+					default:
 						switch (missionNum)
-						{
-							case 666:
-								return "P-1: " + LanguageManager.CurrentLanguage.levelNames.levelName_primeFirst;
-							case 667:
-								return "P-2: " + LanguageManager.CurrentLanguage.levelNames.levelName_primeSecond;
-							case 668:
-								return "P-3: " + LanguageManager.CurrentLanguage.levelNames.levelName_primeThird;
+						{//Just like P-n uses 666~668. Encore levels use 100~109. for some reasons the devs set to use same id as first one in LevelSelectPanel. And also
+                            case 100:
+                                return "0-E: " + LanguageManager.CurrentLanguage.levelNames.levelName_encorePrelude;
+                            case 101:
+								return "1-E: " + LanguageManager.CurrentLanguage.levelNames.levelName_encoreLimbo;
+							case 102:
+								return "2-E: " + LanguageManager.CurrentLanguage.levelNames.levelName_encoreLust;
+							case 103:
+								return "3-E: " + LanguageManager.CurrentLanguage.levelNames.levelName_encoreGluttony;
+							case 104:
+								return "4-E: " + LanguageManager.CurrentLanguage.levelNames.levelName_encoreGreed;
+							case 105:
+								return "5-E: " + LanguageManager.CurrentLanguage.levelNames.levelName_encoreWrath;
+							case 106:
+								return "6-E: " + LanguageManager.CurrentLanguage.levelNames.levelName_encoreHeresy;
+							case 107:
+								return "7-E: " + LanguageManager.CurrentLanguage.levelNames.levelName_encoreViolence;
+							case 108:
+								return "8-E: " + LanguageManager.CurrentLanguage.levelNames.levelName_encoreFraud;
+							case 109:
+								return "9-E: " + LanguageManager.CurrentLanguage.levelNames.levelName_encoreTreachery;
 							default:
-								return levelname;
+								switch (missionNum)
+								{
+									case 666:
+										return "P-1: " + LanguageManager.CurrentLanguage.levelNames.levelName_primeFirst;
+									case 667:
+										return "P-2: " + LanguageManager.CurrentLanguage.levelNames.levelName_primeSecond;
+									case 668:
+										return "P-3: " + LanguageManager.CurrentLanguage.levelNames.levelName_primeThird;
+									default:
+										return levelname;
+								}
 						}
 				}
 			}

@@ -7,6 +7,7 @@ using System.Linq;
 using TMPro;
 
 using static UltrakULL.CommonFunctions;
+using System.Diagnostics.Eventing.Reader;
 
 namespace UltrakULL.Harmony_Patches
 {
@@ -26,85 +27,118 @@ namespace UltrakULL.Harmony_Patches
 			RankData rank = GameProgressSaver.GetRank(num, false);
 			try
 			{
-            //Bandaid fix for P-2 and P-3 for now since they share the same level id as P-1 for some reason. Shall need to change/remove when they release.
-                                if (__instance.name.Contains("P-2") /*|| __instance.transform.Find("Name").GetComponent<TextMeshProUGUI>().text.Contains("P-2")*/)
+                //Prime Sanctums and Encore levels actually have it's own id but for some reason these levels use same id as first one. 
+                //Bandaid fix for P-2 and P-3 for now since they share the same level id as P-1 for some reason. Shall need to change/remove when they release.
+                TextMeshProUGUI nameText = __instance.transform.Find("Name").GetComponent<TextMeshProUGUI>();
+				if (num == 666)
 				{
-					__instance.transform.Find("Name").GetComponent<TextMeshProUGUI>().text = "P-2:" + (LanguageManager.CurrentLanguage.levelNames.levelName_primeSecond);
-				}
-				else if (__instance.name.Contains("P-3") /*|| __instance.transform.Find("Name").GetComponent<TextMeshProUGUI>().text.Contains("P-3")*/)
-				{
-					__instance.transform.Find("Name").GetComponent<TextMeshProUGUI>().text = "P-3: ???";
-				}
-                //All of the Encore levels share the same level id
-                else if (__instance.name.Contains("0-E") || __instance.transform.Find("Name").GetComponent<TextMeshProUGUI>().text.Contains("0-E"))
-                {
-                    __instance.transform.Find("Name").GetComponent<TextMeshProUGUI>().text =
-                        "0-E:" + (LanguageManager.CurrentLanguage.levelNames.levelName_encorePrelude);
-                }
-				else if(__instance.name.Contains("1-E") || __instance.transform.Find("Name").GetComponent<TextMeshProUGUI>().text.Contains("1-E"))
-                {
-                    __instance.transform.Find("Name").GetComponent<TextMeshProUGUI>().text =
-                        "1-E:" + (LanguageManager.CurrentLanguage.levelNames.levelName_encoreLimbo);
-                }
-                else if (__instance.name.Contains("2-E") || __instance.transform.Find("Name").GetComponent<TextMeshProUGUI>().text.Contains("2-E"))
-                {
-                    __instance.transform.Find("Name").GetComponent<TextMeshProUGUI>().text =
-                        "2-E: ???";
-                }
-                else if (__instance.name.Contains("3-E") || __instance.transform.Find("Name").GetComponent<TextMeshProUGUI>().text.Contains("3-E"))
-                {
-                    __instance.transform.Find("Name").GetComponent<TextMeshProUGUI>().text =
-                        "3-E: ???";
-                }
-                else if (__instance.name.Contains("4-E") || __instance.transform.Find("Name").GetComponent<TextMeshProUGUI>().text.Contains("4-E"))
-                {
-                    __instance.transform.Find("Name").GetComponent<TextMeshProUGUI>().text =
-                        "4-E: ???";
-                }
-                else if (__instance.name.Contains("5-E") || __instance.transform.Find("Name").GetComponent<TextMeshProUGUI>().text.Contains("5-E"))
-                {
-                    __instance.transform.Find("Name").GetComponent<TextMeshProUGUI>().text =
-                        "5-E: ???";
-                }
-                else if (__instance.name.Contains("6-E") || __instance.transform.Find("Name").GetComponent<TextMeshProUGUI>().text.Contains("6-E"))
-                {
-                    __instance.transform.Find("Name").GetComponent<TextMeshProUGUI>().text =
-                        "6-E: ???";
-                }
-                else if (__instance.name.Contains("7-E") || __instance.transform.Find("Name").GetComponent<TextMeshProUGUI>().text.Contains("7-E"))
-                {
-                    __instance.transform.Find("Name").GetComponent<TextMeshProUGUI>().text =
-                        "7-E: ???";
-                }
-                else if (__instance.name.Contains("8-E") || __instance.transform.Find("Name").GetComponent<TextMeshProUGUI>().text.Contains("8-E"))
-                {
-                    __instance.transform.Find("Name").GetComponent<TextMeshProUGUI>().text =
-                        "8-E: ???";
-                }
-                else if (__instance.name.Contains("9-E") || __instance.transform.Find("Name").GetComponent<TextMeshProUGUI>().text.Contains("9-E"))
-                {
-                    __instance.transform.Find("Name").GetComponent<TextMeshProUGUI>().text =
-                        "9-E: ???";
-                }
-                else
-				{
-					string levelName = LevelNames.GetLevelName(num, __instance.name);
-					if (LanguageManager.IsRightToLeft)
+					//Don't worry about P-1, it's taken care of LevelNames.cs
+					if (__instance.name.Contains("P-2") || nameText.text.Contains("P-2"))
 					{
-						string lvlNumber = "";
-						char[] lnum = levelName.Substring(0, 3).ToCharArray();
-
-						lvlNumber += lnum[2];
-						lvlNumber += lnum[1];
-						lvlNumber += lnum[0];
-
-						string lvlTitle = levelName.Substring(5);
-
-						levelName = $"{lvlTitle} :{lvlNumber}";
+						if (LanguageManager.UsingHinduNumbers)
+						{ }
+						else
+						{ nameText.text = "P-2:" + LanguageManager.CurrentLanguage.levelNames.levelName_primeSecond; }
 					}
-					__instance.transform.Find("Name").GetComponent<TextMeshProUGUI>().text = levelName; //Level Name
+					else if (__instance.name.Contains("P-3") || nameText.text.Contains("P-3"))
+					{
+						if (LanguageManager.UsingHinduNumbers)
+						{ }
+						else
+						{ nameText.text = "P-3: ???"; }
+					}
 				}
-				if (rank.levelNumber == __instance.levelNumber || (__instance.levelNumber == 666 && rank.levelNumber == __instance.levelNumber + __instance.levelNumberInLayer - 1))
+				//All of the Encore levels share the same level id in this menu. 
+				if (num == 100)
+				{
+					if (__instance.name.Contains("0-E") || nameText.text.Contains("0-E"))
+					{
+						if (LanguageManager.UsingHinduNumbers)
+						{ nameText.text = "٠-E" + LanguageManager.CurrentLanguage.levelNames.levelName_encorePrelude; }
+						else
+						{ nameText.text = "0-E:" + LanguageManager.CurrentLanguage.levelNames.levelName_encorePrelude; }
+					}
+					else if (__instance.name.Contains("1-E") || nameText.text.Contains("1-E"))
+					{
+						if (LanguageManager.UsingHinduNumbers)
+						{ nameText.text = "١-E" + LanguageManager.CurrentLanguage.levelNames.levelName_encoreLimbo; }
+						else
+						{ nameText.text = "1-E:" + LanguageManager.CurrentLanguage.levelNames.levelName_encoreLimbo; }
+					}
+					else if (__instance.name.Contains("2-E") || nameText.text.Contains("2-E"))
+					{
+						if (LanguageManager.UsingHinduNumbers)
+						{ nameText.text = "٢-E" + LanguageManager.CurrentLanguage.levelNames.levelName_encoreLust; }
+						else
+						{ nameText.text = "2-E:" + LanguageManager.CurrentLanguage.levelNames.levelName_encoreLust; }
+					}
+					else if (__instance.name.Contains("3-E") || nameText.text.Contains("3-E"))
+					{
+						if (LanguageManager.UsingHinduNumbers)
+						{ nameText.text = "٣-E" + LanguageManager.CurrentLanguage.levelNames.levelName_encoreGluttony; }
+						else
+						{ nameText.text = "3-E:" + LanguageManager.CurrentLanguage.levelNames.levelName_encoreGluttony; }
+					}
+					else if (__instance.name.Contains("4-E") || nameText.text.Contains("4-E"))
+					{
+						if (LanguageManager.UsingHinduNumbers)
+						{ nameText.text = "٤-E" + LanguageManager.CurrentLanguage.levelNames.levelName_encoreGreed; }
+						else
+						{ nameText.text = "4-E:" + LanguageManager.CurrentLanguage.levelNames.levelName_encoreGreed; }
+					}
+					else if (__instance.name.Contains("5-E") || nameText.text.Contains("5-E"))
+					{
+						if (LanguageManager.UsingHinduNumbers)
+						{ nameText.text = "٥-E" + LanguageManager.CurrentLanguage.levelNames.levelName_encoreWrath; }
+						else
+						{ nameText.text = "5-E:" + LanguageManager.CurrentLanguage.levelNames.levelName_encoreWrath; }
+					}
+					else if (__instance.name.Contains("6-E") || nameText.text.Contains("6-E"))
+					{
+						if (LanguageManager.UsingHinduNumbers)
+						{ nameText.text = "٦-E" + LanguageManager.CurrentLanguage.levelNames.levelName_encoreHeresy; }
+						else
+						{ nameText.text = "6-E:" + LanguageManager.CurrentLanguage.levelNames.levelName_encoreHeresy; }
+					}
+					else if (__instance.name.Contains("7-E") || nameText.text.Contains("7-E"))
+					{
+						if (LanguageManager.UsingHinduNumbers)
+						{ nameText.text = "٧-E" + LanguageManager.CurrentLanguage.levelNames.levelName_encoreViolence; }
+						else
+						{ nameText.text = "7-E:" + LanguageManager.CurrentLanguage.levelNames.levelName_encoreViolence; }
+					}
+					else if (__instance.name.Contains("8-E") || nameText.text.Contains("8-E"))
+					{
+						if (LanguageManager.UsingHinduNumbers)
+						{ nameText.text = "٨-E" + LanguageManager.CurrentLanguage.levelNames.levelName_encoreFraud; }
+						else
+						{ nameText.text = "8-E:" + LanguageManager.CurrentLanguage.levelNames.levelName_encoreFraud; }
+					}
+					else if (__instance.name.Contains("9-E") || nameText.text.Contains("9-E"))
+					{
+						if (LanguageManager.UsingHinduNumbers)
+						{ nameText.text = "٩-E" + LanguageManager.CurrentLanguage.levelNames.levelName_encoreTreachery; }
+						else
+						{ nameText.text = "9-E:" + LanguageManager.CurrentLanguage.levelNames.levelName_encoreTreachery; }
+					}
+				}
+                //RTL support
+                string levelName = LevelNames.GetLevelName(num, __instance.name);
+				if (LanguageManager.IsRightToLeft)
+				{
+					string lvlNumber = "";
+					char[] lnum = levelName.Substring(0, 3).ToCharArray();
+
+					lvlNumber += lnum[2];
+					lvlNumber += lnum[1];
+					lvlNumber += lnum[0];
+
+					string lvlTitle = levelName.Substring(5);
+
+					levelName = $"{lvlTitle} :{lvlNumber}";
+				}
+				nameText.text = levelName; //Level Name
+				if (rank.levelNumber == __instance.levelNumber || ((__instance.levelNumber == 666 || __instance.levelNumber == 100) && rank.levelNumber == __instance.levelNumber + __instance.levelNumberInLayer - 1))
 				{
 					if (__instance.challengeIcon)
 					{
@@ -135,8 +169,8 @@ namespace UltrakULL.Harmony_Patches
 			}
 			catch (Exception e)
 			{
-				Debug.LogError("Exception occured :  " + num);
-				Debug.LogError(e.ToString());
+				Logging.Error("Exception occured :  " + num);
+                Logging.Error(e.ToString());
 			}
 		}
 	}
