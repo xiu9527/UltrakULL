@@ -4,8 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
 using System.Reflection;
-using System.Collections;
-using UnityEngine.Networking;
+using UltrakULL.Harmony_Patches;
 using UltrakULL.json;
 
 [HarmonyPatch(typeof(IntroViolenceScreen))]
@@ -73,6 +72,8 @@ public static class IntroViolenceScreenPatch
         tmp.alignment = TextAlignmentOptions.Center;
         tmp.overflowMode = TextOverflowModes.Overflow;
         tmp.color = new Color(1, 1, 1, startAlpha);
+        tmp.enableWordWrapping = false;
+        TextMeshProFontSwap.SwapTMPFont(ref tmp, false, false);
         //tmp.autoSizeTextContainer = true;
 
         RectTransform rectTransform = textObj.GetComponent<RectTransform>();
