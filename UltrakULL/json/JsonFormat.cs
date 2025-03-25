@@ -1908,7 +1908,6 @@ namespace UltrakULL.json
         public string enemyname_stray;
         public string enemyname_schism;
         public string enemyname_soldier;
-        public string enemyname_minos;
         public string enemyname_stalker;
         public string enemyname_insurrectionist;
         public string enemyname_swordsmachine;
@@ -2576,7 +2575,6 @@ namespace UltrakULL.json
         public string act3_violenceFourth_countdownTitle;
 
         public string act3_secretNotReady;
-        public string act3_magentaAttacks;
     }
 
     public class Enc
