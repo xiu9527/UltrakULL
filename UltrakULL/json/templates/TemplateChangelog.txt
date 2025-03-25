@@ -4,6 +4,7 @@ ADDED:
 New category: encore
 
 frontend: mainmenu_v1Init
+frontend: mainmenu_initSocials
 frontend: chapter_type_primary
 frontend: chapter_type_secondary
 frontend: chapter_encore
@@ -15,6 +16,7 @@ frontend: encoreAvailableButton
 shop: shop_equipped
 shop: shop_unequipped
 shop: shop_colorsStandard
+act1: act1_lustSecond_checkPoints
 act3: act3_violenceSecond_guttermanTutorialNoKB
 act3: act3_violenceFourth_magentaAttack
 encore: encorePrelude_heatResistanceWarn
@@ -22,6 +24,7 @@ encore: encorePrelude_heatResistanceText
 encore: encorePrelude_heatResistanceTitle
 encore: encorePrelude_heatResistanceRepaired
 encore: encorePrelude_heatResistanceRepairedText
+encore: encoreLimbo_warningText
 primeSanctum: primeSanctum_first_insufficientlight
 levelNames: levelName_encorePrelude
 levelNames: levelName_encoreLimbo
@@ -48,6 +51,14 @@ cyberGrind: cybergrind_musicType
 cyberGrind: cybergrind_musicFolderNameEncores
 tutorial: tutorial_introStatusUpdate
 options: controls_boundMultiple
+options: controls_revolver
+options: controls_shotgun
+options: controls_nailgun
+options: controls_railcannon
+options: controls_rocketLauncher
+options: controls_spawnerArm
+options: controls_rocketLauncher
+options: graphics_disableNewShaders
 misc: DeathSequence
 devMuseum: museum_bookKingGizzard1
 devMuseum: museum_bookKingGizzard2
@@ -65,6 +76,7 @@ devMuseum: museum_plaquesKingGizzard1
 devMuseum: museum_plaquesKingGizzard2
 enemyNames: enemyname_radiant_swordsmachine
 enemyNames: enemyname_radiant_cerberus
+enemyNames: enemyname_radiant_hideousMass
 
 MODIFIED:
 style: style_catapaulted -> style_catapulted

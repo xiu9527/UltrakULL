@@ -960,6 +960,7 @@
 	"frontend": {
 		"mainmenu_earlyAccess": "",
 		"mainmenu_v1Init": "",
+		"mainmenu_initSocials": "",
 
 		"mainmenu_halloween": "",
 		"mainmenu_easter": "",
@@ -1344,6 +1345,11 @@
 		"controls_weaponTitle": "",
 		"controls_primaryFire": "",
 		"controls_secondaryFire": "",
+		"controls_revolver": "",
+		"controls_shotgun": "",
+		"controls_nailgun": "",
+		"controls_railcannon": "",
+		"controls_rocketLauncher": "",
 		"controls_spawnerArm": "",
 		"controls_nextWeapon": "",
 		"controls_previousWeapon": "",
@@ -1405,6 +1411,8 @@
 		"graphics_performanceSimpleSpawn": "",
 		"graphics_performanceDisableEnviParticles": "",
 		"graphics_performanceSimpleNails": "",
+		"graphics_performanceDisableEnviHitParticles": "",
+		"graphics_performanceDisableHeatWaves": "",
 		"graphics_gore": "",
 		"graphics_goreNote": "",
 		"graphics_goreEnable": "",
@@ -2063,6 +2071,7 @@
 
 		"enemyname_radiant_swordsmachine": "",
 		"enemyname_radiant_cerberus": "",
+		"enemyname_radiant_hideousMass": "",
 
 
 		"enemyname_boss_cerberus": "",
@@ -2599,6 +2608,7 @@
 		"act1_lustFirst_knuckleblaster2": "",
 		"act1_lustFirst_dashjump": "",
 
+		"act1_lustSecond_checkPoints": "",
 		"act1_lustSecond_feedbacker1": "",
 		"act1_lustSecond_feedbacker2": "",
 		"act1_lustSecond_railcannon": "",
@@ -2685,7 +2695,9 @@
 		"encorePrelude_heatResistanceText": "",
 		"encorePrelude_heatResistanceTitle": "",
 		"encorePrelude_heatResistanceRepaired": "",
-		"encorePrelude_heatResistanceRepairedText": ""
+		"encorePrelude_heatResistanceRepairedText": "",
+
+		"encoreLimbo_warningText": ""
 	},
 	"primeSanctum": {
 		"primeSanctum_first_insufficientlight": "",
@@ -3103,7 +3115,10 @@
 
 		"earlyAccessEnd1": "",
 		"earlyAccessEnd2": "",
-		"earlyAccessEnd3": ""
+		"earlyAccessEnd3": "",
+
+		"violenceScreenText1": "",
+		"violenceScreenText2": ""
 	},
 
 	"weapon":{

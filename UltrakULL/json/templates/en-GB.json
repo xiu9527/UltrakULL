@@ -960,6 +960,7 @@
     "frontend": {
         "mainmenu_earlyAccess": "EARLY ACCESS",
         "mainmenu_v1Init": "SYSTEM V1 INITIALIZED\nDIAGNOSTICS...OK\nSTANDBY - WAIT FOR WAKE",
+        "mainmenu_initSocials": "INIT SOCIALS...OK",
 
         "mainmenu_halloween": "HAPPY HALLOWEEN",
         "mainmenu_easter": "HAPPY EASTER",
@@ -1346,6 +1347,11 @@
         "controls_secondaryFire": "SECONDARY FIRE",
         "controls_nextVariation": "NEXT VARIATION",
         "controls_previousVariation": "PREVIOUS\nVARIATION",
+        "controls_revolver": "REVOLVER",
+        "controls_shotgun": "SHOTGUN",
+        "controls_nailgun": "NAILGUN",
+        "controls_railcannon": "RAILCANNON",
+        "controls_rocketLauncher": "ROCKET LAUNCHER",
         "controls_spawnerArm": "SPAWNER ARM",
         "controls_nextWeapon": "NEXT WEAPON",
         "controls_previousWeapon": "PREVIOUS\nWEAPON",
@@ -1405,6 +1411,8 @@
         "graphics_performanceSimpleSpawn": "SIMPLER SPAWN EFFECTS",
         "graphics_performanceDisableEnviParticles": "DISABLE ENVIRONMENTAL PARTICLE EFFECTS",
         "graphics_performanceSimpleNails": "SIMPLE NAIL PHYSICS",
+        "graphics_performanceDisableEnviHitParticles": "DISABLE ENVIRONMENTAL HIT PARTICLES",
+        "graphics_performanceDisableHeatWaves": "DISABLE HEAT WAVES",
         "graphics_gore": "GORE SETTINGS",
         "graphics_goreNote": "(Does not affect gameplay)",
         "graphics_goreEnable": "ENABLE BLOOD & GORE",
@@ -2063,6 +2071,7 @@
 
 		"enemyname_radiant_swordsmachine": "RADIANT SWORDMACHINE",
 		"enemyname_radiant_cerberus": "RADIANT CERBERUS",
+        "enemyname_radiant_hideousMass": "RADIANT HIDEOUS MASS",
 
         "enemyname_boss_cerberus": "CERBERUS, GUARDIAN OF HELL",
         "enemyname_boss_cancerousRodent": "CANCEROUS RODENT",
@@ -2598,6 +2607,7 @@
         "act1_lustFirst_knuckleblaster2": "to launch a shockwave that knocks back enemies.",
         "act1_lustFirst_dashjump": "DASH JUMP: Keep the DASH momentum by JUMPING during it.",
 
+        "act1_lustSecond_checkPoints": "<color=#FF52FF>CIRCULAR CHECKPOINTS</color> can be reused to keep your progress.",
         "act1_lustSecond_feedbacker1": "Only the FEEDBACKER (Blue arm) can PARRY PROJECTILES.",
         "act1_lustSecond_feedbacker2": "Swap arms with",
         "act1_lustSecond_railcannon": "RAILCANNON: RECHARGES even when UNEQUIPPED. Switch weapons to keep fighting between shots.",
@@ -2684,7 +2694,9 @@
         "encorePrelude_heatResistanceText": "SUDDEN EXTREME TEMPERATURE SHIFT.\nHEAT SHIELD INTEGRITY COMPROMISED.",
         "encorePrelude_heatResistanceTitle": "HEAT RESISTANCE",
         "encorePrelude_heatResistanceRepaired": "REPAIRED:",
-        "encorePrelude_heatResistanceRepairedText": "TEMPERATURE REGULATION \nFUNCTIONALITY RE-ESTABLISHED.\nHEAT SHIELD REPAIRED."
+        "encorePrelude_heatResistanceRepairedText": "TEMPERATURE REGULATION \nFUNCTIONALITY RE-ESTABLISHED.\nHEAT SHIELD REPAIRED.",
+
+        "encoreLimbo_warningText": "<size=6>!! WARNING !!\n</size>\nPOWER DISCONNECTED\nSYSTEMS FAILING"
     },
     "primeSanctum": {
         "primeSanctum_first_insufficientlight": "<color=red>WARNING:</color> INSUFFICIENT LIGHT. $<color=orange>RECOMMENDATION:</color> Return and take the torch.",
@@ -3102,7 +3114,10 @@
 
         "earlyAccessEnd1": "THANKS FOR PLAYING",
         "earlyAccessEnd2": "Layer 8: FRAUD is still under development",
-        "earlyAccessEnd3": "For news on its progress, follow us on"
+        "earlyAccessEnd3": "For news on its progress, follow us on",
+
+        "violenceScreenText1": "This game contains scenes\nof explicit violence and gore.</size>",
+        "violenceScreenText2": "This game contains scenes\nof explicit <color=red>violence</color> and <color=red>gore</color>.</size>"
     },
 
     "weapon": {
