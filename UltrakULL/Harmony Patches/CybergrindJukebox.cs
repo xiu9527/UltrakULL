@@ -6,24 +6,25 @@ using static UltrakULL.CommonFunctions;
 
 namespace UltrakULL.Harmony_Patches
 {
-    public class CybergrindFogSettings
-    {
-        [HarmonyPatch(typeof(CustomFogController))]
-        public class CustomFogPatch
-        {
+    //!!! 16d patch broke this ("ToggleDynamicFogDistance" is deleted from "CustomFogController"?)
+    //public class CybergrindFogSettings
+    //{
+    //    [HarmonyPatch(typeof(CustomFogController))]
+    //    public class CustomFogPatch
+    //    {
 
-            [HarmonyPatch("Start"), HarmonyPostfix]
-            public static void AwakePatch(TMP_Text ___dynamicDistanceButtonText, bool ___dynamicDistance)
-            {
-                ___dynamicDistanceButtonText.SetText(___dynamicDistance ? LanguageManager.CurrentLanguage.cyberGrind.cybergrind_themesCustomFogDynamicDisable : LanguageManager.CurrentLanguage.cyberGrind.cybergrind_themesCustomFogDynamicEnable, true);
-            }
-            [HarmonyPatch(nameof(CustomFogController.ToggleDynamicFogDistance)),HarmonyPostfix]
-            public static void CustomFogPostPatch(TMP_Text ___dynamicDistanceButtonText, bool ___dynamicDistance)
-            {
-                ___dynamicDistanceButtonText.SetText(___dynamicDistance ? LanguageManager.CurrentLanguage.cyberGrind.cybergrind_themesCustomFogDynamicDisable : LanguageManager.CurrentLanguage.cyberGrind.cybergrind_themesCustomFogDynamicEnable, true);
-            }
-        }
-    }
+    //        [HarmonyPatch("Start"), HarmonyPostfix]
+    //        public static void AwakePatch(TMP_Text ___dynamicDistanceButtonText, bool ___dynamicDistance)
+    //        {
+    //            ___dynamicDistanceButtonText.SetText(___dynamicDistance ? LanguageManager.CurrentLanguage.cyberGrind.cybergrind_themesCustomFogDynamicDisable : LanguageManager.CurrentLanguage.cyberGrind.cybergrind_themesCustomFogDynamicEnable, true);
+    //        }
+    //        [HarmonyPatch(nameof(CustomFogController.ToggleDynamicFogDistance)),HarmonyPostfix]
+    //        public static void CustomFogPostPatch(TMP_Text ___dynamicDistanceButtonText, bool ___dynamicDistance)
+    //        {
+    //            ___dynamicDistanceButtonText.SetText(___dynamicDistance ? LanguageManager.CurrentLanguage.cyberGrind.cybergrind_themesCustomFogDynamicDisable : LanguageManager.CurrentLanguage.cyberGrind.cybergrind_themesCustomFogDynamicEnable, true);
+    //        }
+    //    }
+    //}
     public class CybergrindJukeboxCompleteLevelChallengeRequirement
     {
         [HarmonyPatch(typeof(UnlockCondition.HasCompletedLevelChallenge),"description",MethodType.Getter)]

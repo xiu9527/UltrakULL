@@ -53,11 +53,12 @@ style: style_heavylight
 style: style_oshaviolation
 cyberGrind: cybergrind_themesCustomFog
 cyberGrind: cybergrind_themesCustomFogColor
-cyberGrind: cybergrind_themesCustomFogDynamicDesc
+cyberGrind: cybergrind_themesCustomFogDisable
+cyberGrind: cybergrind_themesCustomFogStatic
+cyberGrind: cybergrind_themesCustomFogDynamic
+cyberGrind: cybergrind_themesCustomFogDisableDesc
 cyberGrind: cybergrind_themesCustomFogStart
 cyberGrind: cybergrind_themesCustomFogEnd
-cyberGrind: cybergrind_themesCustomFogDynamicEnable
-cyberGrind: cybergrind_themesCustomFogDynamicDisable
 cyberGrind: cybergrind_themesCustomFogDefault
 cyberGrind: cybergrind_musicType
 cyberGrind: cybergrind_musicFolderNameEncores
@@ -100,6 +101,9 @@ options: graphics_gamma1 -> graphics_gamma
 REMOVED:
 options: graphics_gamma2
 options: graphics_performanceSimpleNails
+cyberGrind: cybergrind_themesCustomFogDynamicDesc
+cyberGrind: cybergrind_themesCustomFogDynamicDisable
+cyberGrind: cybergrind_themesCustomFogDynamicEnable
 
 1.3.0:
 

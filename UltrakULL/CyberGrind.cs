@@ -7,6 +7,7 @@ using UnityEngine.UI;
 using static UltrakULL.CommonFunctions;
 using UltrakULL.json;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 namespace UltrakULL
 {
@@ -286,19 +287,34 @@ namespace UltrakULL
 
             GameObject cgCustomFogWindow = GetGameObjectChild(cgCustomAdditionalRows, "Fog Control");
             GameObject cgCustomFogSlider = GetGameObjectChild(cgCustomFogWindow, "Sliders");
+            GameObject cgCustomFogSliderLayoutGroup = GetGameObjectChild(cgCustomFogSlider, "Layout Group"); //This is the parent of all sliders
+            GameObject cgCustomFogTabs = GetGameObjectChild(cgCustomFogWindow, "Tabs"); //Now this GameObject contains all buttons to switch fog type. "Disable", "Static", "Dynamic"
 
-            TextMeshProUGUI cgCustomFogColor = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(cgCustomFogSlider, "Color"), "Text"));
+            //Patch Color
+            TextMeshProUGUI cgCustomFogColor = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(cgCustomFogWindow, "Color"), "Text")); //Color moved to Window in 16d Patch
             cgCustomFogColor.text = LanguageManager.CurrentLanguage.cyberGrind.cybergrind_themesCustomFogColor;
 
-            TextMeshProUGUI cgCustomFogDynamicDesc = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(cgCustomFogSlider, "Start Distance"), "Dynamic Distance Text"));
-            cgCustomFogDynamicDesc.text = LanguageManager.CurrentLanguage.cyberGrind.cybergrind_themesCustomFogDynamicDesc;
+            //Patch Sliders Text and "Disable" Description
+            TextMeshProUGUI cgCustomFogDisableDesc = GetTextMeshProUGUI(GetGameObjectChild(cgCustomFogSlider, "Fog Disabled Text"));
+            cgCustomFogDisableDesc.text = LanguageManager.CurrentLanguage.cyberGrind.cybergrind_themesCustomFogDisableDesc;
 
-            TextMeshProUGUI cgCustomFogStart = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(cgCustomFogSlider, "Start Distance"), "Text"));
+            TextMeshProUGUI cgCustomFogStart = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(cgCustomFogSliderLayoutGroup, "Start Distance"), "Text"));
             cgCustomFogStart.text = LanguageManager.CurrentLanguage.cyberGrind.cybergrind_themesCustomFogStart;
 
-            TextMeshProUGUI cgCustomFogEnd = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(cgCustomFogSlider, "End Distance"), "Text"));
+            TextMeshProUGUI cgCustomFogEnd = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(cgCustomFogSliderLayoutGroup, "End Distance"), "Text"));
             cgCustomFogEnd.text = LanguageManager.CurrentLanguage.cyberGrind.cybergrind_themesCustomFogEnd;
 
+            //Patch Buttons in Tabs. "Disable", "Static", "Dynamic"
+            TextMeshProUGUI cgCustomFogDisable = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(cgCustomFogTabs, "Disabled Button"), "Text"));
+            cgCustomFogDisable.text = LanguageManager.CurrentLanguage.cyberGrind.cybergrind_themesCustomFogDisable;
+
+            TextMeshProUGUI cgCustomFogStatic = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(cgCustomFogTabs, "Static Button"), "Text"));
+            cgCustomFogStatic.text = LanguageManager.CurrentLanguage.cyberGrind.cybergrind_themesCustomFogStatic;
+
+            TextMeshProUGUI cgCustomFogDynamic = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(cgCustomFogTabs, "Dynamic Button"), "Text"));
+            cgCustomFogDynamic.text = LanguageManager.CurrentLanguage.cyberGrind.cybergrind_themesCustomFogDynamic;
+
+            //"Set to default" button
             TextMeshProUGUI cgCustomFogDefault = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(cgCustomFogWindow, "Default Button"), "Text"));
             cgCustomFogDefault.text = LanguageManager.CurrentLanguage.cyberGrind.cybergrind_themesCustomFogDefault;
 

@@ -223,7 +223,10 @@ namespace UltrakULL.json
 
         public string cybergrind_themesCustomFog;
         public string cybergrind_themesCustomFogColor;
-        public string cybergrind_themesCustomFogDynamicDesc;
+        public string cybergrind_themesCustomFogDisable;
+        public string cybergrind_themesCustomFogStatic;
+        public string cybergrind_themesCustomFogDynamic;
+        public string cybergrind_themesCustomFogDisableDesc;
         public string cybergrind_themesCustomFogStart;
         public string cybergrind_themesCustomFogEnd;
         public string cybergrind_themesCustomFogDefault;

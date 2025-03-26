@@ -63,8 +63,9 @@ namespace UltrakULL
             //Logging.Warn(fullMessage);
             if (fullMessage.Contains("MAGENTA"))
             {
-                return LanguageManager.CurrentLanguage.act3.act3_magentaAttacks;
+                return LanguageManager.CurrentLanguage.act3.act3_violenceFourth_magentaAttack;
             }
+
             return ("Unimplemented string");
         }
         

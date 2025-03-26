@@ -728,11 +728,12 @@
 
 		"cybergrind_themesCustomFog": "",
 		"cybergrind_themesCustomFogColor": "",
-		"cybergrind_themesCustomFogDynamicDesc": "",
+		"cybergrind_themesCustomFogDisable": "",
+		"cybergrind_themesCustomFogStatic": "",
+		"cybergrind_themesCustomFogDynamic": "",
+		"cybergrind_themesCustomFogDisableDesc": "",
 		"cybergrind_themesCustomFogStart": "",
 		"cybergrind_themesCustomFogEnd": "",
-		"cybergrind_themesCustomFogDynamicEnable": "",
-		"cybergrind_themesCustomFogDynamicDisable": "",
 		"cybergrind_themesCustomFogDefault": "",
 
 		"cybergrind_musicTitle": "",

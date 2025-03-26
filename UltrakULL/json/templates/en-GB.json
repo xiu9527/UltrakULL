@@ -728,11 +728,12 @@
 
         "cybergrind_themesCustomFog": "Fog",
         "cybergrind_themesCustomFogColor": "Fog Color",
-        "cybergrind_themesCustomFogDynamicDesc": "Dynamic Fog Distance is enabled.\nFog distance will update based\non distance from the arena.",
+        "cybergrind_themesCustomFogDisable": "Disabled",
+        "cybergrind_themesCustomFogStatic": "Static",
+        "cybergrind_themesCustomFogDynamic": "Dynamic",
+        "cybergrind_themesCustomFogDisableDesc": "Fog is disabled.",
         "cybergrind_themesCustomFogStart": "Fog Start Distance",
         "cybergrind_themesCustomFogEnd": "Fog End Distance",
-        "cybergrind_themesCustomFogDynamicEnable": "Enable Dynamic Distance",
-        "cybergrind_themesCustomFogDynamicDisable": "Disable Dynamic Distance",
         "cybergrind_themesCustomFogDefault": "Default",
 
         "cybergrind_musicTitle": "Playlist",
