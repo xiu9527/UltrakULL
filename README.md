@@ -2,7 +2,7 @@
 ![Version](https://img.shields.io/github/v/release/ClearwaterTM/UltrakULL)
 ![Licence](https://img.shields.io/github/license/ClearwaterTM/UltrakULL)
 
-<img src="https://cdn.discordapp.com/attachments/472691871806652429/1041615546514427984/unknown.png" height="400">
+<img src="https://github.com/user-attachments/assets/79e8a0ba-0fa6-4f7f-b3b9-4f9ee1ba5eeb">
 
 # UltrakULL
 
