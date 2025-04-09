@@ -99,10 +99,10 @@ namespace UltrakULL.Harmony_Patches
             Transform navigationRail = GameObject.Find("Navigation Rail").transform;
             Button referenceButton = navigationRail.GetComponentsInChildren<Button>().FirstOrDefault();
             Transform pagesParent = GameObject.Find("Pages").transform;
-            Transform referencePage = pagesParent.FindChild("General");
+            Transform referencePage = pagesParent.transform.Find("General");
             Scrollbar referenceScrollbar = referencePage.GetComponentsInChildren<Scrollbar>().FirstOrDefault();
 
-            if (langBrowserPage.transform.FindChild("Title") == null)
+            if (langBrowserPage.transform.Find("Title") == null)
             {
                 langBrowserPage = new GameObject("LanguageBrowserPage", typeof(RectTransform), typeof(CanvasRenderer));
                 langBrowserPage.transform.SetParent(parent, false);
@@ -437,7 +437,7 @@ namespace UltrakULL.Harmony_Patches
             scrollRectComponent.verticalScrollbarVisibility = ScrollRect.ScrollbarVisibility.AutoHideAndExpandViewport;
 
             // Adding a scrollbar
-            Transform referencePage = pagesParent.FindChild("General");
+            Transform referencePage = pagesParent.transform.Find("General");
             Scrollbar referenceScrollbar = referencePage.GetComponentsInChildren<Scrollbar>().FirstOrDefault();
             GameObject scrollbar = GameObject.Instantiate(referenceScrollbar.gameObject, languagePage.transform);
             scrollbar.transform.SetParent(languagePage.transform, false);
@@ -621,7 +621,7 @@ namespace UltrakULL.Harmony_Patches
             {
                 languagePage.SetActive(false);
                 langBrowserPage.SetActive(true);
-                if (langBrowserPage.transform.FindChild("Title") == null) {
+                if (langBrowserPage.transform.Find("Title") == null) {
                     getOnlineLanguages(pagesParent, languagePage);
                 }
             });

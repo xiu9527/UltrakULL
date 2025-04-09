@@ -46,7 +46,7 @@ namespace UltrakULL
                 }
                 catch (Exception e)
                 {
-                    Debug.LogError("Error patching 0-E: " + e.Message);
+                    Logging.Error("Error patching 0-E: " + e.Message);
 
                 }
             }
@@ -60,7 +60,7 @@ namespace UltrakULL
                 }
                 catch (Exception e)
                 {
-                    Debug.LogError("Error patching 1-E: " + e.Message);
+                    Logging.Error("Error patching 1-E: " + e.Message);
 
                 }
             }
