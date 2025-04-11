@@ -217,27 +217,23 @@ namespace UltrakULL
             TextMeshProUGUI cgCustomMusicTitle = GetTextMeshProUGUI(GetGameObjectChild(cgCustomMusic.transform.parent.gameObject, "Title"));
             cgCustomMusicTitle.text = LanguageManager.CurrentLanguage.cyberGrind.cybergrind_themesCustom;
 
-            //DEPRECATED(Not sure since it's broken in vanilla rn)
-            //TextMeshProUGUI cgCustomMusicConfirm = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(cgCustomMusic, "Confirm"), "Text"));
-            //cgCustomMusicConfirm.text = LanguageManager.CurrentLanguage.cyberGrind.cybergrind_musicConfirm;
-
             TextMeshProUGUI cgCustomMusicClose = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(cgCustomMusic, "Close Button"), "Text"));
             cgCustomMusicClose.text = LanguageManager.CurrentLanguage.devMuseum.museum_chessSettingsclose;
 
-            //Changes the "UNLOCKED" string under songs that are unlocked
+            //Changes the "Unlocked" string under songs that are unlocked
 
             foreach (Transform child in cgMusicSoundtrackAddMenu.transform)
             {
-                if (child.name == "SongTemplate(Clone)")
+                if (child.name == "Song Template(Clone)")
                 {
-                    TextMeshProUGUI cgMusicSoundtrackTask = GetTextMeshProUGUI(GetGameObjectChild(child.gameObject, "Cost"));
-                    if (cgMusicSoundtrackTask.text == "<i>UNLOCKED</i>") { cgMusicSoundtrackTask.text = "<i>" + LanguageManager.CurrentLanguage.cyberGrind.cybergrind_musicUnlocked + "</i>"; }
+                    TextMeshProUGUI cgMusicSoundtrackTask = GetTextMeshProUGUI(GetGameObjectChild(child.gameObject, "Requirement"));
+                    if (cgMusicSoundtrackTask.text == "Unlocked") { cgMusicSoundtrackTask.text = LanguageManager.CurrentLanguage.cyberGrind.cybergrind_musicUnlocked; }
                 }
             }
             Button[] aas = cgMusicSoundtrack.GetComponentsInChildren<Button>(true);
             foreach (Button button in aas)
             {
-                button.onClick.AddListener(delegate { Task.Delay(1000); PatchTerminalFolder(); });
+                button.onClick.AddListener(delegate { PatchTerminalFolder(); });
             }
             
             
@@ -318,8 +314,6 @@ namespace UltrakULL
             TextMeshProUGUI cgCustomFogDefault = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(cgCustomFogWindow, "Default Button"), "Text"));
             cgCustomFogDefault.text = LanguageManager.CurrentLanguage.cyberGrind.cybergrind_themesCustomFogDefault;
 
-            //Disable/Enable Dynamic distance button is patched in CybergrindJukebox.cs
-
             //Patterns
             GameObject cgTerminalPatterns = GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(cgTerminalMainPanel, "Patterns"), "Patterns Window"), "Panel");
 
@@ -365,13 +359,13 @@ namespace UltrakULL
             GameObject cgTerminalMainPanel = GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(level, "Room"), "Cybergrind Shop"), "Canvas"),"Background"),"Main Panel");
             GameObject cgMusicSoundtrack = GetGameObjectChild(GetGameObjectChild(cgTerminalMainPanel, "Songs Soundtrack"), "Panel");
             GameObject cgMusicSoundtrackAddMenu = GetGameObjectChild(GetGameObjectChild(cgMusicSoundtrack, "Inset"), "Songs");
-            await Task.Delay(10);
+            await Task.Delay(5);
             foreach (Transform child in cgMusicSoundtrackAddMenu.transform)
             {
                 if (child.name == "Folder Template(Clone)")
                 {
                     Button a = child.GetComponent<Button>();
-                    a.onClick.AddListener(delegate { Task.Delay(1000); PatchTerminalFolder(); });
+                    a.onClick.AddListener(delegate { PatchTerminalFolder(); });
                     TextMeshProUGUI cgMusicSoundtrackFolderTitle = GetTextMeshProUGUI(GetGameObjectChild(child.gameObject, "Title"));
                     switch (cgMusicSoundtrackFolderTitle.text.ToUpper())
                     {
@@ -388,10 +382,10 @@ namespace UltrakULL
                         default: {Logging.Warn("Missing CG music folder name: " + cgMusicSoundtrackFolderTitle.text); break; }
                     }
                 }
-                if (child.name == "SongTemplate(Clone)")
+                if (child.name == "Song Template(Clone)")
                 {
-                    TextMeshProUGUI cgMusicSoundtrackTask = GetTextMeshProUGUI(GetGameObjectChild(child.gameObject, "Cost"));
-                    if (cgMusicSoundtrackTask.text == "<i>UNLOCKED</i>") { cgMusicSoundtrackTask.text = "<i>" + LanguageManager.CurrentLanguage.cyberGrind.cybergrind_musicUnlocked + "</i>"; }
+                    TextMeshProUGUI cgMusicSoundtrackTask = GetTextMeshProUGUI(GetGameObjectChild(child.gameObject, "Requirement"));
+                    if (cgMusicSoundtrackTask.text == "Unlocked") { cgMusicSoundtrackTask.text = LanguageManager.CurrentLanguage.cyberGrind.cybergrind_musicUnlocked; }
                 }
             }
             return;
