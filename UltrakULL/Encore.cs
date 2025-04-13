@@ -25,6 +25,7 @@ namespace UltrakULL
                     GameObject heatResistanceWindow = GetGameObjectChild(GetGameObjectChild(canvasObj, "HurtScreen"), "Heat Resistance");
 
                     TextMeshProUGUI heatResistanceWarn = GetTextMeshProUGUI(GetGameObjectChild(heatResistanceWindow, "Warning"));
+                    heatResistanceWarn.enableWordWrapping = false;
                     heatResistanceWarn.text = LanguageManager.CurrentLanguage.encore.encorePrelude_heatResistanceWarn;
 
                     TextMeshProUGUI heatResistanceText = GetTextMeshProUGUI(GetGameObjectChild(heatResistanceWindow, "Flavor Text"));
@@ -36,6 +37,7 @@ namespace UltrakULL
                     GameObject heatResistanceFixedWindow = GetGameObjectChild(GetGameObjectChild(canvasObj, "HurtScreen"), "Heat Fixed");
 
                     TextMeshProUGUI heatResistanceFixedWarn = GetTextMeshProUGUI(GetGameObjectChild(heatResistanceFixedWindow, "Warning"));
+                    heatResistanceFixedWarn.enableWordWrapping = false;
                     heatResistanceFixedWarn.text = LanguageManager.CurrentLanguage.encore.encorePrelude_heatResistanceRepaired;
 
                     TextMeshProUGUI heatResistanceFixedText = GetTextMeshProUGUI(GetGameObjectChild(heatResistanceFixedWindow, "Flavor Text"));
