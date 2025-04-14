@@ -31,22 +31,22 @@ namespace UltrakULL
                 if (!fullMessage.Contains("Unimplemented string"))  { return fullMessage; }
 
             }
-            if (level.Contains("0-"))
+            if (level.Contains("0-") && !level.Contains("0-E"))
             {
                 fullMessage = PreludeStrings.GetMessage(message, message2, input);
                 if (!fullMessage.Contains("Unimplemented string")) { return fullMessage; }
             }
-            if(level.Contains("1-") || (level.Contains("2-") || (level.Contains("3-"))))
+            if((level.Contains("1-") && !level.Contains("1-E")) || ((level.Contains("2-") && !level.Contains("2-E")) || ((level.Contains("3-") && !level.Contains("3-E")))))
             {
                 fullMessage = Act1Strings.GetMessage(message, message2, input);
                 if (!fullMessage.Contains("Unimplemented string")) { return fullMessage; }
             }
-            if(level.Contains("4-") || (level.Contains("5-") || (level.Contains("6-"))))
+            if ((level.Contains("4-") && !level.Contains("4-E")) || ((level.Contains("5-") && !level.Contains("5-E")) || ((level.Contains("6-") && !level.Contains("6-E")))))
             {
                 fullMessage = Act2Strings.GetMessage(message, message2, input);
                 if (!fullMessage.Contains("Unimplemented string")) { return fullMessage; }
             }
-            if(level.Contains("7-") || (level.Contains("8-") || (level.Contains("9-"))))
+            if ((level.Contains("7-") && !level.Contains("7-E")) || ((level.Contains("8-") && !level.Contains("8-E")) || ((level.Contains("9-") && !level.Contains("9-E")))))
             {
                 fullMessage = Act3Strings.GetMessage(message, message2, input);
                 if (!fullMessage.Contains("Unimplemented string")) { return fullMessage; }
@@ -56,8 +56,14 @@ namespace UltrakULL
                 fullMessage = DevMuseum.GetMessage(message, message2, input);
                 if (!fullMessage.Contains("Unimplemented string")) { return fullMessage; }
             }
+            if (level.Contains("-E"))
+            {
+                fullMessage = EncoreStrings.GetMessage(message, message2, input);
+                if (!fullMessage.Contains("Unimplemented string")) { return fullMessage; }
+            }
 
-            if(message.Contains("V-Rank"))
+
+            if (message.Contains("V-Rank"))
             {
                 return message;
             }

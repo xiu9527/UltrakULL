@@ -2138,6 +2138,7 @@
 
 		"cheats_panelTitle": "",
 		"cheats_cheatsEnabled": "",
+		"cheats_cheatsOpenButtons": "",
 
 		"cheats_keepEnabled": "",
 		"cheats_spawnerArm": "",
@@ -2705,6 +2706,7 @@
 		"act3_secretNotReady": ""
 	},
 	"encore": {
+		"encorePrelude_aboutRadiantEnemies": "",
 		"encorePrelude_heatResistanceWarn": "",
 		"encorePrelude_heatResistanceText": "",
 		"encorePrelude_heatResistanceTitle": "",

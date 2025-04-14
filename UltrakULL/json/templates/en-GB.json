@@ -2136,6 +2136,7 @@
 
         "cheats_panelTitle": "MANAGE CHEATS",
         "cheats_cheatsEnabled": "<color=#44FF45>CHEATS</color> ENABLED :^)",
+        "cheats_cheatsOpenButtons": "HOME or ~",
 
         "cheats_keepEnabled": "Keep cheats enabled",
         "cheats_spawnerArm": "Spawner Arm",
@@ -2703,6 +2704,7 @@
         "act3_secretNotReady": "YOU'RE NOT SUPPOSED TO BE HERE."
     },
     "encore": {
+        "encorePrelude_aboutRadiantEnemies": "<color=#f77900>RADIANT</color> enemies have increased health and speed.",
         "encorePrelude_heatResistanceWarn": "WARNING:",
         "encorePrelude_heatResistanceText": "SUDDEN EXTREME TEMPERATURE SHIFT.\nHEAT SHIELD INTEGRITY COMPROMISED.",
         "encorePrelude_heatResistanceTitle": "HEAT RESISTANCE",

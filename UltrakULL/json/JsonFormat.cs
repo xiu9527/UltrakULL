@@ -275,6 +275,7 @@ namespace UltrakULL.json
         public string cheats_panelTitle;
 
         public string cheats_cheatsEnabled;
+        public string cheats_cheatsOpenButtons;
 
         public string cheats_keepEnabled;
         public string cheats_spawnerArm;
@@ -2582,6 +2583,7 @@ namespace UltrakULL.json
 
     public class Enc
     {
+        public string encorePrelude_aboutRadiantEnemies;
         public string encorePrelude_heatResistanceWarn;
         public string encorePrelude_heatResistanceText;
         public string encorePrelude_heatResistanceTitle;
