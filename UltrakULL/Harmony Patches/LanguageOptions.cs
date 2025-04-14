@@ -19,7 +19,7 @@ namespace UltrakULL.Harmony_Patches
     public static class InjectLanguageButton
     {
         public static TextMeshProUGUI languageButtonText;
-        public static TextMeshProUGUI languageButtonTitleText;
+        public static TextMeshProUGUI languagePageTitleText;
         private static readonly HttpClient Client = new HttpClient();
         
         private static bool hasAlreadyFetchedLanguages = false;
@@ -38,7 +38,7 @@ namespace UltrakULL.Harmony_Patches
         public static void updateLanguageButtonText()
         {
             languageButtonText.text = LanguageManager.CurrentLanguage.options.language_languages;
-            languageButtonTitleText.text = "--" + LanguageManager.CurrentLanguage.options.language_title + "--";
+            languagePageTitleText.text = "--" + LanguageManager.CurrentLanguage.options.language_title + "--";
         }
         
         public static void warnBeforeDownload(LanguageInfo lInfo)
@@ -337,7 +337,7 @@ namespace UltrakULL.Harmony_Patches
         
         public static void addLocalLanguageToLocalList(ref GameObject languageButtonPrefab, string language, bool newlyAdded=false)
         {
-            Transform contentParent = langLocalPage.transform.Find("Scroll Rect (1)").Find("Contents");
+            Transform contentParent = langLocalPage.transform.Find("Scroll Rect").Find("Contents");
 
             GameObject languageButtonInstance = GameObject.Instantiate(languageButtonPrefab,contentParent);
             languageButtonInstance.name = language;
@@ -352,7 +352,7 @@ namespace UltrakULL.Harmony_Patches
             }
             GameObject.Destroy(languageButtonInstance.GetComponent<SlotRowPanel>());
 
-            Transform slotTextTf = languageButtonInstance.transform.Find("Slot Text");
+            Transform slotTextTf = languageButtonInstance.transform.Find("Text");
             slotTextTf.localScale = new Vector3(4.983107f, 0.970607f, 2.1431f);
             slotTextTf.localPosition = new Vector3(0f, 0f, 0f);
             TextMeshProUGUI slotText = slotTextTf.GetComponent<TextMeshProUGUI>();
@@ -376,9 +376,9 @@ namespace UltrakULL.Harmony_Patches
             
             langButton.onClick.AddListener(delegate
             {
-                GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(contentParent.gameObject,LanguageManager.CurrentLanguage.metadata.langName),"Slot Text")).text = LanguageManager.CurrentLanguage.metadata.langDisplayName;
+                GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(contentParent.gameObject, LanguageManager.CurrentLanguage.metadata.langName),"Text")).text = LanguageManager.CurrentLanguage.metadata.langDisplayName;
 
-                GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(contentParent.gameObject,language),"Slot Text")).text += "\n(<color=green>Selected</color>)";
+                GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(contentParent.gameObject, language),"Text")).text += "\n<size=22>(<color=green>Selected</color>)</size>";
 
                 LanguageManager.SetCurrentLanguage(language);
             });
@@ -415,7 +415,6 @@ namespace UltrakULL.Harmony_Patches
             languagePage.SetActive(false);
             RectTransform pageRect = languagePage.GetComponent<RectTransform>();
             pageRect.sizeDelta = new Vector2(600, 800);
-            //languagePage.SetActive(false);
 
 
             // ScrollView
@@ -478,6 +477,7 @@ namespace UltrakULL.Harmony_Patches
             languagePageTitle.alignment = TextAlignmentOptions.Center;
             languagePageTitle.fontSize = 24;
             languagePageTitle.font = Core.GlobalFontTMP;
+            languagePageTitleText = languagePageTitle;
 
             RectTransform titleRect = languagePageTitle.rectTransform;
             titleRect.anchorMin = new Vector2(0.5f, 1);
@@ -512,7 +512,8 @@ namespace UltrakULL.Harmony_Patches
             Button languageButtonComp = languageButton.GetComponent<Button>();
             languageButtonComp.onClick = new Button.ButtonClickedEvent();
             languageButtonComp.onClick.AddListener(() => ShowLanguagePage());
-            languageButton.GetComponentInChildren<TextMeshProUGUI>().text = LanguageManager.CurrentLanguage.options.language_title;
+            languageButtonText = languageButton.GetComponentInChildren<TextMeshProUGUI>();
+            languageButtonText.text = LanguageManager.CurrentLanguage.options.language_title;
 
             Logging.Message("Adding language selection buttons...");
             foreach (string language in LanguageManager.allLanguages.Keys)
@@ -522,7 +523,26 @@ namespace UltrakULL.Harmony_Patches
                 langButton.transform.SetParent(content.transform, false);
                 Button langButtonComp = langButton.GetComponent<Button>();
                 langButtonComp.onClick = new Button.ButtonClickedEvent();
-                langButtonComp.onClick.AddListener(() => SelectLanguage(language));
+                langButtonComp.onClick.AddListener(delegate
+                {
+                    SelectLanguage(language);
+                    foreach (Transform child in content.transform)
+                    {
+                        if (child.name != "Title" && child.name != "LangBrowser" && child.name.Contains("-"))
+                        {
+                            TextMeshProUGUI tC = child.GetComponentInChildren<TextMeshProUGUI>();
+                            if (tC != null && LanguageManager.allLanguages.ContainsKey(child.name))
+                            {
+                                tC.text = LanguageManager.allLanguages[child.name].metadata.langDisplayName;
+                                if (LanguageManager.CurrentLanguage.metadata.langName == child.name) { tC.text += "\n<size=22>(<color=green>Selected</color>)</size>"; }
+                                else if (tC.text.Contains("<color=green>Selected</color>"))
+                                {
+                                    tC.text = LanguageManager.allLanguages[child.name].metadata.langDisplayName;
+                                }
+                            }
+                        }
+                    }
+                });
                 langButtonComp.colors = new ColorBlock()
                 {
                     normalColor = new Color32(255, 255, 255, 255),
@@ -535,6 +555,7 @@ namespace UltrakULL.Harmony_Patches
                 TextMeshProUGUI textComponent = langButton.GetComponentInChildren<TextMeshProUGUI>();
                 
                 textComponent.text = LanguageManager.allLanguages[language].metadata.langDisplayName;
+                if (LanguageManager.CurrentLanguage.metadata.langName == language) { textComponent.text += "\n<size=22>(<color=green>Selected</color>)</size>"; }
                 textComponent.alignment = TextAlignmentOptions.Center;
                 textComponent.enableAutoSizing = true;
                 textComponent.fontSizeMin = 10f;

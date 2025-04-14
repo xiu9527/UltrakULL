@@ -450,14 +450,14 @@ namespace UltrakULL
 
         public static async void ApplyPostInitFixes(GameObject canvasObj)
         {
-            await Task.Delay(250);
+            /*await Task.Delay(250);
             if (GetCurrentSceneName() == "Main Menu")
             {
                 //Open Language Folder button in Options->Language
                 TextMeshProUGUI openLangFolderText = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(canvasObj,"OptionsMenu"), "Language Page"),"Scroll Rect (1)"),"Contents"),"OpenLangFolder"),"Slot Text")); 
                 openLangFolderText.text = "<color=#03fc07>Open language folder</color>";
                 
-            }
+            }*/
         }
     }
 }

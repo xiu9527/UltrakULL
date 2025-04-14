@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using static UltrakULL.CommonFunctions;
 using UltrakULL.json;
 using System.Data;
+using System.Threading.Tasks;
 
 namespace UltrakULL
 {
@@ -149,27 +150,40 @@ namespace UltrakULL
         public static void ChangeTitle(GameObject mainMenu)
 		{
 			try
-            {
+			{
 				Logging.Warn("Attempting to change the main menu's title image");
-                GameObject trueMainMenu = GetGameObjectChild(mainMenu, "Main Menu (1)");
+				GameObject trueMainMenu = GetGameObjectChild(GetGameObjectChild(mainMenu, "Main Menu (1)"), "LeftSide");
+				GameObject titleObject = GetGameObjectChild(trueMainMenu, "Title");
+				GameObject titleObjectArabic = null;
+				string currentLangName = LanguageManager.CurrentLanguage.metadata.langName;
+				bool usingArabicLogo = false;
 
-                if (Core.ArabicUltrakillLogo != null)
+                if (currentLangName.Substring(currentLangName.Length - 2).ToUpper() == "AR" && Core.ArabicUltrakillLogo != null)
+				{
+					if (titleObjectArabic == null)
+					{
+						GameObject.Instantiate(titleObject, titleObject.transform.position, Quaternion.identity, trueMainMenu.transform);
+					}
+					titleObjectArabic = GetGameObjectChild(trueMainMenu, "Title(Clone)");
+					titleObjectArabic.GetComponent<Image>().sprite = Core.ArabicUltrakillLogo;
+					usingArabicLogo = true;
+				}
+				else
+				{
+					usingArabicLogo = false;
+                }
+                if (titleObjectArabic != null)
                 {
-                    GameObject TitleObject = GetGameObjectChild(trueMainMenu, "Title");
-					if(GetGameObjectChild(trueMainMenu, "Title(Clone)") == null)
+					if (usingArabicLogo)
 					{
-						GameObject.Instantiate(TitleObject, TitleObject.transform.position, Quaternion.identity, trueMainMenu.transform);
-                    }
-                    GameObject titleObjectArabic = GetGameObjectChild(trueMainMenu, "Title(Clone)");
-                    titleObjectArabic.GetComponent<Image>().sprite = Core.ArabicUltrakillLogo;
-                    if (LanguageManager.CurrentLanguage.metadata.langName == "en-AR")
-					{
-						TitleObject.SetActive(false);
+						trueMainMenu.GetComponent<ObjectActivateInSequence>().objectsToActivate[0] = titleObjectArabic;
+                        titleObject.SetActive(false);
 						titleObjectArabic.SetActive(true);
 					}
 					else
-					{
-						TitleObject.SetActive(true);
+                    {
+                        trueMainMenu.GetComponent<ObjectActivateInSequence>().objectsToActivate[0] = titleObject;
+                        titleObject.SetActive(true);
 						titleObjectArabic.SetActive(false);
 					}
                 }
