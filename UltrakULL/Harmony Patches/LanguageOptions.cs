@@ -110,13 +110,16 @@ namespace UltrakULL.Harmony_Patches
                 pageRect.sizeDelta = new Vector2(600, 800);        
 
                 // Title
-                GameObject titleObject = new GameObject("Title", typeof(TextMeshProUGUI));
+                GameObject titleObject = GameObject.Instantiate(navigationRail.Find("Text (7)").gameObject, langBrowserPage.transform);
+                //This causes NRE in the fontswap. idk why but upper one works without it so
+                //GameObject titleObject = new GameObject("Title", typeof(TextMeshProUGUI));
                 titleObject.transform.SetParent(langBrowserPage.transform, false);
                 TextMeshProUGUI langBrowserTitle = titleObject.GetComponent<TextMeshProUGUI>();
                 langBrowserTitle.text = "--LANGUAGE BROWSER--";
                 langBrowserTitle.alignment = TextAlignmentOptions.Center;
                 langBrowserTitle.fontSize = 24;
                 langBrowserTitle.font = Core.GlobalFontTMP;
+                TextMeshProFontSwap.SwapTMPFont(ref langBrowserTitle);
 
                 RectTransform titleRect = langBrowserTitle.rectTransform;
                 titleRect.anchorMin = new Vector2(0.5f, 1);
@@ -416,7 +419,6 @@ namespace UltrakULL.Harmony_Patches
             RectTransform pageRect = languagePage.GetComponent<RectTransform>();
             pageRect.sizeDelta = new Vector2(600, 800);
 
-
             // ScrollView
             GameObject scrollView = new GameObject("Scroll Rect", typeof(RectTransform), typeof(ScrollRect), typeof(Image), typeof(Mask));
             scrollView.transform.SetParent(languagePage.transform, false);
@@ -470,13 +472,14 @@ namespace UltrakULL.Harmony_Patches
 
             scrollView.GetComponent<ScrollRect>().content = contentRect;
 
-            GameObject titleObject = new GameObject("Title", typeof(TextMeshProUGUI));
-            titleObject.transform.SetParent(content.transform, false);
+            GameObject titleObject = GameObject.Instantiate(optionsParent.Find("Text").gameObject, content.transform);
+            titleObject.name = "Title";
             TextMeshProUGUI languagePageTitle = titleObject.GetComponent<TextMeshProUGUI>();
+            languagePageTitle.font = Core.GlobalFontTMP;
+            titleObject.transform.SetParent(content.transform, false);
             languagePageTitle.text = "--" + LanguageManager.CurrentLanguage.options.language_languages + "--";
             languagePageTitle.alignment = TextAlignmentOptions.Center;
             languagePageTitle.fontSize = 24;
-            languagePageTitle.font = Core.GlobalFontTMP;
             languagePageTitleText = languagePageTitle;
 
             RectTransform titleRect = languagePageTitle.rectTransform;
@@ -492,10 +495,6 @@ namespace UltrakULL.Harmony_Patches
             //ContentSizeFitter fitter = languagePage.AddComponent<ContentSizeFitter>();
             //fitter.horizontalFit = ContentSizeFitter.FitMode.PreferredSize;
             //fitter.verticalFit = ContentSizeFitter.FitMode.PreferredSize;
-
-            //
-
-
 
             Logging.Message("Finding reference button for cloning...");
             Button referenceButton = navigationRail.GetComponentsInChildren<Button>().FirstOrDefault();
@@ -592,9 +591,15 @@ namespace UltrakULL.Harmony_Patches
                 Logging.Message("Opening Language Settings Page...");
                 foreach (Transform page in pagesParent)
                 {
-                    page.gameObject.SetActive(false);
+                    if (page != null)
+                    {
+                        page.gameObject.SetActive(false);
+                    }
                 }
-                languagePage.SetActive(true);
+                if (languagePage != null)
+                {
+                    languagePage.SetActive(true);
+                }
             }
 
             void SelectLanguage(string language)

@@ -85,8 +85,8 @@ namespace UltrakULL.Harmony_Patches
 
 	public class TextMeshProFontSwap
 	{
-		public static void SwapTMPFont(ref TextMeshProUGUI __instance, bool onTop, bool editOverlayStatus)
-		{
+        public static void SwapTMPFont(ref TextMeshProUGUI __instance, bool onTop = false, bool editOverlayStatus = false)
+        {
             if (__instance.transform.parent.GetComponent<HealthBar>() != null && __instance.gameObject.name.Equals("HP Text")) { return; }
             string currentLanguage = LanguageManager.CurrentLanguage.metadata.langName.ToLower();
             string currentLanguageCode = currentLanguage.Substring(0, 2);
@@ -94,7 +94,15 @@ namespace UltrakULL.Harmony_Patches
                 __instance.gameObject.name.Contains("LayerText") ||
                 __instance.transform.parent.gameObject.name.Contains("Cheats Info");
             bool isOverlay = onTop;
-            Vector4 originalUnderlaycolor = __instance.fontMaterial.GetVector("_UnderlayColor");
+            Vector4 originalUnderlaycolor;
+            if (__instance.fontMaterial != null)
+            {
+                originalUnderlaycolor = __instance.fontMaterial.GetVector("_UnderlayColor");
+            }
+            else
+            {
+                originalUnderlaycolor = new Vector4(0, 0, 0, 0);
+            }
             switch (currentLanguageCode)
             {
                 //Traditional/Simplified Chinese
@@ -293,7 +301,7 @@ namespace UltrakULL.Harmony_Patches
 							return;
 						}
 					}
-                    SwapTMPFont(ref __instance, false, false);
+                    SwapTMPFont(ref __instance);
 					objectsFixed.Add(___m_CachedPtr);
 				}
 
@@ -342,7 +350,7 @@ namespace UltrakULL.Harmony_Patches
                 TextMeshProUGUI subtext = subtitle.GetComponentInChildren<TextMeshProUGUI>();
 				if (Core.TMPFontReady)
                 {
-                    SwapTMPFont(ref subtext, false, false);
+                    SwapTMPFont(ref subtext);
                 }
                 if (audioSource != null)
                 {

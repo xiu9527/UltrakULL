@@ -73,7 +73,7 @@ public static class IntroViolenceScreenPatch
         tmp.overflowMode = TextOverflowModes.Overflow;
         tmp.color = new Color(1, 1, 1, startAlpha);
         tmp.enableWordWrapping = false;
-        TextMeshProFontSwap.SwapTMPFont(ref tmp, false, false);
+        TextMeshProFontSwap.SwapTMPFont(ref tmp);
         //tmp.autoSizeTextContainer = true;
 
         RectTransform rectTransform = textObj.GetComponent<RectTransform>();
