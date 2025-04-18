@@ -40,15 +40,15 @@ namespace UltrakULL
                 GameObject holidayObject = GetGameObjectChild(titleObject, "Holiday Greetings"); 
                 //Halloween
                 TextMeshProUGUI halloweenText = GetTextMeshProUGUI(GetGameObjectChild(holidayObject, "Text (Halloween)"));
-				halloweenText.text = "<color=orange>" + LanguageManager.CurrentLanguage.frontend.mainmenu_halloween + "</color>";
+				halloweenText.text = LanguageManager.CurrentLanguage.frontend.mainmenu_halloween;
 
                 //Easter
                 TextMeshProUGUI easterText = GetTextMeshProUGUI(GetGameObjectChild(holidayObject, "Text (Easter)"));
-				easterText.text = "<color=magenta>" + LanguageManager.CurrentLanguage.frontend.mainmenu_easter + "</color>";
+				easterText.text = LanguageManager.CurrentLanguage.frontend.mainmenu_easter;
 
                 //Christmas
                 TextMeshProUGUI christmasText = GetTextMeshProUGUI(GetGameObjectChild(holidayObject, "Text (Christmas)"));
-				christmasText.text = "<color=red>" + LanguageManager.CurrentLanguage.frontend.mainmenu_christmas + "</color>";
+				christmasText.text = LanguageManager.CurrentLanguage.frontend.mainmenu_christmas;
 
 				//Play button
 				TextMeshProUGUI playButtonText = GetTextMeshProUGUI(GetGameObjectChild(GetGameObjectChild(titleObject, "Continue"), "Text"));
