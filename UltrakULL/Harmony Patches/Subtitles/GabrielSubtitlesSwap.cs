@@ -58,7 +58,7 @@ namespace UltrakULL.Harmony_Patches.Subtitles
 
                 for (var i = 0; i < SecondEncounterPhaseTwoTauntsOrder.Count; i++)
                     ___tauntsSecondPhase[i] = SecondEncounterPhaseTwoTauntsOrder[i];
-
+                SubtitledAudioSourcesReplacer.ReplaceSubsAndAudio(); //Need to fix unswaped main voicelines (not taunts) after respawn
                 return;
             }
             else
@@ -67,7 +67,7 @@ namespace UltrakULL.Harmony_Patches.Subtitles
                     
                 for (var i = 0; i < FirstEncounterTauntsOrder.Count; i++)
                     ___taunts[i] = FirstEncounterTauntsOrder[i];
-                    
+                SubtitledAudioSourcesReplacer.ReplaceSubsAndAudio(); //Need to fix unswaped main voicelines (not taunts) after respawn
                 return;
             }
         }

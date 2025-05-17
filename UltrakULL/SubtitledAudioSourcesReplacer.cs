@@ -13,8 +13,7 @@ namespace UltrakULL
 {
     public static class SubtitledAudioSourcesReplacer
     {
-        public static string SpeechFolder = Combine(Paths.ConfigPath,"ultrakull", "audio", LanguageManager.CurrentLanguage.metadata
-            .langName);
+        public static string SpeechFolder = Combine(Paths.ConfigPath,"ultrakull", "audio", LanguageManager.CurrentLanguage.metadata.langName);
         
         public static SubtitledSourcesConfig Config;
 
@@ -28,7 +27,7 @@ namespace UltrakULL
         {
             if (!TryLoadMetadata(out var objectReferences)) 
                 return;
-            
+
             foreach (var objectReference in objectReferences)
             {
                 foreach (var gameObject in objectReference.Objects)
