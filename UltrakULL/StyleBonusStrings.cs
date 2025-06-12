@@ -82,6 +82,8 @@ namespace UltrakULL
                 case "ultrakill.strike": { return "<color=#00ffff>" + LanguageManager.CurrentLanguage.style.style_strike + "</color>"; }
                 case "ultrakill.splattered": { return LanguageManager.CurrentLanguage.style.style_splattered; }
                 case "ultrakill.triplekill": { return "<color=orange>" + LanguageManager.CurrentLanguage.style.style_triplekill + "</color>"; }
+                case "ultrakill.rocketreturn": { return "<color=aqua>" + LanguageManager.CurrentLanguage.style.style_rocketreturn + "</color>"; }
+                case "ultrakill.roundtrip": { return "<color=green>" + LanguageManager.CurrentLanguage.style.style_roundtrip + "</color>"; }
 
                 case "ultrakill.drillhit": { return ""; }
                 case "ultrakill.hammerhit": { return ""; }
@@ -159,6 +161,7 @@ namespace UltrakULL
                     case "QUEEN PROMOTION": { return "<color=green>" + LanguageManager.CurrentLanguage.style.style_queenpromo + "</color>"; }
                     case "ROOK CAPTURE": { return "<color=orange>" + LanguageManager.CurrentLanguage.style.style_rookcapture + "</color>"; }
                     case "ROOK PROMOTION": { return "<color=green>" + LanguageManager.CurrentLanguage.style.style_rookpromo + "</color>"; }
+                    case "STOP HITTING YOURSELF": { return "<color=red>" + LanguageManager.CurrentLanguage.style.style_stophitting + "</color>"; }
                     case "ULTRAVICTORY": { return "<color=red>" + LanguageManager.CurrentLanguage.style.style_ultravictory + "</color>"; }
                     case "WHITE WINS": { return "<color=orange>" + LanguageManager.CurrentLanguage.style.style_whitewins + "</color>"; }
                     

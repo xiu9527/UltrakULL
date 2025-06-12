@@ -31,7 +31,7 @@ namespace UltrakULL
                 Logging.Warn(e.ToString());
             }
         }
-
+       
         public static void PatchAct1(ref GameObject canvasObj)
         {
             string currentLevel = GetCurrentSceneName();
@@ -40,6 +40,19 @@ namespace UltrakULL
 
             PatchHellmap(ref canvasObj);
             PatchResultsScreen(levelName, levelChallenge);
+
+            //"Crane control" panel in 2-1
+            if (currentLevel.Contains("2-1"))
+            {
+                GameObject outdoorsArenas = GetInactiveRootObject("3-4 - Outdoors Arenas");
+                GameObject stuff = GetGameObjectChild(outdoorsArenas, "3-4 Stuff");
+                Transform stuffTransform = stuff.transform;
+                GameObject crane = stuffTransform.Find("Crane (Moveable)").gameObject;
+                GameObject secretScreen = GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(GetGameObjectChild( crane, "Cube (19)"), "Cube"), "UsableScreen New"), "InteractiveScreen"), "Canvas"), "Background");
+
+                TextMeshProUGUI craneControl = GetTextMeshProUGUI(GetGameObjectChild(secretScreen, "Text (TMP) (1)"));
+                craneControl.text = LanguageManager.CurrentLanguage.act1.act1_lustFirst_crane;
+            }
         }
     }
 }

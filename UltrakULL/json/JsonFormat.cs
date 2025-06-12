@@ -462,6 +462,7 @@ namespace UltrakULL.json
         public string style_queenpromo;
         public string style_rookcapture;
         public string style_rookpromo;
+        public string style_stophitting;
         public string style_ultravictory;
         public string style_whitewins;
 
@@ -2482,6 +2483,7 @@ namespace UltrakULL.json
         public string act1_lustFirst_knuckleblaster1;
         public string act1_lustFirst_knuckleblaster2;
         public string act1_lustFirst_dashJump;
+        public string act1_lustFirst_crane;
 
         public string act1_lustSecond_feedbacker1;
         public string act1_lustSecond_feedbacker2;

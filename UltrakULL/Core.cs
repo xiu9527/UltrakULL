@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
@@ -17,8 +17,8 @@ namespace UltrakULL
     public static class Core
     {
         public static Font VcrFont;
-        public static GameObject ultrakullLogo;
-        
+        public static GameObject ultrakullLogo = null;
+
         public static bool updateAvailable;
         public static bool updateFailed;
         
@@ -37,6 +37,8 @@ namespace UltrakULL
         public static Material CJKFontTMPOverlayMat;
         public static Material jaFontTMPOverlayMat;
         public static Sprite[] CustomRankImages;
+
+        private static bool ultrakullDropdownExpanded = false;
 
         public static Sprite ArabicUltrakillLogo;
 
@@ -302,54 +304,132 @@ namespace UltrakULL
             {
                 switch(levelName) 
                 { 
-                    case "Intro": { break; }
-                    case "Main Menu":
+                case "Intro": { break; }
+                case "Main Menu":
                     {
-                        if(Core.wasLanguageReset)
+                        if (Core.wasLanguageReset)
                         {
                             Core.wasLanguageReset = false;
                             MonoSingleton<HudMessageReceiver>.Instance.SendHudMessage("<color=orange>The currently set language file could not be loaded.\nLanguage has been reset to English to avoid problems.</color>");
                         }
 
                         PatchFrontEnd(canvasObj);
-                            
-                        //(Re)render the UltrakULL status on screen when a language has been (re)loaded.
-                        if (ultrakullLogo != null) {GameObject.Destroy(ultrakullLogo);}
-                        ultrakullLogo = GameObject.Instantiate(GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(canvasObj, "Main Menu (1)"), "LeftSide"), "Text (3)"), "Text"), canvasObj.transform);
-                        ultrakullLogo.transform.localPosition = new Vector3(460, 350, 0);
-                        TextMeshProUGUI ultrakullLogoText = GetTextMeshProUGUI(ultrakullLogo);
-                        ultrakullLogoText.text = "<color=white>UltrakULL loaded.\nVersion: " + MainPatch.GetVersion() + "\nCurrent locale: " + LanguageManager.CurrentLanguage.metadata.langName;
-                        ultrakullLogoText.alignment = TextAlignmentOptions.TopLeft;
-                        ultrakullLogoText.fontSize = 16;
-                        
-                            
-                        //Add notif if there's a mod update available
-                        if(updateAvailable)
-                        { 
-                            ultrakullLogoText.text += "\n<color=green>UPDATE AVAILABLE!</color>";
-                                
-                            //Make an update button
-                            GameObject buttonBase= GetGameObjectChild(GetGameObjectChild(GetGameObjectChild(canvasObj,"Main Menu (1)"),"Panel"),"Youtube");
-                                
-                            GameObject ultrakullUpdateButton = GameObject.Instantiate(buttonBase,buttonBase.transform.parent);
-                            ultrakullUpdateButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(185, 0f);
-                            ultrakullUpdateButton.GetComponentInChildren<Image>().color = new Color(0,1,0,1);
-                            ultrakullUpdateButton.GetComponentInChildren<Text>().text = "VIEW UPDATE";
-                            ultrakullUpdateButton.GetComponentInChildren<WebButton>().url = "https://github.com/ClearwaterTM/UltrakULL/releases/latest";
+
+                        if (ultrakullLogo != null)
+                        {
+                            GameObject.Destroy(ultrakullLogo);
+                            ultrakullLogo = null;
                         }
-                        //Warn of a language that doesn't match the mod version
+
+                        ultrakullLogo = new GameObject("UltrakULL_Dropdown");
+                        ultrakullLogo.transform.SetParent(canvasObj.transform, false);
+
+                        RectTransform rootRect = ultrakullLogo.AddComponent<RectTransform>();
+                        rootRect.anchorMin = new Vector2(1, 1);
+                        rootRect.anchorMax = new Vector2(1, 1);
+                        rootRect.pivot = new Vector2(1, 1);
+                        rootRect.anchoredPosition = new Vector2(-20, -20);
+                        rootRect.sizeDelta = new Vector2(250, 30);
+
+                        Image buttonImage = ultrakullLogo.AddComponent<Image>();
+                        buttonImage.color = new Color(0.2f, 0.2f, 0.2f, 0.7f);
+                        Button button = ultrakullLogo.AddComponent<Button>();
+
+                        GameObject buttonTextObj = new GameObject("ButtonText");
+                        buttonTextObj.transform.SetParent(ultrakullLogo.transform, false);
+                        RectTransform buttonTextRect = buttonTextObj.AddComponent<RectTransform>();
+                        buttonTextRect.anchorMin = Vector2.zero;
+                        buttonTextRect.anchorMax = Vector2.one;
+                        buttonTextRect.offsetMin = Vector2.zero;
+                        buttonTextRect.offsetMax = Vector2.zero;
+
+                        TextMeshProUGUI buttonText = buttonTextObj.AddComponent<TextMeshProUGUI>();
+                        buttonText.text = "UltrakULL ▼";
+                        buttonText.alignment = TextAlignmentOptions.MidlineRight;
+                        buttonText.fontSize = 16;
+                        buttonText.color = Color.white;
+
+                        GameObject panel = new GameObject("DropdownPanel");
+                        panel.transform.SetParent(ultrakullLogo.transform, false);
+                        RectTransform panelRect = panel.AddComponent<RectTransform>();
+                        panelRect.anchorMin = new Vector2(1, 1);
+                        panelRect.anchorMax = new Vector2(1, 1);
+                        panelRect.pivot = new Vector2(1, 1);
+                        panelRect.anchoredPosition = new Vector2(0, -30);
+                        panelRect.sizeDelta = new Vector2(rootRect.sizeDelta.x, updateAvailable ? 170 : 130);
+
+                        Image panelBg = panel.AddComponent<Image>();
+                        panelBg.color = new Color(0f, 0f, 0f, 0.75f);
+
+                        GameObject panelTextObj = new GameObject("PanelText");
+                        panelTextObj.transform.SetParent(panel.transform, false);
+                        RectTransform panelTextRect = panelTextObj.AddComponent<RectTransform>();
+                        panelTextRect.anchorMin = new Vector2(0, 0);
+                        panelTextRect.anchorMax = new Vector2(1, 1);
+                        panelTextRect.offsetMin = new Vector2(5, 5);
+                        panelTextRect.offsetMax = new Vector2(-5, -5);
+
+                        TextMeshProUGUI panelText = panelTextObj.AddComponent<TextMeshProUGUI>();
+                        panelText.text = "<color=white>UltrakULL loaded.\nVersion: " + MainPatch.GetVersion() + "\nCurrent locale: " + LanguageManager.CurrentLanguage.metadata.langName;
+                        panelText.alignment = TextAlignmentOptions.TopRight;
+                        panelText.fontSize = 16;
+                        panelText.color = Color.white;
+
+
+                        if (updateAvailable)
+                        {
+                            panelText.text += "\n<color=green>UPDATE AVAILABLE!</color>";
+
+                            GameObject updateLink = new GameObject("UpdateLink", typeof(RectTransform), typeof(TextMeshProUGUI), typeof(Button));
+                            updateLink.transform.SetParent(panel.transform, false);
+
+                            RectTransform linkRect = updateLink.GetComponent<RectTransform>();
+                            linkRect.anchorMin = new Vector2(1, 1);   
+                            linkRect.anchorMax = new Vector2(1, 1);
+                            linkRect.pivot = new Vector2(1, 1);       
+                            linkRect.anchoredPosition = new Vector2(-5, -90); 
+                            linkRect.sizeDelta = new Vector2(150, 24); 
+
+                            TextMeshProUGUI linkText = updateLink.GetComponent<TextMeshProUGUI>();
+                            linkText.font = GlobalFontTMP;
+                            linkText.text = "<u><color=white>VIEW UPDATE</color></u>";
+                            linkText.alignment = TextAlignmentOptions.TopRight;
+                            linkText.fontSize = 16;
+                            linkText.raycastTarget = true;
+
+                            Button updateButton = updateLink.GetComponent<Button>();
+                            updateButton.onClick.AddListener(() =>
+                            {
+                                Application.OpenURL("https://github.com/ClearwaterTM/UltrakULL/releases/latest");
+                            });
+                        }
+
+
                         if (!LanguageManager.FileMatchesMinimumRequiredVersion(LanguageManager.CurrentLanguage.metadata.minimumModVersion, MainPatch.GetVersion()) && !isUsingEnglish())
                         {
-                            ultrakullLogoText.text += "\n<color=orange>This language file\nwas created for\nan older version of\nUltrakULL.\nPlease check for\nan update to this file!</color>";
+                            panelText.text += "\n<color=orange>This language file\nwas created for\nan older version of\nUltrakULL.\nPlease check for\nan update to this file!</color>";
                         }
-                        //Warn of a failed updated check
-                        else if (!(updateAvailable) && updateFailed)
+                        else if (!updateAvailable && updateFailed)
                         {
-                            ultrakullLogoText.text += "\n<color=red>Unable to check for updates.\nCheck console for info.</color>";
+                            panelText.text += "\n<color=red>Unable to check for updates.\nCheck console for info.</color>";
                         }
-                        
+
+                        CanvasGroup panelGroup = panel.AddComponent<CanvasGroup>();
+                        panelGroup.alpha = 0f;
+                        panelGroup.interactable = false;
+                        panelGroup.blocksRaycasts = false;
+
+                        button.onClick.AddListener(() =>
+                        {
+                            ultrakullDropdownExpanded = !ultrakullDropdownExpanded;
+                            panelGroup.alpha = ultrakullDropdownExpanded ? 1f : 0f;
+                            panelGroup.interactable = ultrakullDropdownExpanded;
+                            panelGroup.blocksRaycasts = ultrakullDropdownExpanded;
+                            buttonText.text = ultrakullDropdownExpanded ? "UltrakULL ▲" : "UltrakULL ▼";
+                        });
+
                         break;
-                        }
+                    }
 
                     default:
                     {

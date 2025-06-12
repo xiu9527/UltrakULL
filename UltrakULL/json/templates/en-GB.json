@@ -2620,6 +2620,7 @@
         "act1_lustFirst_knuckleblaster1": "KNUCKLEBLASTER: Hold",
         "act1_lustFirst_knuckleblaster2": "to launch a shockwave that knocks back enemies.",
         "act1_lustFirst_dashjump": "DASH JUMP: Keep the DASH momentum by JUMPING during it.",
+        "act1_lustFirst_crane": "CRANE\nCONTROL",
 
         "act1_lustSecond_checkPoints": "<color=#FF52FF>CIRCULAR CHECKPOINTS</color> can be reused to keep your progress.",
         "act1_lustSecond_feedbacker1": "Only the FEEDBACKER (Blue arm) can PARRY PROJECTILES.",
