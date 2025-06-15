@@ -42,4 +42,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: UltrakULL-Release
-          path: UltrakULL/UltrakULL/bin/Release/**
+          path: UltrakULL/bin/Release/**
