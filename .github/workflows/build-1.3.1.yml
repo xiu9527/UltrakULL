@@ -47,7 +47,17 @@ jobs:
           # 輸出到檔案（UTF8 編碼）
           $xml | Out-File -FilePath UltrakULL/UltrakULL.csproj.user -Encoding utf8
 
-
+      - name: 列出 game 目錄結構 & 環境變數
+        shell: pwsh
+        run: |
+          Write-Host '=== ULTRAKILLPath =' $env:ULTRAKILLPath
+          Write-Host '=== 列出 game 下所有檔案 ==='
+          Get-ChildItem "${{ github.workspace }}\game" -Recurse |
+            ForEach-Object { $_.FullName }
+          Write-Host '=== 檢查 ManagedDir 與 BepInExCoreDir 路徑 ==='
+          Write-Host "ManagedDir：" "${{ github.workspace }}\game\ULTRAKILL_Data\Managed\"
+          Write-Host "BepInExCoreDir：" "${{ github.workspace }}\game\BepInEx\core\"
+          
       # ⑤ 安裝 .NET SDK
       - name: Setup .NET SDK
         uses: actions/setup-dotnet@v3
