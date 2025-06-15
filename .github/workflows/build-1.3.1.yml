@@ -83,10 +83,10 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: UltrakULL-plugins
-          path: UltrakULL/UltrakULL/bin/Release/plugins/UltrakULL/*.dll
+          path: game/BepInEx/plugins/**
       
       - name: Upload config files
         uses: actions/upload-artifact@v4
         with:
           name: UltrakULL-config
-          path: UltrakULL/UltrakULL/bin/Release/config/ultrakull/**
+          path: game/BepInEx/config/**
