@@ -76,7 +76,13 @@ jobs:
           dotnet build UltrakULL.sln `
             -c Release `
             /p:ULTRAKILLPath="${{ github.workspace }}\game"
-
+      - name: 列出整個工作目錄
+        shell: pwsh
+        run: |
+          Write-Host "工作目錄：" $PWD
+          Get-ChildItem -Path . -Recurse | ForEach-Object {
+            Write-Host $_.FullName
+          }
 
       # ⑦ 上傳編譯好的 DLL
       - name: Upload plugin DLLs
