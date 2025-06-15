@@ -1,3 +1,4 @@
+# 檔案：.github/workflows/build-1.3.1.yml
 name: Build UltrakULL 1.3.1
 
 on:
@@ -6,28 +7,47 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-      # ① 取回所有分支與 tags
+      # ① 取回全部 tags
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
 
-      # ② 切到 1.3.1 tag
+      # ② 切到 1.3.1
       - name: Checkout 1.3.1
         run: git checkout 1.3.1
 
-      # ③ 安裝 .NET SDK
+      # ③ 下載公開的 stub.zip（不需要驗證）
+      - name: Download stub.zip
+        run: |
+          wget -O stub.zip \
+            https://github.com/xiu9527/UltrakULL/releases/download/1.3.1/stub.zip
+          mkdir -p game/ULTRAKILL_Data/Managed
+          unzip stub.zip -d game/ULTRAKILL_Data/Managed
+
+      # ④ 建立 csproj.user，設定 ULTRAKILLPath
+      - name: Create csproj.user
+        run: |
+          cat <<EOF > UltrakULL/UltrakULL.csproj.user
+          <?xml version="1.0" encoding="utf-8"?>
+          <Project>
+            <PropertyGroup>
+              <ULTRAKILLPath>${{ github.workspace }}/game</ULTRAKILLPath>
+            </PropertyGroup>
+          </Project>
+          EOF
+
+      # ⑤ 安裝 .NET SDK
       - name: Setup .NET SDK
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: '7.x'
 
-      # ④ 編譯 Release
+      # ⑥ 編譯 Release
       - name: Build Release
         run: dotnet build UltrakULL.sln -c Release
 
-      # ⑤ 上傳編譯後的 DLL
+      # ⑦ 上傳編譯好的 DLL
       - name: Upload DLLs
         uses: actions/upload-artifact@v4
         with:
