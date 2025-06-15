@@ -71,7 +71,11 @@ jobs:
 
       # ⑥ 編譯 Release
       - name: Build Release
-        run: dotnet build UltrakULL.sln -c Release
+        run: |
+          dotnet build UltrakULL.sln \
+            -c Release \
+            /p:ULTRAKILLPath="${{ github.workspace }}\game"
+
 
       # ⑦ 上傳編譯好的 DLL
       - name: Upload DLLs
