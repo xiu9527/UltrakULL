@@ -79,10 +79,14 @@ jobs:
 
 
       # ⑦ 上傳編譯好的 DLL
-      - name: Upload build output (DLL + config)
+      - name: Upload plugin DLLs
         uses: actions/upload-artifact@v4
         with:
-          name: UltrakULL-Build
-          path: |
-              UltrakULL/UltrakULL/bin/Release/plugins/**
-              UltrakULL/UltrakULL/bin/Release/config/**
+          name: UltrakULL-plugins
+          path: UltrakULL/UltrakULL/bin/Release/plugins/UltrakULL/*.dll
+      
+      - name: Upload config files
+        uses: actions/upload-artifact@v4
+        with:
+          name: UltrakULL-config
+          path: UltrakULL/UltrakULL/bin/Release/config/ultrakull/**
