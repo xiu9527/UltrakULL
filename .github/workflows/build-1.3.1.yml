@@ -71,9 +71,10 @@ jobs:
 
       # ⑥ 編譯 Release
       - name: Build Release
+        shell: pwsh
         run: |
-          dotnet build UltrakULL.sln \
-            -c Release \
+          dotnet build UltrakULL.sln `
+            -c Release `
             /p:ULTRAKILLPath="${{ github.workspace }}\game"
 
 
