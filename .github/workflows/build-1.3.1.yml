@@ -33,15 +33,20 @@ jobs:
 
       # ④ 建立 csproj.user，設定 ULTRAKILLPath
       - name: Create csproj.user
+        shell: pwsh
         run: |
-          cat <<EOF > UltrakULL/UltrakULL.csproj.user
+          $xml = @"
           <?xml version="1.0" encoding="utf-8"?>
           <Project>
             <PropertyGroup>
-              <ULTRAKILLPath>${{ github.workspace }}/game</ULTRAKILLPath>
+              <ULTRAKILLPath>${{ github.workspace }}\game</ULTRAKILLPath>
             </PropertyGroup>
           </Project>
-          EOF
+          "@
+      
+          # 輸出到檔案（UTF8 編碼）
+          $xml | Out-File -FilePath UltrakULL/UltrakULL.csproj.user -Encoding utf8
+
 
       # ⑤ 安裝 .NET SDK
       - name: Setup .NET SDK
