@@ -18,12 +18,18 @@ jobs:
         run: git checkout 1.3.1
 
       # ③ 下載公開的 stub.zip（不需要驗證）
-      - name: Download stub.zip
+      - name: Download & extract stub.zip
+        shell: pwsh
         run: |
-          wget -O stub.zip \
-            https://github.com/xiu9527/UltrakULL/releases/download/v1.3.1/stub.zip
-          mkdir -p game/ULTRAKILL_Data/Managed
-          unzip stub.zip -d game/ULTRAKILL_Data/Managed
+          # 用 PowerShell 抓 release asset
+          Invoke-WebRequest `
+            -Uri "https://github.com/${{ github.repository }}/releases/download/1.3.1/stub.zip" `
+            -OutFile stub.zip
+
+          # 建目录并解压
+          New-Item -ItemType Directory -Force -Path game\ULTRAKILL_Data\Managed
+          Expand-Archive -LiteralPath stub.zip -DestinationPath game\ULTRAKILL_Data\Managed
+
 
       # ④ 建立 csproj.user，設定 ULTRAKILLPath
       - name: Create csproj.user
