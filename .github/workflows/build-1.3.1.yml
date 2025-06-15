@@ -21,7 +21,7 @@ jobs:
       - name: Download stub.zip
         run: |
           wget -O stub.zip \
-            https://github.com/xiu9527/UltrakULL/releases/download/1.3.1/stub.zip
+            https://github.com/xiu9527/UltrakULL/releases/download/v1.3.1/stub.zip
           mkdir -p game/ULTRAKILL_Data/Managed
           unzip stub.zip -d game/ULTRAKILL_Data/Managed
 
