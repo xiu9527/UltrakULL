@@ -51,17 +51,7 @@ jobs:
             </PropertyGroup>
           </Project>
           "@ | Out-File -FilePath $userFile -Encoding utf8
-      
-      - name: Confirm csproj.user exists
-        shell: pwsh
-        run: |
-          Test-Path $userFile | ForEach-Object {
-            if ($_){ Write-Host "✔ csproj.user created" }
-            else    { Write-Error "✖ csproj.user missing!" }
-          }
-
-
-
+    
       - name: 列出 game 目錄結構 & 環境變數
         shell: pwsh
         run: |
