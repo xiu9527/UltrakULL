@@ -84,5 +84,5 @@ jobs:
         with:
           name: UltrakULL-Build
           path: |
-            UltrakULL/UltrakULL/plugins/**
-            UltrakULL/UltrakULL/config/**
+              UltrakULL/UltrakULL/bin/Release/plugins/**
+              UltrakULL/UltrakULL/bin/Release/config/**
