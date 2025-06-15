@@ -30,10 +30,10 @@ jobs:
           New-Item -ItemType Directory -Force -Path game
           Expand-Archive -LiteralPath stub.zip -DestinationPath game
 
-          - name: Create UltrakULL.csproj.user
-            shell: pwsh
-            run: |
-              $content = @"
+      - name: Create UltrakULL.csproj.user
+        shell: pwsh
+        run: |
+          $content = @"
           <?xml version="1.0" encoding="utf-8"?>
           <Project>
             <PropertyGroup>
@@ -42,20 +42,20 @@ jobs:
             </PropertyGroup>
           </Project>
           "@
-          
-              # 1. 定位到 .csproj 所在的目录
-              $projDir = Join-Path "${{ github.workspace }}" "UltrakULL\UltrakULL"
-          
-              # 2. 把 csproj.user 写到那个目录
-              $userFile = Join-Path $projDir "UltrakULL.csproj.user"
-              Write-Host "Writing csproj.user to $userFile"
-              $content | Out-File -FilePath $userFile -Encoding utf8
-          
-          - name: Debug: 确认 csproj.user 存在
-            shell: pwsh
-            run: |
-              Test-Path "${{ github.workspace }}\UltrakULL\UltrakULL\UltrakULL.csproj.user" |
-                ForEach-Object { if ($_){ Write-Host "csproj.user OK" } else { Write-Error "csproj.user MISSING" } }
+      
+          # 1. 定位到 .csproj 所在的目录
+          $projDir = Join-Path "${{ github.workspace }}" "UltrakULL\UltrakULL"
+      
+          # 2. 把 csproj.user 写到那个目录
+          $userFile = Join-Path $projDir "UltrakULL.csproj.user"
+          Write-Host "Writing csproj.user to $userFile"
+          $content | Out-File -FilePath $userFile -Encoding utf8
+      
+      - name: 确认 csproj.user 存在
+        shell: pwsh
+        run: |
+          Test-Path "${{ github.workspace }}\UltrakULL\UltrakULL\UltrakULL.csproj.user" |
+            ForEach-Object { if ($_){ Write-Host "csproj.user OK" } else { Write-Error "csproj.user MISSING" } }
 
 
       - name: 列出 game 目錄結構 & 環境變數
