@@ -85,14 +85,10 @@ jobs:
           }
 
       # ⑦ 上傳編譯好的 DLL
-      - name: Upload plugin DLLs
+      - name: Upload build outputs
         uses: actions/upload-artifact@v4
         with:
-          name: UltrakULL-plugins
-          path: game/BepInEx/plugins/**
-      
-      - name: Upload config files
-        uses: actions/upload-artifact@v4
-        with:
-          name: UltrakULL-config
-          path: game/BepInEx/config/**
+          name: UltrakULL-Build
+          path: |
+            UltrakULL/UltrakULL/bin/Release/plugins/UltrakULL/**
+            UltrakULL/UltrakULL/bin/Release/config/ultrakull/**
