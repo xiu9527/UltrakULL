@@ -30,32 +30,36 @@ jobs:
           New-Item -ItemType Directory -Force -Path game
           Expand-Archive -LiteralPath stub.zip -DestinationPath game
 
-      - name: Create UltrakULL.csproj.user
+      - name: Create csproj.user next to your .csproj
         shell: pwsh
         run: |
-          $content = @"
+          # 1. 找到第一个 .csproj
+          $csproj = Get-ChildItem "${{ github.workspace }}" -Filter "*.csproj" -Recurse |
+                    Select-Object -First 1
+          Write-Host "Found csproj at: $($csproj.FullName)"
+      
+          # 2. 组成 .csproj.user 的完整路径
+          $userFile = Join-Path $csproj.DirectoryName "$($csproj.BaseName).csproj.user"
+          Write-Host "Writing .user file to: $userFile"
+      
+          # 3. 写入 ULTRAKILLPath
+          @"
           <?xml version="1.0" encoding="utf-8"?>
           <Project>
             <PropertyGroup>
-              <!-- 指向你解压到 game 目录 -->
               <ULTRAKILLPath>${{ github.workspace }}\game</ULTRAKILLPath>
             </PropertyGroup>
           </Project>
-          "@
+          "@ | Out-File -FilePath $userFile -Encoding utf8
       
-          # 1. 定位到 .csproj 所在的目录
-          $projDir = Join-Path "${{ github.workspace }}" "UltrakULL\UltrakULL"
-      
-          # 2. 把 csproj.user 写到那个目录
-          $userFile = Join-Path $projDir "UltrakULL.csproj.user"
-          Write-Host "Writing csproj.user to $userFile"
-          $content | Out-File -FilePath $userFile -Encoding utf8
-      
-      - name: 确认 csproj.user 存在
+      - name: Confirm csproj.user exists
         shell: pwsh
         run: |
-          Test-Path "${{ github.workspace }}\UltrakULL\UltrakULL\UltrakULL.csproj.user" |
-            ForEach-Object { if ($_){ Write-Host "csproj.user OK" } else { Write-Error "csproj.user MISSING" } }
+          Test-Path $userFile | ForEach-Object {
+            if ($_){ Write-Host "✔ csproj.user created" }
+            else    { Write-Error "✖ csproj.user missing!" }
+          }
+
 
 
       - name: 列出 game 目錄結構 & 環境變數
