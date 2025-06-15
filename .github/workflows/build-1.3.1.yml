@@ -8,86 +8,38 @@ jobs:
   build:
     runs-on: windows-latest
     steps:
-      # ① 取回全部 tags
+      # 1. 直接 checkout v1.3.1 tag
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
+          ref: '1.3.1'
 
-      # ② 切到 1.3.1
-      - name: Checkout 1.3.1
-        run: git checkout 1.3.1
-
-      # ③ 下載公開的 stub.zip（不需要驗證）
+      # 2. 下載並展開 stub.zip 到 ./game
       - name: Download & extract stub.zip
         shell: pwsh
         run: |
-          # 1. 下载
           Invoke-WebRequest `
             -Uri "https://github.com/${{ github.repository }}/releases/download/v1.3.1/stub.zip" `
             -OutFile stub.zip
-      
-          # 2. 在 game 根目录解压
-          New-Item -ItemType Directory -Force -Path game
-          Expand-Archive -LiteralPath stub.zip -DestinationPath game
+          Expand-Archive stub.zip -DestinationPath game
 
-      - name: Create csproj.user next to your .csproj
-        shell: pwsh
-        run: |
-          # 1. 找到第一个 .csproj
-          $csproj = Get-ChildItem "${{ github.workspace }}" -Filter "*.csproj" -Recurse |
-                    Select-Object -First 1
-          Write-Host "Found csproj at: $($csproj.FullName)"
-      
-          # 2. 组成 .csproj.user 的完整路径
-          $userFile = Join-Path $csproj.DirectoryName "$($csproj.BaseName).csproj.user"
-          Write-Host "Writing .user file to: $userFile"
-      
-          # 3. 写入 ULTRAKILLPath
-          @"
-          <?xml version="1.0" encoding="utf-8"?>
-          <Project>
-            <PropertyGroup>
-              <ULTRAKILLPath>${{ github.workspace }}\game</ULTRAKILLPath>
-            </PropertyGroup>
-          </Project>
-          "@ | Out-File -FilePath $userFile -Encoding utf8
-    
-      - name: 列出 game 目錄結構 & 環境變數
-        shell: pwsh
-        run: |
-          Write-Host '=== ULTRAKILLPath =' $env:ULTRAKILLPath
-          Write-Host '=== 列出 game 下所有檔案 ==='
-          Get-ChildItem "${{ github.workspace }}\game" -Recurse |
-            ForEach-Object { $_.FullName }
-          Write-Host '=== 檢查 ManagedDir 與 BepInExCoreDir 路徑 ==='
-          Write-Host "ManagedDir：" "${{ github.workspace }}\game\ULTRAKILL_Data\Managed\"
-          Write-Host "BepInExCoreDir：" "${{ github.workspace }}\game\BepInEx\core\"
-          
-      # ⑤ 安裝 .NET SDK
+      # 3. 安裝 .NET SDK
       - name: Setup .NET SDK
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: '7.x'
 
-      # ⑥ 編譯 Release
+      # 4. Build 並直接傳入 ULTRAKILLPath
       - name: Build Release
         shell: pwsh
         run: |
           dotnet build UltrakULL.sln `
             -c Release `
             /p:ULTRAKILLPath="${{ github.workspace }}\game"
-      - name: 列出整個工作目錄
-        shell: pwsh
-        run: |
-          Write-Host "工作目錄：" $PWD
-          Get-ChildItem -Path . -Recurse | ForEach-Object {
-            Write-Host $_.FullName
-          }
 
-      # ⑦ 上傳編譯好的 DLL
-      - name: Upload build outputs
+      # 5. 上傳整個 build 輸出（含 plugin 與 config）
+      - name: Upload full Release folder
         uses: actions/upload-artifact@v4
         with:
-          name: UltrakULL-Build
-          path: |
-            UltrakULL/bin/Release/**
+          name: UltrakULL-Release
+          path: UltrakULL/UltrakULL/bin/Release/**
