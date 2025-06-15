@@ -21,15 +21,14 @@ jobs:
       - name: Download & extract stub.zip
         shell: pwsh
         run: |
-          # 用 PowerShell 抓 release asset
+          # 1. 下载
           Invoke-WebRequest `
             -Uri "https://github.com/${{ github.repository }}/releases/download/v1.3.1/stub.zip" `
             -OutFile stub.zip
-
-          # 建目录并解压
-          New-Item -ItemType Directory -Force -Path game\ULTRAKILL_Data\Managed
-          Expand-Archive -LiteralPath stub.zip -DestinationPath game\ULTRAKILL_Data\Managed
-
+      
+          # 2. 在 game 根目录解压
+          New-Item -ItemType Directory -Force -Path game
+          Expand-Archive -LiteralPath stub.zip -DestinationPath game
 
       # ④ 建立 csproj.user，設定 ULTRAKILLPath
       - name: Create csproj.user
